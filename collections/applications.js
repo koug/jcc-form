@@ -217,4 +217,6 @@ var applicationsSchema = new SimpleSchema({
 	},
 });
 
+
+applicationsSchema.schema();
 //Applications.attachSchema(applicationsSchema);

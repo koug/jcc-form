@@ -1,0 +1,8 @@
+<template name="inputMultiple">
+  <div class="reactive-element">
+    {{#each numberOfFields}}
+      <input class="reactive-element" value={{getValueFor . ../value}}>
+    {{/each}}
+  </div>
+  <button class="add-field">Add another field</button>
+</template>

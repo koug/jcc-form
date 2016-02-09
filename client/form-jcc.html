@@ -1,0 +1,27 @@
+<template name="formJCC">
+    <form class="form-horizontal">
+        {{> UI.contentBlock data=data context=context }}
+
+		<p>
+		    <button type="submit">Submit</button>
+		    <span>
+		        {{#if loading}}
+		          Loading...
+		        {{/if}}
+
+		        {{#if invalid}}
+		          Can't submit! There are {{invalidCount}} invalid fields!
+		        {{/if}}
+
+		        {{#if failed}}
+		          <strong>{{#if failedMessage}}{{failedMessage}}{{else}}Unable to submit the form.{{/if}}</strong>
+		        {{/if}}
+
+		        {{#if success}}
+		          <strong>{{#if successMessage}}{{successMessage}}{{else}}Saved!{{/if}}</strong>
+		        {{/if}}
+		      </span>
+		</p>
+
+    </form>
+</template>

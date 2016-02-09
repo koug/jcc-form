@@ -1,8 +1,51 @@
 <template name="testForm">
-	{{#jccForm schema=schema action=action}}
-		{{> textInput field='mainContact'}}
-		{{> textInput field='address'}}
-		{{> textInput field='city'}}
-		{{> textInput field='zip'}}
-	{{/jccForm}}
+  {{#formJCC schema=schema action=action}}
+    {{>inputMultiple field='parentsGuardians.0'}}
+<!--    {{>inputText field='parentsGuardians.1'}}-->
+    {{>inputText field='mainContact'}}
+<!--   	{{#inputGroup schema=schema}}
+	    {{> inputText field='parentsGuardians' showLabel=true}}
+	    {{> inputText field='parentsGuardians.0' showLabel=true}}
+	    {{> inputText field='parentsGuardians.0' showLabel=false}}
+    {{/inputGroup}}
+  	{{#inputGroup}}
+    	{{> inputText field='mainContact'}}
+    {{/inputGroup}}
+  	{{#inputGroup}}
+    	{{> inputText field='address'}}
+    {{/inputGroup}}
+  	{{#inputGroup}}
+		    {{> inputText field='city' colsinput='2' colslabel='2'}}
+		    {{> inputText field='state' colsinput='2' colslabel='2'}}
+		    {{> inputText field='zip' colsinput='2' colslabel='2'}}
+    {{/inputGroup}}
+  	{{#inputGroup}}
+		    {{> inputText field='cellPhone' colsinput='2' colslabel='2'}}
+		    {{> inputText field='homePhone' colsinput='2' colslabel='2'}}
+		    {{> inputText field='email' colsinput='2' colslabel='2'}}
+    {{/inputGroup}}
+ -->
+<!--     {{> inputText field='cellPhone' col='col-sm-4'}}
+    {{> inputText field='homePhone' col='col-sm-4'}}
+    {{> inputText field='email' col='col-sm-4'}}
+    {{> inputText field='address'}}
+    {{> inputText field='address'}}
+    {{> inputText field='address'}}
+    {{> inputText field='address'}}
+    {{> inputText field='address'}}
+    {{> inputText field='address'}}
+    {{> inputText field='address'}}
+    {{> inputText field='address'}}
+    {{> inputText field='address'}}
+    {{> inputText field='address'}}
+    {{> inputText field='address'}}
+    {{> inputText field='address'}}
+    {{> inputText field='address'}}
+    {{> inputText field='address'}}
+    {{> inputText field='address'}}
+    {{> inputText field='address'}}
+    {{> inputText field='address'}}
+ --><!--     {{> inputText field='parentsGuardians'}}
+    {{> inputObject field='grossIncome'}}
+ -->  {{/formJCC}}
 </template>
