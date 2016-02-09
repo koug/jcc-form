@@ -1,4 +1,24 @@
+Template.testForm.onCreated(function() {
+    this.parentsGuardiansNum = new ReactiveVar(1);
+});
+
+Template.testForm.events({
+    'click .addParent': function(event) {
+        event.preventDefault();
+        var num = Template.instance().parentsGuardiansNum.get();
+        Template.instance().parentsGuardiansNum.set(num+1);
+        console.log(num);
+    }
+})
+
 Template.testForm.helpers({
+    parentsGuardians: function() {
+        return _.times(
+            Template.instance().parentsGuardiansNum.get(), 
+            function(n) { 
+                return { input: "parentsGuardians." + n }
+            });
+    },
 	schema: function () {
 	    // return new SimpleSchema({
 	    //   "address": {

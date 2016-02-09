@@ -1,6 +1,9 @@
 <template name="testForm">
   {{#formJCC schema=schema action=action}}
-    {{>inputMultiple field='parentsGuardians.0'}}
+    {{#each parentsGuardians}}
+        {{>inputMultiple field=input}}
+    {{/each}} 
+    <a href="#" class="addParent">add Parent</a>
 <!--    {{>inputText field='parentsGuardians.1'}}-->
     {{>inputText field='mainContact'}}
 <!--   	{{#inputGroup schema=schema}}
