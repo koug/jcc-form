@@ -2,17 +2,23 @@ Applications = new Meteor.Collection('applications');
 
 //Applications.permit(['insert']).apply();
 
-var applicationsSchema = new SimpleSchema({
+applicationsSchema = new SimpleSchema({
 	// autoform: {"label-class":"col-sm-3", "input-col-class":"col-sm-9", "template":"bootstrap-horizontal"},
 	"parentsGuardians": {
 		type: [String],
 		minCount: 1,
 		maxCount:3,
 		label: "Parents/Guardians",
+        instructions: "sfsd"
+	},
+    "parentsGuardians.$": {
+		type: String,
+        instructions: "test"
 	},
 	"mainContact": {
 		type: String,
 		label: "Main Contact Name",
+        instructions: "main"
 	},
 	"address": {
 		type: String,
@@ -46,7 +52,8 @@ var applicationsSchema = new SimpleSchema({
 	},
 	"householdMembers": {
 		type: [Object],
-		minCount: 1
+		minCount: 1,
+        label: "HM"
 	},
 	"householdMembers.$.name": {
 		type: String,

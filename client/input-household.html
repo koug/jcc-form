@@ -1,0 +1,14 @@
+<template name="inputHousehold">
+    <div class="form-group">
+        {{label}}
+        {{#each options}}
+            {{> inputText field=this}}
+        {{/each}}
+<!--
+        <input type="text" 
+               class="reactive-element" 
+               value="{{value}}" 
+               placeholder="{{instructions}}">
+-->
+    </div>
+</template>

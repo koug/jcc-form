@@ -16,7 +16,7 @@ Template.inputMultiple.helpers({
 });
 
 // Add event to change custom state
-Tempate.inputMultiple.events({
+Template.inputMultiple.events({
   'click .add-field': function (event, template) {
     var currentFieldCount = Template.instance().numberOfFields.get();
     Template.instance().numberOfFields.set(currentFieldCount++);

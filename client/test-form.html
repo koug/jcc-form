@@ -1,12 +1,19 @@
 <template name="testForm">
-  {{#formJCC schema=schema action=action}}
-    {{#each parentsGuardians}}
-        {{>inputMultiple field=input}}
-    {{/each}} 
-    <a href="#" class="addParent">add Parent</a>
-<!--    {{>inputText field='parentsGuardians.1'}}-->
-    {{>inputText field='mainContact'}}
-<!--   	{{#inputGroup schema=schema}}
+    <div class="container">
+        {{#formJCC schema=schema action=action}}
+            {{#each pg}}
+                {{>inputText field=input}}
+            {{/each}}
+            <a href="#" class="addParent">add Parent</a>
+        <!--    {{>inputText field='parentsGuardians.1'}}-->
+        {{>inputText field='mainContact'}}
+        {{> inputHousehold field='householdMembers' options=hm}}
+        <!--
+    {{#each hm}}
+        {{> inputText field=}}
+    {{/each}}
+-->
+        <!--   	{{#inputGroup schema=schema}}
 	    {{> inputText field='parentsGuardians' showLabel=true}}
 	    {{> inputText field='parentsGuardians.0' showLabel=true}}
 	    {{> inputText field='parentsGuardians.0' showLabel=false}}
@@ -28,7 +35,7 @@
 		    {{> inputText field='email' colsinput='2' colslabel='2'}}
     {{/inputGroup}}
  -->
-<!--     {{> inputText field='cellPhone' col='col-sm-4'}}
+        <!--     {{> inputText field='cellPhone' col='col-sm-4'}}
     {{> inputText field='homePhone' col='col-sm-4'}}
     {{> inputText field='email' col='col-sm-4'}}
     {{> inputText field='address'}}
@@ -48,7 +55,9 @@
     {{> inputText field='address'}}
     {{> inputText field='address'}}
     {{> inputText field='address'}}
- --><!--     {{> inputText field='parentsGuardians'}}
+ -->
+        <!--     {{> inputText field='parentsGuardians'}}
     {{> inputObject field='grossIncome'}}
- -->  {{/formJCC}}
+ -->{{/formJCC}}
+    </div>
 </template>

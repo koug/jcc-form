@@ -40,3 +40,7 @@ ReactiveForms.createElement({
     $(el).val('');
   }
 });
+
+ReactiveForms.createElement({
+   template: 'inputHousehold' 
+});
