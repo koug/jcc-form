@@ -1,15 +1,12 @@
 <template name="inputText">
     <div class="form-group">
-<!--        {{#if showLabel}}-->
-        <label>{{schema.label}}</label>
-<!--        {{/if}}-->
-<!--        {{#if showLabel field}}{{label}} {{/if}}-->
-        {{showSchema schema.instructions}}
-        {{showSchema instructions}}
-
+<!--        {{field}}-->
+        {{#if showLabel}}{{schema.label}}{{/if}}
+<!--        {{showSchema showLabel}}-->
         <input type="text" 
                class="form-control reactive-element" 
                value="{{value}}" 
-               placeholder="test">
+               placeholder="{{instructions}}">
     </div>
 </template>
+

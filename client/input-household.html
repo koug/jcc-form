@@ -1,14 +1,11 @@
 <template name="inputHousehold">
-    <div class="form-group">
-        {{label}}
-        {{#each options}}
-            {{> inputText field=this}}
-        {{/each}}
-<!--
-        <input type="text" 
-               class="reactive-element" 
-               value="{{value}}" 
-               placeholder="{{instructions}}">
--->
+    {{#each numberOfFieldsToArray numberOfFields}}
+    <div class="col-sm-6">
+        {{> inputText nestedFieldOptions 'householdMembers.$.name' index=this}}
     </div>
+    <div class="col-sm-6">
+        {{> inputText nestedFieldOptions 'householdMembers.$.age' index=this}}
+    </div>
+    {{/each}}
+    <a href="#" class="add">Add Household member</a>
 </template>

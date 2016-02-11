@@ -1,5 +1,5 @@
 // Add helpers for the custom state
-Template.inputMultiple.helpers({
+Template['inputElement'].helpers({
   numberOfFields: function () {
     var currentFieldCount = Template.instance().numberOfFields.get();
     var times = [];
@@ -16,16 +16,18 @@ Template.inputMultiple.helpers({
 });
 
 // Add event to change custom state
-Template.inputMultiple.events({
+Template['inputElement'].events({
   'click .add-field': function (event, template) {
+    event.preventDefault();
     var currentFieldCount = Template.instance().numberOfFields.get();
-    Template.instance().numberOfFields.set(currentFieldCount++);
+    currentFieldCount++;
+    Template.instance().numberOfFields.set(currentFieldCount);
   }
 });
 
 // Add ReactiveVar here using the `created` callback
 ReactiveForms.createElement({
-  template: 'inputMultiple',
+  template: 'inputElement',
   validationEvent: 'keyup',
   validationValue: function (el, clean, template) {
     var values = $(el).find('input').map(function () {
