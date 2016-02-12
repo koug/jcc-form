@@ -1,12 +1,8 @@
 <template name="inputText">
-    <div class="form-group">
-<!--        {{field}}-->
-        {{#if showLabel}}{{schema.label}}{{/if}}
-<!--        {{showSchema showLabel}}-->
-        <input type="text" 
-               class="form-control reactive-element" 
-               value="{{value}}" 
-               placeholder="{{instructions}}">
-    </div>
+  <div class="{{#if class}}{{class}}{{else}}col-sm-12{{/if}}">
+    {{#if showLabel}}
+    <label>{{#if schema.optional}}{{else}}* {{/if}}{{schema.label}}</label>
+    {{/if}}
+    {{> inputSimple field=field}}
+  </div>
 </template>
-

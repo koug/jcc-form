@@ -4,7 +4,7 @@ ReactiveForms.createFormBlock({
 });
 
 ReactiveForms.createElement({
-  template: 'inputText',
+  template: 'inputSimple',
   validationEvent: 'keyup',
   validationValue: function (el, clean, template) {
     // This is an optional method that lets you hook into the validation event
@@ -15,9 +15,9 @@ ReactiveForms.createElement({
 
     // The `clean` argument comes from SimpleSchema, but has been wrapped--
     // it now takes and returns just a value, not an object.
-    console.log('Specifying my own validation value!');
+    console.log('Specifying my own validation value!' + $(el));
     value = $(el).val();
-    return clean(value, {removeEmptyStrings: false});
+    return clean(value, {removeEmptyStrings: true});
   },
   reset: function (el) {
     $(el).val('');
@@ -25,22 +25,5 @@ ReactiveForms.createElement({
 });
 
 ReactiveForms.createElement({
-  template: 'inputGroup',
+  template: 'inputText',
 });
-
-ReactiveForms.createFormBlock({
-  template: 'basicFormBlock',
-  submitType: 'normal'
-});
-
-ReactiveForms.createElement({
-  template: 'basicInput',
-  validationEvent: 'keyup',
-  reset: function (el) {
-    $(el).val('');
-  }
-});
-//
-//ReactiveForms.createElement({
-//   template: 'inputHousehold' 
-//});

@@ -1,7 +1,10 @@
-Template.testForm.helpers({
+Template.familyForm.helpers({
+	// data: function() {
+	// 	return Session.get("data");
+	// },
 	schema: function () {
-        var mySchma = applicationsSchema;
-        
+        var mySchma = familyFormSchema;
+
         return mySchma;
 	},
 	action: function() {
@@ -12,8 +15,9 @@ Template.testForm.helpers({
 			console.log("[forms] Callbacks!", callbacks);
 			console.log("[forms] Changed fields!", changed);
 			callbacks.success(); // Display success message.
-			callbacks.reset();   // Run each Element's custom `reset` function to clear the form.
+			// callbacks.reset();   // Run each Element's custom `reset` function to clear the form.
+			Session.set("data", this);
+			Router.go('/expensesForm')
 		};
 	}
 });
-

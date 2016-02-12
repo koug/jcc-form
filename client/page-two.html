@@ -1,0 +1,42 @@
+<template name="expensesForm">
+  <div class="container">
+    <div class="first">
+      {{#formJCC schema=schema action=action button1='Next'}}
+        <div class="form-group">
+          {{> inputText field='parentsGuardians' showLabel=true}}
+        </div>
+        <div class="form-group">
+          {{> inputText field='mainContact' showLabel=true}}
+        </div>
+        <div class="form-group">
+          {{> inputText field='address' showLabel=true}}
+        </div>
+        <div class="form-group">
+          {{> inputText field='city' showLabel=true class='col-sm-4'}}
+          {{> inputText field='state' showLabel=true class='col-sm-4'}}
+          {{> inputText field='zip' showLabel=true class='col-sm-4'}}
+        </div>
+        <div class="form-group">
+          {{> inputText field='cellPhone' showLabel=true class='col-sm-4'}}
+          {{> inputText field='homePhone' showLabel=true class='col-sm-4'}}
+          {{> inputText field='email' showLabel=true class='col-sm-4'}}
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading">Household Members</div>
+          <div class="panel-body">
+            {{> inputHousehold}}
+          </div>
+        </div>
+      {{/formJCC}}
+    </div>
+
+    <div class="second">
+      <div class="panel panel-default">
+        <div class="panel-heading">Household Members</div>
+        <div class="panel-body">
+          {{> inputHousehold}}
+        </div>
+      </div>
+    </div>
+  </div>
+</template>

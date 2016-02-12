@@ -1,11 +1,33 @@
 <template name="inputHousehold">
+  <div class="household">
+      <div class="col-sm-6">
+        <label>Name</label>
+      </div>
+      <div class="col-sm-6">
+        <label>Age</label>
+      </div>
     {{#each numberOfFieldsToArray numberOfFields}}
-    <div class="col-sm-6">
-        {{> inputText nestedFieldOptions 'householdMembers.$.name' index=this}}
-    </div>
-    <div class="col-sm-6">
-        {{> inputText nestedFieldOptions 'householdMembers.$.age' index=this}}
+    <div class="form-group">
+      {{> inputText
+        nestedFieldOptions
+        'householdMembers.$.name'
+        index=this class='col-sm-6'}}
+        {{#if isZero @index}}
+          {{> inputText
+            nestedFieldOptions
+            'householdMembers.$.age'
+            index=this class='col-sm-6'}}
+        {{else}}
+          {{> inputText
+            nestedFieldOptions
+            'householdMembers.$.age'
+            index=this class='col-sm-5'}}
+            <div class="col-sm-1">
+              <a href="#" class="remove">remove</a>
+            </div>
+        {{/if}}
     </div>
     {{/each}}
     <a href="#" class="add">Add Household member</a>
+  </div>
 </template>

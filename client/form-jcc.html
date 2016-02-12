@@ -3,7 +3,9 @@
         {{> UI.contentBlock data=data context=context }}
 
 		<p>
-		    <button type="submit">Submit</button>
+		    <button type="submit" class="btn btn-primary">{{button1}}</button>
+        {{#if button2}}
+        {{/if}}
 		    <span>
 		        {{#if loading}}
 		          Loading...
