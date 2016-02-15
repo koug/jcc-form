@@ -1,0 +1,119 @@
+<template name="inputPrograms">
+<!-- <div class="programs">
+    <table class="table">
+        <tr>
+            <th>
+                <label>Program Participant</label>
+            </th>
+            <th>
+                <label>School/ Program</label>
+            </th>
+            <th>
+                <label>Level</label>
+            </th>
+            <th>
+                <label>Tuition</label>
+            </th>
+            <th>
+                <label>scholarship From Program</label>
+            </th>
+            <th>
+                <label>Tuition Balance</label>
+            </th>
+            <th>
+            </th>
+        </tr>
+        {{#each numberOfFieldsToArray numberOfFields}}
+        <tr>
+            <td>
+                {{> inputSimple nestedFieldOptions 'programParticipants.$.name' index=this}}
+            </td>
+            <td>
+                {{> inputSimple nestedFieldOptions 'programParticipants.$.school' index=this}}
+            </td>
+            <td>
+                {{> inputSimple nestedFieldOptions 'programParticipants.$.level' index=this}}
+            </td>
+            <td>
+                {{> inputSimple nestedFieldOptions 'programParticipants.$.tuition' index=this}}
+            </td>
+            <td>
+                {{> inputSimple nestedFieldOptions 'programParticipants.$.scholarshipFromProgram' index=this}}
+            </td>
+            <td>
+                {{> inputSimple nestedFieldOptions 'extraordinaryExpenses.$.tuitionBalance' index=this}}
+            </td>
+            <td>
+                {{#if isZero @index}} {{else}}
+                <div>
+                    <a href="#" class="remove">x</a>
+                </div>
+                {{/if}}
+            </td>
+        </tr>
+        {{/each}}
+    </table>
+    <a href="#" class="add">Add Expense</a>
+</div> -->
+  <div class="programs">
+      <div class="row">
+      <div class="col-sm-2">
+          <label>Program Participant</label>
+      </div>
+      <div class="col-sm-2">
+        <label>School/Program</label>
+      </div>
+      <div class="col-sm-2">
+        <label>Level</label>
+      </div>
+      <div class="col-sm-2">
+        <label>Tuition</label>
+      </div>
+      <div class="col-sm-2">
+        <label>Scholarship From Program</label>
+      </div>
+      <div class="col-sm-2">
+        <label>Tuition Balance</label>
+      </div>
+  </div>
+    {{#each numberOfFieldsToArray numberOfFields}}
+    <div class="form-group">
+        {{> inputText
+            nestedFieldOptions
+            'programParticipants.$.name'
+            index=this class='col-sm-2'}}
+        {{> inputText
+            nestedFieldOptions
+            'programParticipants.$.school'
+            index=this class='col-sm-2'}}
+        {{> inputText
+            nestedFieldOptions
+            'programParticipants.$.level'
+            index=this class='col-sm-2'}}
+        {{> inputText
+            nestedFieldOptions
+            'programParticipants.$.tuition'
+            index=this class='col-sm-2'}}
+        {{> inputText
+            nestedFieldOptions
+            'programParticipants.$.scholarshipFromProgram'
+            index=this class='col-sm-2'}}
+        {{#if isZero @index}}
+          {{> inputText
+            nestedFieldOptions
+            'extraordinaryExpenses.$.tuitionBalance'
+            index=this class='col-sm-2'}}
+        {{else}}
+          {{> inputText
+            nestedFieldOptions
+            'extraordinaryExpenses.$.amount'
+            index=this class='col-sm-1'}}
+            <div>
+              <a href="#" class="remove">x</a>
+            </div>
+        {{/if}}
+    </div>
+    {{/each}}
+    <a href="#" class="add">Add Expense</a>
+  </div>
+</template>

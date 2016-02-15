@@ -6,21 +6,11 @@ Template.inputHousehold.onCreated(function() {
   ];
 });
 
-// Add helpers for the custom state
 Template.inputHousehold.helpers({
-  isZero: function(index) {
-    return index === 0;
-  },
   numberOfFields: function() {
     var num = Template.instance().num.get();
-    console.log(num);
     return Template.instance().num.get();
   },
-  getValueFor: function(n, values) {
-    if (n && values && values[n]) {
-      return values[n];
-    }
-  }
 });
 
 Template.inputHousehold.events({

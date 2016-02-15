@@ -1,0 +1,11 @@
+<template name="inputCheckbox">
+    <div class="col-sm-12">
+        <div class="checkbox form-group">
+            <label>
+                <input type="checkbox" value="" class="reactive-element"> {{schema.label}}
+            </label>
+            {{#if submitted}} {{#if errorMessage}}
+            <p class="error-message">{{errorMessage}}</p>{{/if}} {{/if}}
+        </div>
+    </div>
+</template>

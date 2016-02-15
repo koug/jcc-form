@@ -2,18 +2,6 @@ Applications = new Meteor.Collection('applications');
 
 //Applications.permit(['insert']).apply();
 
-householdMemberSchema = new SimpleSchema({
-  "name": {
-    type: String,
-    label: "Name label",
-  },
-  "age": {
-    type: Number,
-    label: "Age",
-
-  },
-});
-
 familyFormSchema = new SimpleSchema({
   // autoform: {"label-class":"col-sm-3", "input-col-class":"col-sm-9", "template":"bootstrap-horizontal"},
   // "parentsGuardians": {
@@ -25,10 +13,11 @@ familyFormSchema = new SimpleSchema({
   // },
   "parentsGuardians": {
     type: String,
-    label: "Parents/Guardians"
+    label: "Parents/Guardians",
+    allowedValues: ["Parents/Guardians", "aaa"]
   },
   "mainContact": {
-    type: Number,
+    type: String,
     label: "Main Contact Name",
     instructions: "main"
   },
@@ -62,19 +51,19 @@ familyFormSchema = new SimpleSchema({
     label: "Email",
     optional: true
   },
-  "householdMembers": {
-    type: [householdMemberSchema],
-    minCount: 1,
-    label: "Household Members"
-  },
-});
+    "householdMembers.$.name": {
+    type: String,
+    label: "Name label",
+    },
+    "householdMembers.$.age": {
+    type: Number,
+    label: "Age",
 
-expensesFormSchema = new SimpleSchema({
+    },
+// });
+//
+// expensesFormSchema = new SimpleSchema({
   // gross income
-  "grossIncome": {
-    type: Object,
-    label: "Gross Income",
-  },
   "grossIncome.Father": {
     type: Number,
     label: "Father",
@@ -85,78 +74,75 @@ expensesFormSchema = new SimpleSchema({
   },
   "grossIncome.Other": {
     type: Number,
-    label: "Other"
+    label: "Other",
+    optional: true
   },
   "homeType": {
     type: String,
-    allowedValues: ["Rent", "Own home"],
-    label: "Check one"
+    allowedValues: ["Owner", "Renter"],
+    label: "Home type"
 
   },
   // spending on Jewish life
-  "spending.daySchool": {
-    type: Object,
-    label: "Day School Tuition"
-  },
   "spending.daySchool.where": {
-    type: String
+    type: String,
+    label: "Day School @",
+    optional: true
   },
   "spending.daySchool.amount": {
-    type: Number
-  },
-  "spending.tuition": {
-    type: Object,
-    label: "Tuition"
+    type: Number,
+    label: "Day School Amount",
+    optional: true
   },
   "spending.tuition.where": {
-    type: String
+    type: String,
+    label: "Tuition @",
+    optional: true
   },
   "spending.tuition.amount": {
-    type: Number
-  },
-  "spending.synagogue": {
-    type: Object,
-    label: "Synagogue Dues"
+    type: Number,
+    label: "Tuition Amount",
+    optional: true
   },
   "spending.synagogue.where": {
-    type: String
+    type: String,
+    label: "Synagogue @",
+    optional: true
   },
   "spending.synagogue.amount": {
-    type: Number
-  },
-  "religiousSchoolFees": {
     type: Number,
-    label: "Religious School Fees"
-  },
-  "spending.jewishCamp": {
-    type: Object,
-    label: "Jewish Camp"
+    label: "Synagogue Amount",
+    optional: true
   },
   "spending.jewishCamp.where": {
-    type: String
+    type: String,
+    label: "Jewish Camp @",
+    optional: true
   },
   "spending.jewishCamp.amount": {
-    type: Number
-  },
-  "spending.jccDues": {
-    type: Object,
-    label: "JCC Dues"
+    type: Number,
+    label: "Jewish Camp Amount",
+    optional: true
   },
   "spending.jccDues.amountPerMonth": {
-    type: Number
+    type: Number,
+    label: "JCC Amount/month",
+    optional: true
   },
   "spending.jccDues.amount": {
-    type: Number
-  },
-  "spending.youthPrograms": {
-    type: Object,
-    label: "Youth Programs"
+    type: Number,
+    label: "JCC Total",
+    optional: true
   },
   "spending.youthPrograms.where": {
-    type: String
+    type: String,
+    label: "Youth Programs @",
+    optional: true
   },
   "spending.youthPrograms.amount": {
-    type: Number
+    type: Number,
+    label: "Youth Programs Amount",
+    optional: true
   },
   // extraordinary expenses
   "extraordinaryExpenses": {
@@ -164,14 +150,16 @@ expensesFormSchema = new SimpleSchema({
     label: "Please itemize other extraordinary expenses"
   },
   "extraordinaryExpenses.$.name": {
-    type: String
+    type: String,
+    optional: true
   },
   "extraordinaryExpenses.$.amount": {
-    type: Number
+    type: Number,
+    optional: true
   },
-});
-
-thirdPageSchema = new SimpleSchema({
+// });
+//
+// thirdPageSchema = new SimpleSchema({
   // program participants
   "programParticipants": {
     type: [Object],
@@ -190,7 +178,7 @@ thirdPageSchema = new SimpleSchema({
     type: String,
     label: "Level"
   },
-  "programParticipants.$.Tuition": {
+  "programParticipants.$.tuition": {
     type: Number,
     label: "Program Participant"
   },
@@ -212,7 +200,8 @@ thirdPageSchema = new SimpleSchema({
   },
   "comments": {
     type: String,
-    label: "Please list any special circumstances evaluators should be aware of"
+    label: "Please list any special circumstances evaluators should be aware of",
+    optional: true
   },
 
   // timestamps

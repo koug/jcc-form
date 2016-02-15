@@ -1,6 +1,6 @@
 //Template.registerHelper('nestedFieldOptions', function(field, index) {
 //	return field.replace('$', index);
-//}); 
+//});
 
 Template.registerHelper('nestedFieldOptions', function(name, kw) {
   kw.hash.field = name.replace(/\$/, kw.hash.index);
@@ -12,4 +12,11 @@ Template.registerHelper('numberOfFieldsToArray', function(i) {
         times.push(n);
     })
     return times;
-}); 
+});
+
+Template.registerHelper("logVar", function(input){
+    console.log(input);
+});
+Template.registerHelper("isZero", function(index){
+    return index === 0;
+});

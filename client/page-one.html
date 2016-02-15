@@ -28,6 +28,52 @@
             {{> inputHousehold}}
           </div>
         </div>
+        <div class="panel panel-default">
+          <div class="panel-heading">Gross Income for tax year 2015</div>
+          <div class="panel-body">
+              {{> inputText field='grossIncome.Father' showLabel=true class='col-sm-4'}}
+              {{> inputText field='grossIncome.Mother' showLabel=true class='col-sm-4'}}
+              {{> inputText field='grossIncome.Other' showLabel=true class='col-sm-4'}}
+          </div>
+        </div>
+        <div class="form-group">
+            {{> inputSelect field='homeType' showLabel=true}}
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading">Annual Spending on Jewish Life</div>
+          <div class="panel-body">
+              {{> inputText field='spending.daySchool.where' showLabel=true class='col-sm-6'}}
+              {{> inputText field='spending.daySchool.amount' showLabel=true class='col-sm-6'}}
+              {{> inputText field='spending.tuition.where' showLabel=true class='col-sm-6'}}
+              {{> inputText field='spending.tuition.amount' showLabel=true class='col-sm-6'}}
+              {{> inputText field='spending.synagogue.where' showLabel=true class='col-sm-6'}}
+              {{> inputText field='spending.synagogue.amount' showLabel=true class='col-sm-6'}}
+              {{> inputText field='spending.jewishCamp.where' showLabel=true class='col-sm-6'}}
+              {{> inputText field='spending.jewishCamp.amount' showLabel=true class='col-sm-6'}}
+              {{> inputText field='spending.jccDues.amountPerMonth' showLabel=true class='col-sm-6'}}
+              {{> inputText field='spending.jccDues.amount' showLabel=true class='col-sm-6'}}
+              {{> inputText field='spending.youthPrograms.where' showLabel=true class='col-sm-6'}}
+              {{> inputText field='spending.youthPrograms.amount' showLabel=true class='col-sm-6'}}
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading">Itemize Extraordinary Expenses</div>
+          <div class="panel-body">
+            {{> inputExtraordinaryExpenses}}
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading">Please list the following for each child</div>
+          <div class="panel-body">
+            {{> inputPrograms}}
+          </div>
+        </div>
+        <div class="form-group">
+            {{> inputCheckbox field='notBeenInformOfAward'}}
+        </div>
+        <div class="form-group">
+            {{> inputTextarea field='comments' showLabel=true}}
+        </div>
       {{/formJCC}}
     </div>
 

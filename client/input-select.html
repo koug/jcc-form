@@ -1,0 +1,16 @@
+<template name="inputSelect">
+    <div class="{{#if class}}{{class}}{{else}}col-sm-12{{/if}}">
+      <label>{{#if schema.optional}}{{else}}* {{/if}}{{schema.label}}</label>
+      <select class="reactive-element form-control">
+          {{#unless value}}
+          <option value="" disabled selected style='display:none;'>Choose...</option>
+          {{/unless}}
+          {{#each schema.allowedValues}}
+          <option value="{{value}}">{{this}}</option>
+          {{/each}}
+      </select>
+      {{#if submitted}}
+      {{#if errorMessage}}<p class="error-message">{{errorMessage}}</p>{{/if}}
+      {{/if}}
+    </div>
+</template>

@@ -7,14 +7,32 @@ ReactiveForms.createElement({
   template: 'inputSimple',
   validationEvent: 'keyup',
   validationValue: function (el, clean, template) {
-    // This is an optional method that lets you hook into the validation event
-    // and return a custom value to validate with.
+    console.log('Specifying my own validation value!' + $(el));
+    value = $(el).val();
+    return clean(value, {removeEmptyStrings: true});
+  },
+  reset: function (el) {
+    $(el).val('');
+  }
+});
 
-    // Shown below is the ReactiveForms default. Clearly, this won't work in the case
-    // of a multi-select form, but you could get those values and put them in an array.
+ReactiveForms.createElement({
+  template: 'inputTextarea',
+  validationEvent: 'keyup',
+  validationValue: function (el, clean, template) {
+    console.log('Specifying my own validation value!' + $(el));
+    value = $(el).val();
+    return clean(value, {removeEmptyStrings: true});
+  },
+  reset: function (el) {
+    $(el).val('');
+  }
+});
 
-    // The `clean` argument comes from SimpleSchema, but has been wrapped--
-    // it now takes and returns just a value, not an object.
+ReactiveForms.createElement({
+  template: 'inputCheckbox',
+  validationEvent: 'change',
+  validationValue: function (el, clean, template) {
     console.log('Specifying my own validation value!' + $(el));
     value = $(el).val();
     return clean(value, {removeEmptyStrings: true});
