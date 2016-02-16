@@ -1,9 +1,16 @@
 Router.route('/', function () {
+	this.layout('layout')
 	this.render('familyForm');
 })
-// Router.route('/expensesForm`', function () {
-// 	this.render('expensesForm');
-// })
-// Router.route('/third`', function () {
-// 	this.render('thirdPage');
-// })
+Router.route('/admin', function () {
+	this.layout('layout')
+	this.render('admin');
+})
+Router.route('/admin/:_id', function () {
+	this.layout('layout')
+  	this.render('adminEdit', {
+    data: function () {
+      return Applications.findOne({_id: this.params._id});
+    }
+  });
+});
