@@ -1,8 +1,9 @@
 <template name="inputSimple">
   <input type="text"
-      class="form-control reactive-element"
+      class="form-control reactive-element
+      {{#if errorMessage}}error{{/if}}"
       value="{{value}}" placehoder="{{instruction}}">
-      {{#if submitted}}
+      {{#if or submitted changed}}
       {{#if errorMessage}}<p class="error-message">{{errorMessage}}</p>{{/if}}
       {{/if}}
 </template>

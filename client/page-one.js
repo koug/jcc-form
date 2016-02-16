@@ -18,7 +18,11 @@ Template.familyForm.helpers({
             console.log("[forms] Changed fields!", changed);
             callbacks.success(); // Display success message.
             // callbacks.reset();   // Run each Element's custom `reset` function to clear the form.
-            Session.set("data", this);
+			this.dateEntered = new Date();
+            saveObj = this;
+
+			Applications.insert(this);
+
         };
     }
 });

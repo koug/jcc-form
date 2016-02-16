@@ -22,7 +22,26 @@ Template.registerHelper("isZero", function(index) {
 });
 Template.registerHelper("jump", function(index) {
     $('html, body').animate({
-        scrollTop: $("input[type=text]:first").offset().top
+        scrollTop: $("input.error:first").offset().top
     }, 500);
-    $("input[type=text]:first").focus();
+    $("input.error:first").focus();
+});
+
+Template.registerHelper("or", function(arg1, arg2){
+    return arg1 || arg2;
+});
+
+Template.registerHelper("stateName", function(key){
+    return states[key];
+});
+
+Template.registerHelper("logVar", function(theVar){
+    console.log(theVar);
+});
+Template.registerHelper("objToArray", function(obj){
+    var arr = [];
+    for (var key in obj) {
+        arr.push(obj[key]);
+    }
+    return arr;
 });

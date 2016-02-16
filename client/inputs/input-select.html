@@ -5,11 +5,17 @@
           {{#unless value}}
           <option value="" disabled selected style='display:none;'>Choose...</option>
           {{/unless}}
-          {{#each schema.allowedValues}}
-          <option value="{{value}}">{{this}}</option>
-          {{/each}}
+          {{#if checkStates}}
+              {{#each schema.allowedValues}}
+                <option value="{{this}}">{{stateName this}}</option>
+              {{/each}}
+          {{else}}
+              {{#each schema.allowedValues}}
+                <option value="{{value}}">{{this}}</option>
+              {{/each}}
+          {{/if}}
       </select>
-      {{#if submitted}}
+      {{#if or submitted changed}}
       {{#if errorMessage}}<p class="error-message">{{errorMessage}}</p>{{/if}}
       {{/if}}
     </div>

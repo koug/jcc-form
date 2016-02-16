@@ -1,6 +1,4 @@
 <template name="familyForm">
-  <div class="container">
-
     <div class="first">
       {{#formJCC data=data schema=schema action=action button1='Next'}}
         <div class="form-group">
@@ -14,7 +12,8 @@
         </div>
         <div class="form-group">
           {{> inputText field='city' showLabel=true class='col-sm-4'}}
-          {{> inputText field='state' showLabel=true class='col-sm-4'}}
+          {{> inputSelect field='state' showLabel=true class='col-sm-4' checkStates=true}}
+          <!-- {{> inputText field='state' showLabel=true class='col-sm-4'}} -->
           {{> inputText field='zip' showLabel=true class='col-sm-4'}}
         </div>
         <div class="form-group">
@@ -87,5 +86,4 @@
         </div>
       </div>
     </div> -->
-  </div>
 </template>
