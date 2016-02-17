@@ -17,7 +17,7 @@ Template.familyForm.helpers({
             console.log("[forms] Callbacks!", callbacks);
             console.log("[forms] Changed fields!", changed);
             callbacks.success(); // Display success message.
-            // callbacks.reset();   // Run each Element's custom `reset` function to clear the form.
+            callbacks.reset();   // Run each Element's custom `reset` function to clear the form.
 			this.dateEntered = new Date();
             saveObj = this;
 
