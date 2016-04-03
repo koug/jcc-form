@@ -141,6 +141,10 @@ familyFormSchema = new SimpleSchema({
     label: "Other",
     optional: true
   },
+  "taxFromId": {
+    type: Number,
+    optional: true
+  },
   "homeType": {
     type: String,
     allowedValues: ["Owner", "Renter"],

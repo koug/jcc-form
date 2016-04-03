@@ -22,6 +22,8 @@ ReactiveForms.createElement({
     },
 });
 
+
+
 ReactiveForms.createElement({
     template: 'inputTextarea',
     validationEvent: 'keyup',
@@ -49,6 +51,22 @@ ReactiveForms.createElement({
     reset: function(el) {
         $(el).val('');
     }
+});
+
+ReactiveForms.createElement({
+  template: 'inputSelect',
+  validationEvent: 'change',
+  validationValue: function (el, clean, template) {
+    return $(el).val();
+  }
+});
+
+ReactiveForms.createElement({
+  template: 'inputHidden',
+  validationEvent: 'change',
+  validationValue: function (el, clean, template) {
+    return $(el).val();
+  }
 });
 
 ReactiveForms.createElement({

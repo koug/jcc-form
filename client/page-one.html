@@ -30,9 +30,18 @@
         <div class="panel panel-default">
           <div class="panel-heading">Gross Income for tax year 2015</div>
           <div class="panel-body">
-              {{> inputText field='grossIncome.Father' showLabel=true class='col-sm-4'}}
-              {{> inputText field='grossIncome.Mother' showLabel=true class='col-sm-4'}}
-              {{> inputText field='grossIncome.Other' showLabel=true class='col-sm-4'}}
+              <div class="form-group">
+                  {{> inputText field='grossIncome.Father' showLabel=true class='col-sm-4'}}
+                  {{> inputText field='grossIncome.Mother' showLabel=true class='col-sm-4'}}
+                  {{> inputText field='grossIncome.Other' showLabel=true class='col-sm-4'}}
+              </div>
+              <!-- <div class="form-group">
+                  <div class="col-sm-12">
+                      1040 tax form
+                      <input type="file" name="taxform">
+                      <input type="hidden"  value="">
+                  </div>
+              </div> -->
           </div>
         </div>
         <div class="form-group">

@@ -1,0 +1,8 @@
+<template name="inputHidden">
+  <input type="hidden"
+      class="reactive-element"
+      value="{{value}}" placehoder="{{instruction}}">
+      {{#if or submitted changed}}
+      {{#if errorMessage}}<p class="error-message">{{errorMessage}}</p>{{/if}}
+      {{/if}}
+</template>

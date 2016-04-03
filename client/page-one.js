@@ -19,6 +19,7 @@ Template.familyForm.helpers({
             callbacks.success(); // Display success message.
             callbacks.reset();   // Run each Element's custom `reset` function to clear the form.
 			this.dateEntered = new Date();
+            //this._id =
             saveObj = this;
 
 			Applications.insert(this);
