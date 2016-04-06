@@ -3,9 +3,7 @@
     {{#if showLabel}}
     <label>{{#if schema.optional}}{{else}}* {{/if}}{{schema.label}}</label>
     {{/if}}
-    <textarea class="form-control reactive-element" rows="5"
-        value={{value}}>
-    </textarea>
+    <textarea class="form-control reactive-element" rows="5">{{value}}</textarea>
     {{#if submitted}}
     {{#if errorMessage}}<p class="error-message">{{errorMessage}}</p>{{/if}}
     {{/if}}

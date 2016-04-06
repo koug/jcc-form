@@ -1,9 +1,13 @@
 <template name="displayElement">
-    <strong>
-        {{#if schema.label}}
-            {{schema.label}}
-        {{else}}
-            {{lab}}
-        {{/if}}
-        </strong>: {{value}}
+    <div class="col-sm-12">
+        <p class="form-control-static">
+            <strong>
+                {{#if schema.label}}
+                {{schema.label}}
+                {{else}}
+                {{lab}}
+                {{/if}}
+            </strong>: {{value}}
+        </p>
+    </div>
 </template>

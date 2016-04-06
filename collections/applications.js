@@ -1,4 +1,17 @@
 Applications = new Meteor.Collection('applications');
+Counters = new Mongo.Collection("counters");
+
+// CollectionName.allow({
+//     insert: function(){
+//         return true;
+//     },
+//     update: function(){
+//         return true;
+//     },
+//     remove: function(){
+//         return true;
+//     }
+// });
 
 //Applications.permit(['insert']).apply();
 states= {
@@ -258,10 +271,10 @@ familyFormSchema = new SimpleSchema({
     type: Number,
     label: "Tuition Balance"
   },
-  "programParticipants.$.officeComments": {
-    type: String,
-    label: "Office Comments"
-  },
+  // "programParticipants.$.officeComments": {
+  //   type: String,
+  //   label: "Office Comments"
+  // },
   "notBeenInformOfAward": {
     type: Boolean,
     label: "I have not been informed of my scholarship award from school/program"
@@ -271,20 +284,37 @@ familyFormSchema = new SimpleSchema({
     label: "Please list any special circumstances evaluators should be aware of",
     optional: true
   },
-
-  // timestamps
   "dateEntered": {
     type: Date,
   },
-  "dateReviewed": {
+  "adminStatus": {
+      type: String,
+      label: "Review Status",
+      allowedValues: [ "Pending", "Reviewed" ]
+  },
+  "adminComments": {
+    type: String,
+    label: "Admin Comments",
+    optional: true
+  },
+  "dateAdminReview": {
     type: Date,
   },
-  "dateApproved": {
+  "boardStatus": {
+      type: String,
+      label: "Application Status",
+      allowedValues: ["Pending", "Accepted", "Rejected"]
+  },
+  "boardComments": {
+    type: String,
+    label: "Board Comments",
+    optional: true
+  },
+  "dateBoardReview": {
     type: Date,
   },
-  "dateDenied": {
-    type: Date,
-  },
+
+  // timestamps
   "dateLetterSent": {
     type: Date,
   },

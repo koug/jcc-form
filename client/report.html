@@ -1,40 +1,56 @@
-<template name="admin">
-    <table class="table">
-        <tr>
-            <th>
-                ID
-            </th>
-            <th>
-                Parents/Guardians
-            </th>
-            <th>
-                Date Entered
-            </th>
-            <th>
-                Administrative status
-            </th>
-        </tr>
-        {{#each applications}}
-        <tr>
-            <td>
-                <a href="/admin/{{_id}}">{{_id}}</a>
-            </td>
-            <td>
-                {{parentsGuardians}}
-            </td>
-            <td>
-                {{formatDate dateEntered}}
-            </td>
-            <td>
-                {{adminStatus}}
-            </td>
-        </tr>
-        {{/each}}
-    </table>
+<template name="report">
+    {{#each applications}}
+    <div class="panel panel-{{status boardStatus}}">
+        <!-- Default panel contents -->
+        <div class="panel-heading">
+            <b>{{_id}}</b>: {{parentsGuardians}} -
+            {{#if boardStatus}}
+            {{boardStatus}}
+            {{else}}
+            Not Reviewed yet
+            {{/if}}
+            (<a href="/report/{{_id}}">Edit Status</a>)
+        </div>
+
+        <div class="panel-body">
+            <div class="col-sm-6">
+                <b>Date Entered</b>: {{formatDate dateEntered}}
+            </div>
+            <div class="col-sm-6">
+                <b>Date Reviewed</b>: {{formatDate dateAdminReview}}
+            </div>
+            <div class="col-sm-12">
+                <b>Address</b>: {{address}}
+            </div>
+            <div class="col-sm-4">
+                <b>City</b>: {{city}}
+            </div>
+            <div class="col-sm-4">
+                <b>State</b>: {{state}}
+            </div>
+            <div class="col-sm-4">
+                <b>Zip</b>: {{zip}}
+            </div>
+            <div class="col-sm-4">
+                <b>Cell Phone</b>: {{cellPhone}}
+            </div>
+            <div class="col-sm-4">
+                <b>Home Phone</b>: {{homePhone}}
+            </div>
+            <div class="col-sm-4">
+                <b>Email</b>: {{email}}
+            </div>
+            <div class="col-sm-12">
+                ...
+            </div>
+        </div>
+
+    </div>
+    {{/each}}
 </template>
 
 
-<template name="adminEdit">
+<template name="reportEdit">
     {{#if Template.subscriptionsReady}}
     {{#formJCC data=this schema=schema action=action}}
 
@@ -211,10 +227,13 @@
           {{> displayElement field='comments'}}
       </div>
       <div class="form-group">
-          {{> inputTextarea field='adminComments' showLabel=true}}
+          {{> displayElement field='adminComments'}}
       </div>
       <div class="form-group">
-          {{> inputSelect field='adminStatus' showLabel=true}}
+          {{> inputTextarea field='boardComments' showLabel=true}}
+      </div>
+      <div class="form-group">
+          {{> inputSelect field='boardStatus' showLabel=true}}
       </div>
 
     {{/formJCC}}

@@ -45,3 +45,6 @@ Template.registerHelper("objToArray", function(obj){
     }
     return arr;
 });
+Template.registerHelper('formatDate', function(date) {
+  return moment(date).format('MM-DD-YYYY');
+});

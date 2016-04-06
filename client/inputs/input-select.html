@@ -7,11 +7,11 @@
           {{/unless}}
           {{#if checkStates}}
               {{#each schema.allowedValues}}
-                <option value="{{this}}">{{stateName this}}</option>
+                <option value="{{this}}" {{selected value}}>{{stateName this}}</option>
               {{/each}}
           {{else}}
               {{#each schema.allowedValues}}
-                <option value="{{value}}">{{this}}</option>
+                <option value="{{this}}" {{selected value}}>{{this}}</option>
               {{/each}}
           {{/if}}
       </select>

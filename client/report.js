@@ -1,11 +1,18 @@
 
-Template.admin.helpers({
+Template.report.helpers({
     applications: function() {
         return Applications.find({});
+    },
+    status: function(status) {
+        switch(status) {
+            case "Accepted": return "success";
+            case "Rejected": return "danger"
+            default: return "info";
+        }
     }
 });
 
-Template.adminEdit.helpers({
+Template.reportEdit.helpers({
     data: function(){
         return Template.instance().data;
     },
@@ -21,21 +28,18 @@ Template.adminEdit.helpers({
             console.log("[forms] HTML elements with `.reactive-element` class!", els);
             console.log("[forms] Callbacks!", callbacks);
             console.log("[forms] Changed fields!", changed);
-            this.dateAdminReview = new Date();
 
             var idSelector = this._id;
             Applications.update({_id:idSelector}, {$set:{
-                dateAdminReview: new Date(),
-                adminComments: this.adminComments,
-                adminStatus: this.adminStatus
+                dateBoardReview: new Date(),
+                boardComments: this.boardComments,
+                boardStatus: this.boardStatus
             }});
 
             callbacks.success(); // Display success message.
             callbacks.reset();   // Run each Element's custom `reset` function to clear the form.
 
-            Router.go("/admin");
-
-            console.log("sub");
+            Router.go("/report");
         };
     }
 

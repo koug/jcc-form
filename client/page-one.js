@@ -3,9 +3,9 @@ Template.familyForm.helpers({
     // 	return Session.get("data");
     // },
     schema: function() {
-        var mySchma = familyFormSchema;
+        var mySchema = familyFormSchema;
 
-        return mySchma;
+        return mySchema;
     },
     action: function() {
         return function(els, callbacks, changed) {
@@ -16,13 +16,11 @@ Template.familyForm.helpers({
             console.log("[forms] HTML elements with `.reactive-element` class!", els);
             console.log("[forms] Callbacks!", callbacks);
             console.log("[forms] Changed fields!", changed);
-            callbacks.success(); // Display success message.
-            callbacks.reset();   // Run each Element's custom `reset` function to clear the form.
-			this.dateEntered = new Date();
-            //this._id =
-            saveObj = this;
-
-			Applications.insert(this);
+            //callbacks.reset();   // Run each Element's custom `reset` function to clear the form.
+            Meteor.call('insertApplication', this, function(error, result) {
+                callbacks.success();
+                Router.go("/confirmation/" + result);
+            });
 
         };
     }
