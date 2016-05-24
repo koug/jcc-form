@@ -1,15 +1,26 @@
 <template name="layout">
     <div class="container">
         <div class="page-header">
-            <h1>Jewish Scholarship Initiative  <small>New Haven Jewish Foundation</small></h1>
-            <span>{{>loginButtons}}</span>
+            <div class="top">
+                <div class="left">
+                    <img src="/logo_small.jpg">
+                </div>
+                <div class="right">
+                    <div>
+                        {{>loginButtons align="right"}}
+                    </div>
+                </div>
+            </div>
+            <div style="clear: both;"></div>
+            <!-- <h1>Jewish Scholarship Initiative  <small>New Haven Jewish Foundation</small></h1>
+            <span></span> -->
+            {{#if currentUser}}
             <ul class="nav nav-pills">
                 <li role="presentation" class="active"><a href="/">Form</a></li>
-                {{#if currentUser}}
                 <li role="presentation"><a href="/admin">Admin</a></li>
                 <li role="presentation"><a href="/report">Report</a></li>
-                {{/if}}
             </ul>
+            {{/if}}
         </div>
         {{> yield}}
     </div>

@@ -1,6 +1,7 @@
-Router.route('/', function () {
-	this.layout('layout')
-	this.render('familyForm');
+Router.route('/',  {
+	name: 'form',
+	layoutTemplate: 'layout',
+	template: 'familyForm'
 })
 // Router.route('/admin', function () {
 // 	this.layout('layout');
@@ -60,4 +61,14 @@ Router.route('/confirmation/:_id', {
 	data: function() {
 		return this.params._id;
 	}
-})
+});
+
+var mustBeSignedIn = function() {
+    if (!(Meteor.user() || Meteor.loggingIn())) {
+        Router.go('form');
+    } else {
+        this.next();
+    }
+};
+
+Router.onBeforeAction(mustBeSignedIn, {except: ['form', 'confirmation']});

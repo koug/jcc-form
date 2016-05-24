@@ -37,7 +37,6 @@
 <template name="adminEdit">
     {{#if Template.subscriptionsReady}}
     {{#formJCC data=this schema=schema action=action}}
-
         <div class="form-group">
           {{> displayElement field='dateEntered' lab='Date Entered'}}
         </div>
@@ -64,10 +63,10 @@
         <div class="panel-heading">Household Members</div>
         <div class="panel-body">
             <div class="col-sm-6">
-                Name
+                <label>Name</label>
             </div>
             <div class="col-sm-6">
-                Age
+                <label>Age</label>
             </div>
             {{#each objToArray data.householdMembers}}
             <div class="col-sm-6">
@@ -82,9 +81,15 @@
       <div class="panel panel-default">
         <div class="panel-heading">Gross Income for tax year 2015</div>
         <div class="panel-body">
-            {{> displayElement field='grossIncome.Father' class='col-sm-4'}}
-            {{> displayElement field='grossIncome.Mother' class='col-sm-4'}}
-            {{> displayElement field='grossIncome.Other' class='col-sm-4'}}
+            <div class="col-sm-4">
+                {{> displayElement field='grossIncome.Father' class='col-sm-4'}}
+            </div>
+            <div class="col-sm-4">
+                {{> displayElement field='grossIncome.Mother' class='col-sm-4'}}
+            </div>
+            <div class="col-sm-4">
+                {{> displayElement field='grossIncome.Other' class='col-sm-4'}}
+            </div>
         </div>
       </div>
       <div class="form-group">
@@ -135,10 +140,10 @@
         <div class="panel-heading">Itemize Extraordinary Expenses</div>
         <div class="panel-body">
             <div class="col-sm-6">
-                Item
+                <label>Item</label>
             </div>
             <div class="col-sm-6">
-                Cost/year
+                <label>Cost/year</label>
             </div>
             {{#each objToArray data.extraordinaryExpenses}}
             <div class="col-sm-6">
@@ -163,7 +168,7 @@
                         School/Program
                     </th>
                     <th>
-                        Level
+                        Grade
                     </th>
                     <th>
                         Scholarship From Program

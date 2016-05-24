@@ -167,7 +167,7 @@ familyFormSchema = new SimpleSchema({
   // spending on Jewish life
   "spending.daySchool.where": {
     type: String,
-    label: "Day School @",
+    label: "Day School",
     optional: true
   },
   "spending.daySchool.amount": {
@@ -177,7 +177,7 @@ familyFormSchema = new SimpleSchema({
   },
   "spending.tuition.where": {
     type: String,
-    label: "Tuition @",
+    label: "Tuition",
     optional: true
   },
   "spending.tuition.amount": {
@@ -187,7 +187,7 @@ familyFormSchema = new SimpleSchema({
   },
   "spending.synagogue.where": {
     type: String,
-    label: "Synagogue @",
+    label: "Synagogue",
     optional: true
   },
   "spending.synagogue.amount": {
@@ -197,7 +197,7 @@ familyFormSchema = new SimpleSchema({
   },
   "spending.jewishCamp.where": {
     type: String,
-    label: "Jewish Camp @",
+    label: "Jewish Camp",
     optional: true
   },
   "spending.jewishCamp.amount": {
@@ -207,7 +207,7 @@ familyFormSchema = new SimpleSchema({
   },
   "spending.jccDues.amountPerMonth": {
     type: Number,
-    label: "JCC Amount/month",
+    label: "JCC Amount",
     optional: true
   },
   "spending.jccDues.amount": {
@@ -217,7 +217,7 @@ familyFormSchema = new SimpleSchema({
   },
   "spending.youthPrograms.where": {
     type: String,
-    label: "Youth Programs @",
+    label: "Youth Programs",
     optional: true
   },
   "spending.youthPrograms.amount": {
@@ -257,7 +257,7 @@ familyFormSchema = new SimpleSchema({
   },
   "programParticipants.$.level": {
     type: String,
-    label: "Level"
+    label: "Grade"
   },
   "programParticipants.$.tuition": {
     type: Number,

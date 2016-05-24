@@ -1,4 +1,11 @@
 <template name="familyForm">
+    <p>
+        Jewish Scholarship Initiative Awards are for programs in the Greater
+         New Haven Catchment Area.
+         <a href="/jfgnf_catchment_area.pdf" target="_blank">
+             Click here</a> for a map of the towns
+             within the catchment area.
+    </p>
     <div class="first">
       {{#formJCC data=data schema=schema action=action button1='Next'}}
         <div class="form-group">
@@ -48,30 +55,61 @@
             {{> inputSelect field='homeType' showLabel=true}}
         </div>
         <div class="panel panel-default">
-          <div class="panel-heading">Annual Spending on Jewish Life</div>
+          <div class="panel-heading">Annual Expenses</div>
           <div class="panel-body">
-              {{> inputText field='spending.daySchool.where' showLabel=true class='col-sm-6'}}
-              {{> inputText field='spending.daySchool.amount' showLabel=true class='col-sm-6'}}
-              {{> inputText field='spending.tuition.where' showLabel=true class='col-sm-6'}}
-              {{> inputText field='spending.tuition.amount' showLabel=true class='col-sm-6'}}
-              {{> inputText field='spending.synagogue.where' showLabel=true class='col-sm-6'}}
-              {{> inputText field='spending.synagogue.amount' showLabel=true class='col-sm-6'}}
-              {{> inputText field='spending.jewishCamp.where' showLabel=true class='col-sm-6'}}
-              {{> inputText field='spending.jewishCamp.amount' showLabel=true class='col-sm-6'}}
-              {{> inputText field='spending.jccDues.amountPerMonth' showLabel=true class='col-sm-6'}}
-              {{> inputText field='spending.jccDues.amount' showLabel=true class='col-sm-6'}}
-              {{> inputText field='spending.youthPrograms.where' showLabel=true class='col-sm-6'}}
-              {{> inputText field='spending.youthPrograms.amount' showLabel=true class='col-sm-6'}}
-          </div>
-        </div>
+              <p>
+                  <b>Spending on Jewish Life:</b>
+              </p>
+              <div class="form-group">
+                  {{> inputText field='spending.daySchool.where' showLabel=true
+                      class='col-sm-6'}}
+                  {{> inputText field='spending.daySchool.amount' showLabel=true
+                      class='col-sm-6' expense=true}}
+                  {{> inputText field='spending.tuition.where' showLabel=true
+                      class='col-sm-6'}}
+                  {{> inputText field='spending.tuition.amount' showLabel=true
+                      class='col-sm-6' expense=true}}
+                  {{> inputText field='spending.synagogue.where' showLabel=true
+                      class='col-sm-6'}}
+                  {{> inputText field='spending.synagogue.amount' showLabel=true
+                      class='col-sm-6' expense=true}}
+                  {{> inputText field='spending.jewishCamp.where' showLabel=true
+                      class='col-sm-6'}}
+                  {{> inputText field='spending.jewishCamp.amount' showLabel=true
+                      class='col-sm-6' expense=true}}
+                  {{> inputText field='spending.jccDues.amountPerMonth' showLabel=true
+                      class='col-sm-6'}}
+                  {{> inputText field='spending.jccDues.amount' showLabel=true
+                      class='col-sm-6' expense=true}}
+                  {{> inputText field='spending.youthPrograms.where' showLabel=true
+                      class='col-sm-6'}}
+                  {{> inputText field='spending.youthPrograms.amount' showLabel=true
+                      class='col-sm-6' expense=true}}
+              </div>
+          <!-- </div> -->
+        <!-- </div>
         <div class="panel panel-default">
-          <div class="panel-heading">Itemize Extraordinary Expenses</div>
-          <div class="panel-body">
+          <div class="panel-heading">Itemize Extraordinary Expenses</div>-->
+          <!-- <div class="panel-body"> -->
+              <p>
+                  <b>Extraordinary Expenses:</b>
+              </p>
             {{> inputExtraordinaryExpenses}}
+            <div class="row" id="total-expenses">
+                <div class="col-sm-6">
+                </div>
+                <div class="col-sm-6">
+                    <label><span>Total: $0</span></label>
+                </div>
+            </div>
           </div>
         </div>
         <div class="panel panel-default">
-          <div class="panel-heading">Please list the following for each child</div>
+          <div class="panel-heading">
+              Please list the names of other programs for which you will be
+              requesting assistance.
+              <b>Please remember to complete that
+              application separately</b></div>
           <div class="panel-body">
             {{> inputPrograms}}
           </div>

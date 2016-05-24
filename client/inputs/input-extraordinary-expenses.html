@@ -1,10 +1,12 @@
 <template name="inputExtraordinaryExpenses">
   <div class="extraordinaryExpenses">
-      <div class="col-sm-6">
-        <label>Item</label>
-      </div>
-      <div class="col-sm-6">
-        <label>Cost/year</label>
+      <div class="row">
+          <div class="col-sm-6">
+              <label>Item</label>
+          </div>
+          <div class="col-sm-6">
+              <label>Cost/year</label>
+          </div>
       </div>
     {{#each numberOfFieldsToArray numberOfFields}}
     <div class="form-group">
@@ -16,18 +18,21 @@
           {{> inputText
             nestedFieldOptions
             'extraordinaryExpenses.$.amount'
-            index=this class='col-sm-6'}}
+            index=this class='col-sm-6'
+            expense=true}}
         {{else}}
           {{> inputText
             nestedFieldOptions
             'extraordinaryExpenses.$.amount'
-            index=this class='col-sm-5'}}
+            index=this class='col-sm-5'
+            expense=true}}
             <div class="col-sm-1">
               <a href="#" class="remove">remove</a>
             </div>
         {{/if}}
     </div>
     {{/each}}
+
     <a href="#" class="add">Add Expense</a>
   </div>
 </template>
