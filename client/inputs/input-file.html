@@ -1,0 +1,32 @@
+<!-- <template name="inputFile">
+    <div class="{{#if class}}{{class}}{{else}}col-sm-12{{/if}}">
+        {{#if showLabel}}
+        <label>{{#if schema.optional}}{{else}}* {{/if}}{{schema.label}}</label>
+        {{/if}}
+        <input type="file"
+            class="form-control reactive-element
+            {{#if errorMessage}}error{{/if}}
+            {{#if expense}}expense{{/if}}"
+            value="{{value}}" placehoder="{{instruction}}">
+            {{#if or submitted changed}}
+            {{#if errorMessage}}<p class="error-message">{{errorMessage}}</p>{{/if}}
+            {{/if}}
+
+    </div>
+</template> -->
+
+<template name="inputFile">
+    <div class="col-sm-12">
+        <p>
+              Please scan and upload the top page of your most recent tax
+              return. Please redact any SS numbers. Only PDF,
+               JPEG and PNG files are accepted. If you are unable to scan
+               and upload, you can mail to:
+           </p>
+           <p> JSI, 360 Amity Road, Woodbridge,
+                CT 06525</p>
+        <input type="file" id="taxRet" accept="application/pdf, image/jpeg, image/x-png">
+        {{> inputHidden field='taxReturnId' showLabel=false}}
+        <div id="taxRetStatus"></div>
+    </div>
+</template>

@@ -1,5 +1,5 @@
 <template name="displayElement">
-    <div class="col-sm-12">
+    <div class="{{#if class}}{{class}}{{else}}col-sm-12{{/if}}">
         <p class="form-control-static">
             <strong>
                 {{#if schema.label}}

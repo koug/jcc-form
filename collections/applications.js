@@ -1,5 +1,6 @@
 Applications = new Meteor.Collection('applications');
 Counters = new Mongo.Collection("counters");
+Files = new Mongo.Collection("files");
 
 // CollectionName.allow({
 //     insert: function(){
@@ -153,6 +154,11 @@ familyFormSchema = new SimpleSchema({
     type: Number,
     label: "Other",
     optional: true
+  },
+  "taxReturnId": {
+      type: String,
+      optional: true,
+      label: "Tax Return"
   },
   "taxFromId": {
     type: Number,

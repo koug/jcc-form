@@ -16,6 +16,8 @@ Template.familyForm.helpers({
             console.log("[forms] HTML elements with `.reactive-element` class!", els);
             console.log("[forms] Callbacks!", callbacks);
             console.log("[forms] Changed fields!", changed);
+
+            this.taxReturnId = $("#taxReturnId").val();
             //callbacks.reset();   // Run each Element's custom `reset` function to clear the form.
             Meteor.call('insertApplication', this, function(error, result) {
                 callbacks.success();

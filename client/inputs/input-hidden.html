@@ -1,7 +1,7 @@
 <template name="inputHidden">
   <input type="hidden"
       class="reactive-element"
-      value="{{value}}" placehoder="{{instruction}}">
+      value="{{value}}" placehoder="{{instruction}}" id={{field}}>
       {{#if or submitted changed}}
       {{#if errorMessage}}<p class="error-message">{{errorMessage}}</p>{{/if}}
       {{/if}}

@@ -81,14 +81,13 @@
       <div class="panel panel-default">
         <div class="panel-heading">Gross Income for tax year 2015</div>
         <div class="panel-body">
-            <div class="col-sm-4">
-                {{> displayElement field='grossIncome.Father' class='col-sm-4'}}
-            </div>
-            <div class="col-sm-4">
-                {{> displayElement field='grossIncome.Mother' class='col-sm-4'}}
-            </div>
-            <div class="col-sm-4">
-                {{> displayElement field='grossIncome.Other' class='col-sm-4'}}
+            {{> displayElement field='grossIncome.Father' class='col-sm-4'}}
+            {{> displayElement field='grossIncome.Mother' class='col-sm-4'}}
+            {{> displayElement field='grossIncome.Other' class='col-sm-4'}}
+            <div class="col-sm-12">
+                {{#if docId}}
+                <a href="/files/{{docId}}" target="_blank">Open Tax Return</a>
+                {{/if}}
             </div>
         </div>
       </div>

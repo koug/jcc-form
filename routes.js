@@ -63,12 +63,27 @@ Router.route('/confirmation/:_id', {
 	}
 });
 
-var mustBeSignedIn = function() {
-    if (!(Meteor.user() || Meteor.loggingIn())) {
-        Router.go('form');
-    } else {
-        this.next();
-    }
-};
+Router.route('/files/:id', function() {
+	var self = this;
+	Meteor.call('getFile', this.params.id, function(error, response) {
+		if (error) {
+			self.response.end("error " + error);
+		}
+		else {
+			self.response.end(response.blob, "BINARY");
+		}
 
-Router.onBeforeAction(mustBeSignedIn, {except: ['form', 'confirmation']});
+	})
+}, {where:'server'});
+
+// user with no role
+if (Meteor.isClient) {
+	var mustBeSignedIn = function() {
+	    if (!(Meteor.user() || Meteor.loggingIn())) {
+	        Router.go('form');
+	    } else {
+	        this.next();
+	    }
+	};
+	Router.onBeforeAction(mustBeSignedIn, {except: ['form', 'confirmation']});
+}

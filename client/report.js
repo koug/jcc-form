@@ -16,6 +16,9 @@ Template.reportEdit.helpers({
     data: function(){
         return Template.instance().data;
     },
+    docId: function(){
+        return Template.instance().data.taxReturnId;
+    },
     schema: function() {
         return familyFormSchema;
     },

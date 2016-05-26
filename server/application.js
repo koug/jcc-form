@@ -8,6 +8,10 @@ Meteor.publish('applications', function(includeReviewed) {
 });
 Meteor.publish('reports', function() {
     return Applications.find({adminStatus: "Reviewed"});
-});Meteor.publish('application', function(id) {
+});
+Meteor.publish('application', function(id) {
     return Applications.find({ _id: id });
+});
+Meteor.publish('file', function(id) {
+    return Files.find({ _id: id });
 });
