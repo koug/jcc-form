@@ -1,5 +1,20 @@
 <template name="familyForm">
     <p>
+        Through the generosity of a donor in our community, area families are
+        eligible to receive need-based assistance for Greater New Haven area 
+        day school, preschool,
+        Jewish camp, and religious school, for one or more children attending
+        one or multiple programs. Assistance from JSI supplements other
+        scholarships. The application process is simple and the awards are meant to encourage our community to benefit from Jewish learning. Qualifying programs include: day or synagogue school, Jewish camps, preschools, Hebrew High School, & youth programs. All applications are strictly confidential and anonymously reviewed by the Jewish Scholarship Initiative Committee.
+
+    </p>
+    <p>
+        <b>This application is for {{typeDesc}} only. This application is
+        due on Friday, {{typeDate}}. Applications for day school and
+        camp are to be completed separately according to their own
+        deadlines.</b>
+    </p>
+    <p>
         Jewish Scholarship Initiative Awards are for programs in the Greater
          New Haven Catchment Area.
          <a href="/jfgnf_catchment_area.pdf" target="_blank">
@@ -7,7 +22,8 @@
              within the catchment area.
     </p>
     <div class="first">
-      {{#formJCC data=data schema=schema action=action button1='Next'}}
+      {{#formJCC data=data schema=schema typeDesc=typeDesc action=action button1='Next'}}
+      {{> inputHidden field='applicationType'}}
         <div class="form-group">
           {{> inputText field='parentsGuardians' showLabel=true}}
         </div>
@@ -29,7 +45,7 @@
           {{> inputText field='email' showLabel=true class='col-sm-4'}}
         </div>
         <div class="panel panel-default">
-          <div class="panel-heading">Household Members</div>
+          <div class="panel-heading">Household Dependents</div>
           <div class="panel-body">
             {{> inputHousehold}}
           </div>
@@ -69,10 +85,6 @@
                       class='col-sm-6'}}
                   {{> inputText field='spending.daySchool.amount' showLabel=true
                       class='col-sm-6' expense=true}}
-                  {{> inputText field='spending.tuition.where' showLabel=true
-                      class='col-sm-6'}}
-                  {{> inputText field='spending.tuition.amount' showLabel=true
-                      class='col-sm-6' expense=true}}
                   {{> inputText field='spending.synagogue.where' showLabel=true
                       class='col-sm-6'}}
                   {{> inputText field='spending.synagogue.amount' showLabel=true
@@ -110,10 +122,8 @@
         </div>
         <div class="panel panel-default">
           <div class="panel-heading">
-              Please list the names of other programs for which you will be
-              requesting assistance.
-              <b>Please remember to complete that
-              application separately</b></div>
+              Please list the names of {{typeDesc}} programs for which you will be
+              requesting assistance.</div>
           <div class="panel-body">
             {{> inputPrograms}}
           </div>
@@ -122,6 +132,10 @@
         <div class="checkbox">
             {{> inputCheckbox field='notBeenInformOfAward'}}
         </div><br/>
+
+        <div class="form-group">
+            {{> inputTextarea field='otherPrograms' showLabel=true}}
+        </div>
 
         <div class="form-group">
             {{> inputTextarea field='comments' showLabel=true}}

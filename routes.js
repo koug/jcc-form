@@ -1,7 +1,13 @@
-Router.route('/',  {
+Router.route('/', function()  {
+	this.redirect('/form/religious')
+})
+Router.route('/form/:type',  {
 	name: 'form',
 	layoutTemplate: 'layout',
-	template: 'familyForm'
+	template: 'familyForm',
+	data: function() {
+		return this.params.type;
+	}
 })
 // Router.route('/admin', function () {
 // 	this.layout('layout');

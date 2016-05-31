@@ -86,6 +86,10 @@ familyFormSchema = new SimpleSchema({
   // 	label: "Parents/Guardians",
   //       instructions: "sfsd"
   // },
+  "applicationType": {
+      type: String,
+      allowedValues: ["camp", "day", "religious"]
+  },
   "parentsGuardians": {
     type: String,
     label: "Parents/Guardians"
@@ -178,7 +182,7 @@ familyFormSchema = new SimpleSchema({
   },
   "spending.daySchool.amount": {
     type: Number,
-    label: "Day School Amount",
+    label: "Day School Tuition",
     optional: true
   },
   "spending.tuition.where": {
@@ -198,7 +202,7 @@ familyFormSchema = new SimpleSchema({
   },
   "spending.synagogue.amount": {
     type: Number,
-    label: "Synagogue Amount",
+    label: "Synagogue Dues",
     optional: true
   },
   "spending.jewishCamp.where": {
@@ -208,12 +212,12 @@ familyFormSchema = new SimpleSchema({
   },
   "spending.jewishCamp.amount": {
     type: Number,
-    label: "Jewish Camp Amount",
+    label: "Jewish Camp Tuition",
     optional: true
   },
   "spending.jccDues.amountPerMonth": {
     type: Number,
-    label: "JCC Amount",
+    label: "JCC Membership",
     optional: true
   },
   "spending.jccDues.amount": {
@@ -228,7 +232,7 @@ familyFormSchema = new SimpleSchema({
   },
   "spending.youthPrograms.amount": {
     type: Number,
-    label: "Youth Programs Amount",
+    label: "Youth Programs Tuition",
     optional: true
   },
   // extraordinary expenses
@@ -255,7 +259,7 @@ familyFormSchema = new SimpleSchema({
   },
   "programParticipants.$.name": {
     type: String,
-    label: "Program Participant"
+    label: "Child's Name"
   },
   "programParticipants.$.school": {
     type: String,
@@ -284,6 +288,11 @@ familyFormSchema = new SimpleSchema({
   "notBeenInformOfAward": {
     type: Boolean,
     label: "I have not been informed of my scholarship award from school/program"
+  },
+  "otherPrograms": {
+    type: String,
+    label: "Please tell us all the other programs that you plan to apply for through JSI in the 2016/2017 year",
+    optional: true
   },
   "comments": {
     type: String,
