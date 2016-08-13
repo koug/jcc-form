@@ -1,3 +1,7 @@
+Accounts.config({
+  forbidClientAccountCreation : true
+});
+
 if (Meteor.isServer) {
     Meteor.methods({
         insertApplication: function(obj) {
