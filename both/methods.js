@@ -52,6 +52,54 @@ if (Meteor.isServer) {
         },
         getFile: function(id) {
             return Files.findOne(id);
+        },
+        reportExport: function(type) {
+            var title = "";
+            switch (type) {
+                case "religious":
+                    title = "Religious School Scholarship";
+                    break;
+                case "day":
+                    title = "Day School and Preschool Scholarship";
+                    break;
+                case "camp":
+                    title = "Camp Scholarship";
+                    break;
+            }
+
+            var ret = title + "\n";
+            ret += "\"Family #\",";
+            ret += "\"# of Depend.\",";
+            ret += "\"# of Applicants\",";
+            ret += "\"Gross Income\",";
+            ret += "\"Tuition Total\",";
+            ret += "\"Scholarship\",";
+            ret += "\"Balance\",";
+            ret += "\"Comments\",";
+            ret += "\"JSI Award\",";
+            ret += "\"New Total\"\n";
+
+            var apps = Applications.find({"applicationType":type});
+
+            apps.forEach(function(app) {
+                ret += "\"" + app._id + "\"" + ",";
+                ret += "\"" + Object.keys(app.householdMembers).length + "\"" + ",";
+                ret += "\"" + Object.keys(app.programParticipants).length + "\"" + ",";
+                ret += "\"" + (app.grossIncome.Father || 0) +
+                    (app.grossIncome.Mother || 0) +
+                    (app.grossIncome.Other || 0) + "\"" + ",";
+                var tTotal = 0, scholTotal = 0, balanceTotal = 0;
+                for (var i = 0; i < Object.keys(app.programParticipants).length; i++) {
+                    tTotal += app.programParticipants[i].tuition || 0;
+                    scholTotal += app.programParticipants[i].scholarshipFromProgram || 0;
+                    balanceTotal += app.programParticipants[i].tuitionBalance || 0;
+                }
+                ret += "\"" + tTotal + "\"," +
+                    "\"" + scholTotal + "\"," +
+                    "\"" + balanceTotal + "\",";
+                ret += "\"" + (app.comments || "") + "\",,\n";
+            })
+            return ret;
         }
     });
 }

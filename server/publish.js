@@ -15,3 +15,6 @@ Meteor.publish('application', function(id) {
 Meteor.publish('file', function(id) {
     return Files.find({ _id: id });
 });
+Meteor.publish('applicationType', function(type) {
+    return ApplicationType.find({ applicationType: type });
+})

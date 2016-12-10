@@ -1,17 +1,23 @@
 <template name="familyForm">
-    {{{typeTitle}}}
+    <h2>{{appType.title}}</h2>
+    <h3><b>{{appType.subtitle}}</b></h3>
     <p>
         Through the generosity of a donor in our community, area families are
         eligible to receive need-based assistance for Greater New Haven area
         day school, preschool,
         Jewish camp, and religious school, for one or more children attending
         one or multiple programs. Assistance from JSI supplements other
-        scholarships. The application process is simple and the awards are meant to encourage our community to benefit from Jewish learning. Qualifying programs include: day or synagogue school, Jewish camps, preschools, Hebrew High School, & youth programs. All applications are strictly confidential and anonymously reviewed by the Jewish Scholarship Initiative Committee.
+        scholarships. The application process is simple and the awards are
+        meant to encourage our community to benefit from Jewish learning.
+        {{appType.subtitle}}.
+        All applications are strictly confidential and anonymously reviewed by
+        the Jewish Scholarship Initiative Committee.
 
     </p>
     <p>
-        <b>This application is for {{typeDesc}} only. This application is
-        due on {{typeDate}}. Applications for day school and
+        <b>This application is for {{appType.desc}} only. This
+        application is due on {{appType.date}}.
+        Applications for day school and
         camp are to be completed separately according to their own
         deadlines.</b>
     </p>
@@ -23,7 +29,8 @@
              within the catchment area.
     </p>
     <div class="first">
-      {{#formJCC data=data schema=schema typeDesc=typeDesc action=action button1='Next'}}
+      {{#formJCC data=appType schema=schema typeDesc=typeDesc action=action
+           button1='Next'}}
       {{> inputHidden field='applicationType'}}
         <div class="form-group">
           {{> inputText field='parentsGuardians' showLabel=true}}
@@ -123,7 +130,7 @@
         </div>
         <div class="panel panel-default">
           <div class="panel-heading">
-              Please list the names of {{typeDesc}} programs for which you will be
+              Please list the names of {{data.desc}} programs for which you will be
               requesting assistance.</div>
           <div class="panel-body">
             {{> inputPrograms}}

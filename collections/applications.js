@@ -1,10 +1,12 @@
 Applications = new Meteor.Collection('applications');
 Counters = new Mongo.Collection("counters");
 Files = new Mongo.Collection("files");
+ApplicationType = new Meteor.Collection('applicationType');
+
 
 // CollectionName.allow({
 //     insert: function(){
-//         return true;
+//         return true;Collection
 //     },
 //     update: function(){
 //         return true;
