@@ -1,13 +1,32 @@
-Router.route('/', function()  {
-	// this.render('familyForm')
-	// this.render('familyForm', {
-	// 	layoutTemplate: 'layout',
-    //   data: function () {
-    //     return "religious";
-    //   }
-    // });
+// user with no role
+if (Meteor.isClient) {
+	var mustBeSignedIn = function() {
+	    if (!(Meteor.user() || Meteor.loggingIn())) {
+	        Router.go('form');
+	    } else {
+	        this.next();
+	    }
+	};
+	Router.onBeforeAction(mustBeSignedIn, {
+		except: [
+			'form',
+			'confirmation',
+			'israel',
+			'highschool',
+			'stuartjdrell',
+			'root'
+		]
+	});
+}
+
+Router.route('/', {
+	name: 'root',
+	action: function() {
 		this.redirect('/form/religious');
-		// this.response.end();
+	}
+});
+Router.route('/israel', {
+	layoutTemplate: 'layout',
 });
 Router.route('/form/:type',  {
 	name: 'form',
@@ -20,14 +39,6 @@ Router.route('/form/:type',  {
 		return Meteor.subscribe("applicationType", this.params.type);
 	}
 });
-// Router.route('/admin', function () {
-// 	this.layout('layout');
-// 	this.render('admin', {
-// 		data: function() {
-// 			return Applications.find({});
-// 		}
-// 	});
-// });
 Router.route('/admin', {
 	name: 'admin',
 	template: 'admin',
@@ -114,41 +125,3 @@ Router.route('/reportexport/:type', function() {
 		}
 	})
 }, {where:'server'});
-
-Router.route('/runonce', function() {
-	ApplicationType.insert({
-		applicationType: "religious",
-		desc: "religious school",
-		date: "Friday, October 21st, 2016",
-		title: "Religious School Scholarship Application",
-		subtitle: "Qualifying programs include: Catchment area synagogue religious schools"
-	});
-	ApplicationType.insert({
-		applicationType: "day",
-		desc: "day school",
-		date: "July 15th, 2017",
-		title: "Day School and Preschool Scholarship Application",
-		subtitle: "Qualifying programs include: Ezra Academy, Southern CT Hebrew Academy, Beis Chana and catchment area Jewish Preschool programs"
-	});
-	ApplicationType.insert({
-		applicationType: "camp",
-		desc: "camp",
-		date: "Friday, August 26th, 2016",
-		title: "Camp Scholarship Application",
-		subtitle: "Qualifying programs include: Camp Laurelwood, JCC Day Camp and Camp Gan Israel"
-	});
-	this.response.end();
-
-}, {where: 'server'});
-
-// user with no role
-if (Meteor.isClient) {
-	var mustBeSignedIn = function() {
-	    if (!(Meteor.user() || Meteor.loggingIn())) {
-	        Router.go('form');
-	    } else {
-	        this.next();
-	    }
-	};
-	Router.onBeforeAction(mustBeSignedIn, {except: ['form', 'confirmation']});
-}
