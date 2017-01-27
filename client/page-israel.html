@@ -1,3 +1,179 @@
 <template name="israel">
-  Hello world!
+    <h2>{{appType.title}}</h2>
+    <p>
+        The Jewish Foundation of Greater New Haven Israel Experience Scholarship Program enables teens and young adults, ages 14-19, to participate in an Israel Experience to develop and enrich the recipient’s Jewish education, enhance their community,
+        reinforce Jewish identity, and increase the likelihood of future engagement with Jewish life. Recognizing the impact of Israel travel/experiences, the Jewish Foundation provides scholarships for both short-term (minimum of 3 week program) and
+        long-term organized Israel educational programs.
+    </p>
+    <p>
+        <b>Eligibility for Israel Scholarship</b>
+        <ol>
+            <li>
+                The Israel Scholarship program is open to Jewish students 14-19 years of age who live in the Greater New Haven area. Click here to view the map of catchment area
+            </li>
+            <li>
+                The applicant must participate in an approved programs to Israel which is a minimum of 3 weeks that will begin anytime from the summer after ninth grade through high school graduation, including a gap year.
+            </li>
+            <li>
+                Eligible programs must be educational and can include formal community service, volunteer work, as well as formal study. The program must be sponsored or part of a recognized organization or institution.
+                <a href="https://www.jewishnewhaven.org/scholarships/participating-programs" target=_blank>
+                    Click here for some recognized programs.
+                </a>
+            </li>
+            <li>
+                The applicant should seek additional sources of scholarship funding from his/her synagogue (if affiliated) and the applicable Israel program/sponsoring organization.
+            </li>
+        </ol>
+    </p>
+    <p>
+        <b>Application Requirements</b>
+        <ol>
+            <li>
+                <b>Essay.</b><br/>
+                Submit a 250 word essay. The essay must include the following:<br/>
+                Reflect on the way your Jewish community has contributed to your life so far. Describe what you feel your role will be as an adult in contributing to the vibrancy of your Jewish community into the future, and how your upcoming Israel experience can
+                help you to grow into the role you foresee for yourself. Content, style and attention to spelling and grammar are all important elements. Any outside sources quoted should be properly cited. All essays should be accompanied with a Scholarship
+                Application Cover Sheet
+            </li>
+            <li>
+                <b>Recommendations</b><br/>
+                The applicant must submit 2 letters of recommendation from 2 of the following individuals: Rabbi, teacher, coach, or other formal advisor.
+            </li>
+        </ol>
+    </p>
+    <p>
+        <b>When to apply/Deadlines</b>
+        <ul>
+            <li>For 2017 summer trips, applications are due by
+                <b>{{formatDateNice appType.dateSummer}}</b>.</li>
+            <li>For 2017-2018 gap or academic year programs, applications are due by
+                <b>{{formatDateNice appType.dateGap}}</b>.</li>
+        </ul>
+    </p>
+    <p>
+        <b>Scholarship award process</b><br/>
+        All applications are strictly confidential and anonymously reviewed by the Jewish Foundation Israel Experience Scholarship committee.
+        <br/>
+        Award notices will be sent by
+        <b>{{formatDateNice appType.dateSummerAward}}</b>
+        for summer trips and by
+        <b>{{formatDateNice appType.dateGapAward}}</b>
+        for gap or academic year programs.
+        <br/>
+        Award checks will be made out to the Israel trip provider and sent directly to them. Families are responsible for providing the committee with all contact information for the provider.
+
+    </p>
+    <div class="first">
+        {{#formJCC data=appType schema=schema typeDesc=typeDesc action=action
+           button1='Next' id='israel'}}
+            {{> inputHidden field='applicationType' value='israel'}}
+            <div class="form-group">
+                {{> inputSelect field='program' showLabel=true id='program'}}
+            </div>
+            <div id="message">
+                <b>The submission period is over for the selected program</b>
+            </div>
+            <div id="the-form">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Contact Information</div>
+                    <div class="panel-body">
+                        <div class="form-group">
+                            {{> inputSelect field='country' showLabel=true class='col-sm-4' checkCountries=true}}
+                        </div>
+                        <div class="form-group">
+                            {{> inputText field='recProgram' showLabel=true}}
+                        </div>
+                        <div class="form-group">
+                            {{> inputText field='email' showLabel=true}}
+                        </div>
+                        <div class="form-group">
+                            {{> inputText field='firstName' showLabel=true}}
+                        </div>
+                        <div class="form-group">
+                            {{> inputText field='lastName' showLabel=true}}
+                        </div>
+                        <div class="form-group">
+                            {{> inputText field='address' showLabel=true}}
+                        </div>
+                        <div class="form-group">
+                            {{> inputText field='city' showLabel=true class='col-sm-4'}}
+                            {{> inputSelect field='state' showLabel=true class='col-sm-4' checkStates=true}}
+                            {{> inputText field='zip' showLabel=true class='col-sm-4'}}
+                        </div>
+                        <div class="form-group">
+                            {{> inputText field='phone' showLabel=true}}
+                        </div>
+                        <div class="form-group">
+                            {{> inputDate field='dob' showLabel=true}}
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">Parent Contact Information</div>
+                    <div class="panel-body">
+                        <div class="form-group">
+                            {{> inputText field='pFirst' showLabel=true}}
+                        </div>
+                        <div class="form-group">
+                            {{> inputText field='pLast' showLabel=true}}
+                        </div>
+                        <div class="form-group">
+                            {{> inputText field='pAddr' showLabel=true}}
+                        </div>
+                        <div class="form-group">
+                            {{> inputText field='pCity' showLabel=true class='col-sm-4'}}
+                            {{> inputSelect field='pState' showLabel=true class='col-sm-4' checkStates=true}}
+                            {{> inputText field='pZip' showLabel=true class='col-sm-4'}}
+                        </div>
+                        <div class="form-group">
+                            {{> inputText field='pPhone' showLabel=true}}
+                        </div>
+                        <div class="form-group">
+                            {{> inputText field='pEmail' showLabel=true}}
+                        </div>
+                        <div class="form-group">
+                            {{ > inputFile}}
+                        </div>
+
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">Submissions</div>
+                    <div class="panel-body">
+                        <div class="form-group">
+                            {{ > inputFileGen tag='essay' label="* Essay" accept="application/pdf, application/msword"}}
+                        </div>
+                        <div class="form-group">
+                            {{ > inputFileGen tag='recom' label="* Recommendations" accept="application/pdf, application/msword"}}
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">Other Scholarships</div>
+                    <div class="panel-body">
+                        <div class="checkbox">
+                            {{> inputCheckbox field='moreFunds' id='more-funds'}}
+                        </div><br/>
+                        <div id="div-more-funds">
+                            <div class="form-group">
+                                {{> inputText field='fAmount' showLabel=true}}
+                            </div>
+                            <div class="form-group">
+                                {{> inputText field='fSource' showLabel=true}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {{/formJCC}}
+    </div>
+
+    <!-- <div class="second">
+      <div class="panel panel-default">
+        <div class="panel-heading">Household Members</div>
+        <div class="panel-body">
+          {{> inputHousehold}}
+        </div>
+      </div>
+    </div> -->
 </template>

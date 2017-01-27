@@ -21,3 +21,11 @@
         top: 0px;
         right: 0px;
     }
+
+#israel #message,
+#israel #the-form,
+#israel button[type='submit'],
+#israel #div-more-funds
+{
+    display: none;
+}

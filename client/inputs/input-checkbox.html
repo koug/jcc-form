@@ -2,7 +2,7 @@
     <div class="col-sm-12">
         <div class="checkbox form-control-static">
             <label>
-                <input type="checkbox" value="{{value}}" class="reactive-element"> {{schema.label}}
+                <input type="checkbox" value="{{value}}" class="reactive-element" id="{{id}}"> {{schema.label}}
             </label>
             {{#if or submitted changed}}
                 {{#if errorMessage}}

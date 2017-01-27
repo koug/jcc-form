@@ -27,6 +27,12 @@ Router.route('/', {
 });
 Router.route('/israel', {
 	layoutTemplate: 'layout',
+	data: function() {
+		return ApplicationType.findOne({applicationType: "israel"});
+	},
+	waitOn: function() {
+		return Meteor.subscribe("applicationType", "israel");
+	}
 });
 Router.route('/form/:type',  {
 	name: 'form',

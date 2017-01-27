@@ -107,5 +107,10 @@ ReactiveForms.createElement({
 });
 
 ReactiveForms.createElement({
+    template: 'inputDate',
+    validationEvent: 'change',
+});
+
+ReactiveForms.createElement({
     template: 'displayElement'
 })

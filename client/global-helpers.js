@@ -35,6 +35,10 @@ Template.registerHelper("stateName", function(key){
     return states[key];
 });
 
+Template.registerHelper("countryName", function(key){
+    return countries[key];
+});
+
 Template.registerHelper("logVar", function(theVar){
     console.log(theVar);
 });
@@ -47,4 +51,7 @@ Template.registerHelper("objToArray", function(obj){
 });
 Template.registerHelper('formatDate', function(date) {
   return moment(date).format('MM-DD-YYYY');
+});
+Template.registerHelper('formatDateNice', function(date) {
+  return moment(date).format('dddd, MMMM DD, YYYY');
 });

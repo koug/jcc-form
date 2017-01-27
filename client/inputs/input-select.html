@@ -1,7 +1,7 @@
 <template name="inputSelect">
     <div class="{{#if class}}{{class}}{{else}}col-sm-12{{/if}}">
       <label>{{#if schema.optional}}{{else}}* {{/if}}{{schema.label}}</label>
-      <select class="reactive-element form-control">
+      <select class="reactive-element form-control" id="{{id}}">
           {{#unless value}}
           <option value="" disabled selected style='display:none;'>Choose...</option>
           {{/unless}}
@@ -10,9 +10,15 @@
                 <option value="{{this}}" {{selected value}}>{{stateName this}}</option>
               {{/each}}
           {{else}}
-              {{#each schema.allowedValues}}
-                <option value="{{this}}" {{selected value}}>{{this}}</option>
-              {{/each}}
+              {{#if checkCountries}}
+                  {{#each schema.allowedValues}}
+                    <option value="{{this}}" {{selected value}}>{{countryName this}}</option>
+                  {{/each}}
+              {{else}}
+                  {{#each schema.allowedValues}}
+                    <option value="{{this}}" {{selected value}}>{{this}}</option>
+                  {{/each}}
+              {{/if}}
           {{/if}}
       </select>
       {{#if or submitted changed}}

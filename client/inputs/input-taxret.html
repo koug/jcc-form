@@ -15,11 +15,18 @@
     </div>
 </template> -->
 
-<template name="inputFileGen">
+<template name="inputFile">
     <div class="col-sm-12">
-        <label>{{label}}</label>
-        <input type="file" id="{{tag}}" accept="{{accept}}">
-        {{> inputHidden field=theId showLabel=false}}
-        <div id="{{tag}}Status"></div>
+        <p>
+              Please scan and upload the top page of your most recent tax
+              return. Please redact any SS numbers. Only PDF,
+               JPEG and PNG files are accepted. If you are unable to scan
+               and upload, you can mail to:
+           </p>
+           <p> JSI, 360 Amity Road, Woodbridge,
+                CT 06525</p>
+        <input type="file" id="taxRet" accept="application/pdf, image/jpeg, image/x-png">
+        {{> inputHidden field='taxReturnId' showLabel=false}}
+        <div id="taxRetStatus"></div>
     </div>
 </template>
