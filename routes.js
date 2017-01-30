@@ -34,6 +34,24 @@ Router.route('/israel', {
 		return Meteor.subscribe("applicationType", "israel");
 	}
 });
+Router.route('/highschool', {
+	layoutTemplate: 'layout',
+	data: function() {
+		return ApplicationType.findOne({applicationType: "highschool"});
+	},
+	waitOn: function() {
+		return Meteor.subscribe("applicationType", "highschool");
+	}
+});
+Router.route('/stuartjdrell', {
+	layoutTemplate: 'layout',
+	data: function() {
+		return ApplicationType.findOne({applicationType: "stuartjdrell"});
+	},
+	waitOn: function() {
+		return Meteor.subscribe("applicationType", "stuartjdrell");
+	}
+});
 Router.route('/form/:type',  {
 	name: 'form',
 	layoutTemplate: 'layout',

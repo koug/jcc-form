@@ -1,0 +1,129 @@
+<template name="stuartjdrell">
+    <h2>{{appType.title}}</h2>
+    <p>
+        Renee Drell and her daughters Elana, Jordana and Marissa established a fund to honor their beloved late husband and father Stuart J. Drell. The fund was established in 2001 at Congregation Beth Israel in Scotch Plains, New Jersey. Now that Renee has
+        relocated to Connecticut, the fund has been transferred to the Jewish Foundation of Greater New Haven and will award scholarships, for college, to young adults at her new synagogue, Congregation B’nai Jacob.
+    </p>
+
+    <p>
+        <ol>
+            <li>The Scholarship award is for college tuition.</li>
+            <li>
+                The Scholarship award will be in the amount of $1000.00. A letter of acceptance and a tuition bill must be submitted before award payments will be made.
+            </li>
+            <li>Families of B'nai Jacob Employees are not eligible for this award.</li>
+        </ol>
+    </p>
+    <p>
+        <b>Eligibility</b><br/>
+        Eligibility is based on financial need and limited to members of Congregation B'nai Jacob who are entering their first year of college in the fall of 2017.
+    </p>
+    <p>
+        <b>Submission Requirements</b><br/>
+        <ol>
+            <li>Parent's most recent 1040 tax return;
+            </li>
+            <li>750 word essay responding to the questions detailed below; and
+            </li>
+            <li>Submission of both by
+                <b>{{formatDateNice appType.dateSub}}</b>.
+            </li>
+            <li>The awards notification will be made by
+                <b>{{formatDateNice appType.dateNotif}}</b>
+            </li>
+        </ol>
+    </p>
+    <p>
+        <b>Please include the following in your 750 word essay</b><br/>
+        <ol>
+            <li>Tell us about yourself and your family composition.
+            </li>
+
+            <li>Tell us why you feel that you should receive a financial scholarship.
+            </li>
+            <li>What paid employment (s) have you had during your high school experience? What did you learn from this employment?
+            </li>
+            Tell us about any volunteer experiences you've had in the past four years and what you've learned from the<li>
+                experience(s).
+            </li>
+            <li>What has been your involvement in Judaism since you entered high school?
+            </li>
+            <li>How have you spent the last three summers? What are your plans for this summer?
+            </li>
+            <li>What college plans do you have?stuartjdrell
+            </li>
+            <li>What challenges have you faced and how are you dealing with them and/or how have you overcome the challenges?</li>
+        </ol>
+    </p>
+    <div class="first">
+        <div class="alert alert-warning" role="alert" id="message">
+            The submission period is over for the selected program
+        </div>
+        <div id="the-form">
+            <div class="panel panel-default" id="unable">
+                <div class="panel-heading">
+                    <b>If unable to complete online</b>
+                </div>
+                <div class="panel-body">
+                    <b>Please mail to:
+                    </b><br/>
+                    Beth Kupcho<br/>
+                    Jewish Foundation of Greater New Haven<br/>
+                    Stuart J. Drell Scholarship Fund<br/>
+                    360 Amity Road Woodbridge, CT 06525<br/>
+                    <b>or</b>
+                    <a href="mailto:bkupcho@jewishnewhaven.org">bkupcho@jewishnewhaven.org</a>
+                </div>
+            </div>
+            {{#formJCC data=appType schema=schema typeDesc=typeDesc action=action
+                button1='Next' id='stuartjdrell'}}
+                {{> inputHidden field='applicationType' value='sjd'}}
+                <div class="panel panel-default">
+                    <div class="panel-heading">Contact Information</div>
+                    <div class="panel-body">
+                        <div class="form-group">
+                            {{> inputText field='mainContact' showLabel=true}}
+                        </div>
+                        <div class="form-group">
+                            {{> inputText field='parentsGuardians' showLabel=true}}
+                        </div>
+                        <div class="form-group">
+                            {{> inputText field='address' showLabel=true}}
+                        </div>
+                        <div class="form-group">
+                            {{> inputText field='city' showLabel=true class='col-sm-4'}}
+                            {{> inputSelect field='state' showLabel=true class='col-sm-4' checkStates=true}}
+                            <!-- {{> inputText field='state' showLabel=true class='col-sm-4'}} -->
+                            {{> inputText field='zip' showLabel=true class='col-sm-4'}}
+                        </div>
+                        <div class="form-group">
+                            {{> inputText field='cellPhone' showLabel=true class='col-sm-4'}}
+                            {{> inputText field='homePhone' showLabel=true class='col-sm-4'}}
+                            {{> inputText field='email' showLabel=true class='col-sm-4'}}
+                        </div>
+                        <div class="form-group">
+                            {{ > inputFile}}
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">Essay Submissions</div>
+                    <div class="panel-body">
+                        <div class="form-group">
+                            {{ > inputFileGen tag='essay' label="* Essay" accept="application/pdf, application/msword"}}
+                        </div>
+                    </div>
+                </div>
+            {{/formJCC}}
+        </div>
+    </div>
+
+    <!-- <div class="second">
+      <div class="panel panel-default">
+        <div class="panel-heading">Household Members</div>
+        <div class="panel-body">
+          {{> inputHousehold}}
+        </div>
+      </div>
+    </div> -->
+</template>
