@@ -1,7 +1,5 @@
 import '/imports/lists.js';
 
-ApplicationsIsrael = new Meteor.Collection('applicationsIsrael');
-
 israelSchema = new SimpleSchema({
     // autoform: {"label-class":"col-sm-3", "input-col-class":"col-sm-9", "template":"bootstrap-horizontal"},
     // "parentsGuardians": {
