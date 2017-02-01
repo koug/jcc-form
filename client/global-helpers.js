@@ -52,6 +52,9 @@ Template.registerHelper("objToArray", function(obj){
 Template.registerHelper('formatDate', function(date) {
   return moment(date).format('MM-DD-YYYY');
 });
+Template.registerHelper('formatDateNiceNoDay', function(date) {
+  return moment(date).format('MMMM DD, YYYY');
+});
 Template.registerHelper('formatDateNice', function(date) {
   return moment(date).format('dddd, MMMM DD, YYYY');
 });
