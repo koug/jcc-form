@@ -5,20 +5,20 @@
     of the National Council of Jewish Women, 
     Greater New Haven section at the Jewish Foundation 
   </h3>
+
   <h3>
     <b>Deadline: {{formatDateNice appType.dateSub}}</b>
   </h3>
-
   <p>
   <b>To be considered, applicants must:</b> 
+  </p>
   <ol>
     <li>Be a resident of Greater New Haven, be a Jewish high school senior with at least a "B" average and upload your 1040 page 1.  </li>
-    <ol>Submit, in its entirety, ALL of the information required below, between <b>April 1 and {{formatDateNiceNoDay appType.dateSub}}</b>. (This means that you have already been accepted to the school of your choice).  </ol>
+    <li>Submit, in its entirety, ALL of the information required below, between <b>April 1 and {{formatDateNiceNoDay appType.dateSub}}</b>. (This means that you have already been accepted to the school of your choice).  </li>
   </ol>
-  </p>
-
   <p>
-  <b>Applicants must include:</b> 
+  <b>Applicants must include:</b>
+  </p>
   <ol>
     <li>The completed financial questionnaires with tax returns.  </li>
     <li>An essay which includes an autobiographical sketch, personal history, special interests, ambitions, educational goals, involvement in the Jewish community and work history.  </li>
@@ -26,82 +26,83 @@
     <li>An official copy of high school transcript, including the first marking period of the senior year.  </li>
     <li>A copy of the college acceptance letter describing the college's financial aid package plus other grants, scholarships and awards received.  </li>
   </ol>
+
+  <p>
+  <ol>
+  </ol>
   </p>
+
   <div class="first">
     <div class="alert alert-warning" role="alert" id="message">
       The submission period is over for the selected program
     </div>
     <div id="the-form">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <b>If unable to complete online</b>
-        </div>
-        <div class="panel-body">
-          <b>Please mail to:
-          </b><br/>
-          Beth Kupcho<br/>
-          Jewish Foundation of Greater New Haven<br/>
-          360 Amity Road Woodbridge, CT 06525<br/>
-          <b>or</b>
-          <a href="mailto:bkupcho@jewishnewhaven.org">bkupcho@jewishnewhaven.org</a>
-        </div>
-      </div>
-      {{#formJCC data=appType schema=schema typeDesc=typeDesc action=action
-      button1='Next' id='highschool'}}
-      {{> inputHidden field='applicationType' value='hs'}}
-      <div class="panel panel-default">
-        <div class="panel-heading">Contact Information</div>
-        <div class="panel-body">
-          <div class="form-group">
-            {{> inputText field='mainContact' showLabel=true}}
-          </div>
-          <div class="form-group">
-            {{> inputText field='parentsGuardians' showLabel=true}}
-          </div>
-          <div class="form-group">
-            {{> inputText field='address' showLabel=true}}
-          </div>
-          <div class="form-group">
-            {{> inputText field='city' showLabel=true class='col-sm-4'}}
-            {{> inputSelect field='state' showLabel=true class='col-sm-4' checkStates=true}}
-            <!-- {{> inputText field='state' showLabel=true class='col-sm-4'}} -->
-            {{> inputText field='zip' showLabel=true class='col-sm-4'}}
-          </div>
-          <div class="form-group">
-            {{> inputText field='cellPhone' showLabel=true class='col-sm-4'}}
-            {{> inputText field='homePhone' showLabel=true class='col-sm-4'}}
-            {{> inputText field='email' showLabel=true class='col-sm-4'}}
-          </div>
-          <div class="form-group">
-            {{ > inputFile}}
-          </div>
-        </div>
-      </div>
-      <div class="panel panel-default">
-        <div class="panel-heading">Submissions</div>
-        <div class="panel-body">
-          <div class="form-group">
-            {{ > inputFileGen tag='essay' label="* Essay" accept="application/pdf, application/msword"}}
-          </div>
-          <div class="form-group">
-            {{ > inputFileGen tag='cr1' label="* Educator Character Reference" accept="application/pdf, application/msword"}}
-          </div>
-          <div class="form-group">
-            {{ > inputFileGen tag='cr2' label="* Second Character Reference" accept="application/pdf, application/msword"}}
-          </div>
-          <div class="form-group">
-            {{ > inputFileGen tag='cr3' label="* Third Character Reference" accept="application/pdf, application/msword"}}
-          </div>
-          <div class="form-group">
-            {{ > inputFileGen tag='hsTrans' label="* High School Transcript" accept="application/pdf, application/msword"}}
-          </div>
-          <div class="form-group">
-            {{ > inputFileGen tag='colAccept' label="* College Acceptance Letter" accept="application/pdf, application/msword"}}
-          </div>
-        </div>
-      </div>
-      {{/formJCC}}
+      <p>
+      <b>If unable to complete online, please mail to: </b>
+      </p>
+      <ul class="nb">
+        <li>Beth Kupcho<br/></li>
+        <li>Jewish Foundation of Greater New Haven<br/></li>
+        <li>360 Amity Road Woodbridge, CT 06525<br/></li>
+        <li><b>or</b></li>
+        <li><a href="mailto:bkupcho@jewishnewhaven.org">bkupcho@jewishnewhaven.org</a></li>
+      </ul>
     </div>
+    {{#formJCC data=appType schema=schema typeDesc=typeDesc action=action
+    button1='Next' id='highschool'}}
+    {{> inputHidden field='applicationType' value='hs'}}
+    <div class="panel panel-default">
+      <div class="panel-heading">Contact Information</div>
+      <div class="panel-body">
+        <div class="form-group">
+          {{> inputText field='mainContact' showLabel=true}}
+        </div>
+        <div class="form-group">
+          {{> inputText field='parentsGuardians' showLabel=true}}
+        </div>
+        <div class="form-group">
+          {{> inputText field='address' showLabel=true}}
+        </div>
+        <div class="form-group">
+          {{> inputText field='city' showLabel=true class='col-sm-4'}}
+          {{> inputSelect field='state' showLabel=true class='col-sm-4' checkStates=true}}
+          <!-- {{> inputText field='state' showLabel=true class='col-sm-4'}} -->
+          {{> inputText field='zip' showLabel=true class='col-sm-4'}}
+        </div>
+        <div class="form-group">
+          {{> inputText field='cellPhone' showLabel=true class='col-sm-4'}}
+          {{> inputText field='homePhone' showLabel=true class='col-sm-4'}}
+          {{> inputText field='email' showLabel=true class='col-sm-4'}}
+        </div>
+        <div class="form-group">
+          {{ > inputFile}}
+        </div>
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading">Submissions</div>
+      <div class="panel-body">
+        <div class="form-group">
+          {{ > inputFileGen tag='essay' label="* Essay" accept="application/pdf, application/msword"}}
+        </div>
+        <div class="form-group">
+          {{ > inputFileGen tag='cr1' label="* Educator Character Reference" accept="application/pdf, application/msword"}}
+        </div>
+        <div class="form-group">
+          {{ > inputFileGen tag='cr2' label="* Second Character Reference" accept="application/pdf, application/msword"}}
+        </div>
+        <div class="form-group">
+          {{ > inputFileGen tag='cr3' label="* Third Character Reference" accept="application/pdf, application/msword"}}
+        </div>
+        <div class="form-group">
+          {{ > inputFileGen tag='hsTrans' label="* High School Transcript" accept="application/pdf, application/msword"}}
+        </div>
+        <div class="form-group">
+          {{ > inputFileGen tag='colAccept' label="* College Acceptance Letter" accept="application/pdf, application/msword"}}
+        </div>
+      </div>
+    </div>
+    {{/formJCC}}
   </div>
 
 </template>
