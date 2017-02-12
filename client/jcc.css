@@ -11,10 +11,9 @@
 }
 .right {
     float: right;
-    text-align: right;
-    height: 100%;
+    top: -15px;
     width: 200px;
-    position: relative;;
+    position: relative;
 }
     .right > div {
         position: absolute;
