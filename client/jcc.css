@@ -2,7 +2,6 @@
     color: red;
 }
 .top {
-    height: 130px;
     width: 100%
 }
 .left {
@@ -12,7 +11,7 @@
 .right {
     float: right;
     top: -15px;
-    width: 200px;
+    width: 100%;
     position: relative;
 }
     .right > div {
