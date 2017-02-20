@@ -69,7 +69,11 @@ Router.route('/admin', {
 	// loadingTemplate: 'loading',
 	layoutTemplate: 'layout',
 	waitOn: function() {
-		return Meteor.subscribe('applications', false);
+        return [
+            function() { return Meteor.subscribe('applications', false); },
+            function() { return Meteor.subscribe('applicationTypes'); }
+        ];
+		//return Meteor.subscribe('applications', false);
 	}
 });
 // Router.route('/test', function () {

@@ -1,232 +1,245 @@
 <template name="admin">
-    <table class="table">
-        <tr>
-            <th>
-                ID
-            </th>
-            <th>
-                Parents/Guardians
-            </th>
-            <th>
-                Date Entered
-            </th>
-            <th>
-                Administrative status
-            </th>
-            <th>
-                Program
-            </th>
-        </tr>
-        {{#each applications}}
-        <tr>
-            <td>
-                <a href="/admin/{{_id}}">{{_id}}</a>
-            </td>
-            <td>
-                {{parentsGuardians}}
-            </td>
-            <td>
-                {{formatDate dataEntered}}
-            </td>
-            <td>
-                {{adminStatus}}
-            </td>
-            <td>
-                {{applicationType}}
-            </td>
-        </tr>
-        {{/each}}
-    </table>
+  <div class="dropdown">
+    <button class="btn btn-default dropdown-toggle" type="button" id="appsDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+      {{selectedAppTitle}}
+      <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="appsDropdown">
+      <li><a class="app" href="#">All</a></li>
+      {{#each applicationTypes}}
+      <li><a class="app" href="#">{{title}}</a></li>
+      {{/each}}
+    </ul>
+  </div>
+  <table class="table">
+    <tr>
+      <th>
+        ID
+      </th>
+      <th>
+        Name
+      </th>
+      <th>
+        Date Entered
+      </th>
+      <th>
+        Administrative status
+      </th>
+      <th>
+        Program
+      </th>
+    </tr>
+    {{#each applications}}
+    <tr>
+      <td>
+        <!-- TODO Add application specific admin link -->
+        <a href="/admin/{{_id}}">{{_id}}</a>
+      </td>
+      <td>
+        {{name}}
+      </td>
+      <td>
+        {{formatDate dataEntered}}
+      </td>
+      <td>
+        {{adminStatus}}
+      </td>
+      <td>
+        {{applicationType}}
+      </td>
+    </tr>
+    {{/each}}
+  </table>
 </template>
 
 
 <template name="adminEdit">
-    {{#if Template.subscriptionsReady}}
-    {{#formJCC data=this schema=schema action=action}}
-        <div class="form-group">
-          {{> displayElement field='dateEntered' lab='Date Entered'}}
-        </div>
-        <div class="form-group">
-          {{> displayElement field='parentsGuardians'}}
-        </div>
-      <div class="form-group">
-        {{> displayElement field='mainContact'}}
+  {{#if Template.subscriptionsReady}}
+  {{#formJCC data=this schema=schema action=action}}
+  <div class="form-group">
+    {{> displayElement field='dateEntered' lab='Date Entered'}}
+  </div>
+  <div class="form-group">
+    {{> displayElement field='parentsGuardians'}}
+  </div>
+  <div class="form-group">
+    {{> displayElement field='mainContact'}}
+  </div>
+  <div class="form-group">
+    {{> displayElement field='address'}}
+  </div>
+  <div class="form-group">
+    {{> displayElement field='city' class='col-sm-4'}}
+    {{> displayElement field='state' class='col-sm-4' checkStates=true}}
+    {{> displayElement field='zip' class='col-sm-4'}}
+  </div>
+  <div class="form-group">
+    {{> displayElement field='cellPhone' class='col-sm-4'}}
+    {{> displayElement field='homePhone' class='col-sm-4'}}
+    {{> displayElement field='email' class='col-sm-4'}}
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading">Household Members</div>
+    <div class="panel-body">
+      <div class="col-sm-6">
+        <label>Name</label>
       </div>
-      <div class="form-group">
-        {{> displayElement field='address'}}
+      <div class="col-sm-6">
+        <label>Age</label>
       </div>
-      <div class="form-group">
-        {{> displayElement field='city' class='col-sm-4'}}
-        {{> displayElement field='state' class='col-sm-4' checkStates=true}}
-        {{> displayElement field='zip' class='col-sm-4'}}
+      {{#each objToArray data.householdMembers}}
+      <div class="col-sm-6">
+        {{name}}
       </div>
-      <div class="form-group">
-        {{> displayElement field='cellPhone' class='col-sm-4'}}
-        {{> displayElement field='homePhone' class='col-sm-4'}}
-        {{> displayElement field='email' class='col-sm-4'}}
+      <div class="col-sm-6">
+        {{age}}
       </div>
-      <div class="panel panel-default">
-        <div class="panel-heading">Household Members</div>
-        <div class="panel-body">
-            <div class="col-sm-6">
-                <label>Name</label>
-            </div>
-            <div class="col-sm-6">
-                <label>Age</label>
-            </div>
-            {{#each objToArray data.householdMembers}}
-            <div class="col-sm-6">
-                {{name}}
-            </div>
-            <div class="col-sm-6">
-                {{age}}
-            </div>
-            {{/each}}
-        </div>
+      {{/each}}
+    </div>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading">Gross Income for tax year 2015</div>
+    <div class="panel-body">
+      {{> displayElement field='grossIncome.Father' class='col-sm-4'}}
+      {{> displayElement field='grossIncome.Mother' class='col-sm-4'}}
+      {{> displayElement field='grossIncome.Other' class='col-sm-4'}}
+      <div class="col-sm-12">
+        {{#if docId}}
+        <a href="/files/{{docId}}" target="_blank">Open Tax Return</a>
+        {{/if}}
       </div>
-      <div class="panel panel-default">
-        <div class="panel-heading">Gross Income for tax year 2015</div>
-        <div class="panel-body">
-            {{> displayElement field='grossIncome.Father' class='col-sm-4'}}
-            {{> displayElement field='grossIncome.Mother' class='col-sm-4'}}
-            {{> displayElement field='grossIncome.Other' class='col-sm-4'}}
-            <div class="col-sm-12">
-                {{#if docId}}
-                <a href="/files/{{docId}}" target="_blank">Open Tax Return</a>
-                {{/if}}
-            </div>
-        </div>
+    </div>
+  </div>
+  <div class="form-group">
+    {{> displayElement field='homeType'}}
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading">Annual Spending on Jewish Life</div>
+    <div class="panel-body">
+      <div class="col-sm-6">
+        {{> displayElement field='spending.daySchool.where' class='col-sm-6'}}
       </div>
-      <div class="form-group">
-          {{> displayElement field='homeType'}}
+      <div class="col-sm-6">
+        {{> displayElement field='spending.daySchool.amount' class='col-sm-6'}}
       </div>
-      <div class="panel panel-default">
-        <div class="panel-heading">Annual Spending on Jewish Life</div>
-        <div class="panel-body">
-            <div class="col-sm-6">
-                {{> displayElement field='spending.daySchool.where' class='col-sm-6'}}
-            </div>
-            <div class="col-sm-6">
-                {{> displayElement field='spending.daySchool.amount' class='col-sm-6'}}
-            </div>
-            <div class="col-sm-6">
-                {{> displayElement field='spending.tuition.where' class='col-sm-6'}}
-            </div>
-            <div class="col-sm-6">
-                {{> displayElement field='spending.tuition.amount' class='col-sm-6'}}
-            </div>
-            <div class="col-sm-6">
-                {{> displayElement field='spending.synagogue.where' class='col-sm-6'}}
-            </div>
-            <div class="col-sm-6">
-                {{> displayElement field='spending.synagogue.amount' class='col-sm-6'}}
-            </div>
-            <div class="col-sm-6">
-                {{> displayElement field='spending.jewishCamp.where' class='col-sm-6'}}
-            </div>
-            <div class="col-sm-6">
-                {{> displayElement field='spending.jewishCamp.amount' class='col-sm-6'}}
-            </div>
-            <div class="col-sm-6">
-                {{> displayElement field='spending.jccDues.amountPerMonth' class='col-sm-6'}}
-            </div>
-            <div class="col-sm-6">
-                {{> displayElement field='spending.jccDues.amount' class='col-sm-6'}}
-            </div>
-            <div class="col-sm-6">
-                {{> displayElement field='spending.youthPrograms.where' class='col-sm-6'}}
-            </div>
-            <div class="col-sm-6">
-                {{> displayElement field='spending.youthPrograms.amount' class='col-sm-6'}}
-            </div>
-            </div>
+      <div class="col-sm-6">
+        {{> displayElement field='spending.tuition.where' class='col-sm-6'}}
       </div>
-      <div class="panel panel-default">
-        <div class="panel-heading">Itemize Extraordinary Expenses</div>
-        <div class="panel-body">
-            <div class="col-sm-6">
-                <label>Item</label>
-            </div>
-            <div class="col-sm-6">
-                <label>Cost/year</label>
-            </div>
-            {{#each objToArray data.extraordinaryExpenses}}
-            <div class="col-sm-6">
-                {{name}}
-            </div>
-            <div class="col-sm-6">
-                {{amount}}
-            </div>
-            {{/each}}
-          <!-- {{> inputExtraordinaryExpenses}} -->
-        </div>
+      <div class="col-sm-6">
+        {{> displayElement field='spending.tuition.amount' class='col-sm-6'}}
       </div>
-      <div class="panel panel-default">
-        <div class="panel-heading">Tuition per child</div>
-        <div class="panel-body">
-            <table class="table">
-                <tr>
-                    <th>
-                        Program
-                    </th>
-                    <th>
-                        School/Program
-                    </th>
-                    <th>
-                        Grade
-                    </th>
-                    <th>
-                        Scholarship From Program
-                    </th>
-                    <th>
-                        Tuition
-                    </th>
-                    <th>
-                        Balance
-                    </th>
-                </tr>
-                {{#each objToArray data.programParticipants}}
-                <tr>
-                    <td>
-                        {{name}}
-                    </td>
-                    <td>
-                        {{school}}
-                    </td>
-                    <td>
-                        {{level}}
-                    </td>
-                    <td>
-                        {{tuition}}
-                    </td>
-                    <td>
-                        {{scholarshipFromProgram}}
-                    </td>
-                    <td>
-                        {{tuitionBalance}}
-                    </td>
-                </tr>
-                {{/each}}
-            </table>
+      <div class="col-sm-6">
+        {{> displayElement field='spending.synagogue.where' class='col-sm-6'}}
+      </div>
+      <div class="col-sm-6">
+        {{> displayElement field='spending.synagogue.amount' class='col-sm-6'}}
+      </div>
+      <div class="col-sm-6">
+        {{> displayElement field='spending.jewishCamp.where' class='col-sm-6'}}
+      </div>
+      <div class="col-sm-6">
+        {{> displayElement field='spending.jewishCamp.amount' class='col-sm-6'}}
+      </div>
+      <div class="col-sm-6">
+        {{> displayElement field='spending.jccDues.amountPerMonth' class='col-sm-6'}}
+      </div>
+      <div class="col-sm-6">
+        {{> displayElement field='spending.jccDues.amount' class='col-sm-6'}}
+      </div>
+      <div class="col-sm-6">
+        {{> displayElement field='spending.youthPrograms.where' class='col-sm-6'}}
+      </div>
+      <div class="col-sm-6">
+        {{> displayElement field='spending.youthPrograms.amount' class='col-sm-6'}}
+      </div>
+    </div>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading">Itemize Extraordinary Expenses</div>
+    <div class="panel-body">
+      <div class="col-sm-6">
+        <label>Item</label>
+      </div>
+      <div class="col-sm-6">
+        <label>Cost/year</label>
+      </div>
+      {{#each objToArray data.extraordinaryExpenses}}
+      <div class="col-sm-6">
+        {{name}}
+      </div>
+      <div class="col-sm-6">
+        {{amount}}
+      </div>
+      {{/each}}
+      <!-- {{> inputExtraordinaryExpenses}} -->
+    </div>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading">Tuition per child</div>
+    <div class="panel-body">
+      <table class="table">
+        <tr>
+          <th>
+            Program
+          </th>
+          <th>
+            School/Program
+          </th>
+          <th>
+            Grade
+          </th>
+          <th>
+            Scholarship From Program
+          </th>
+          <th>
+            Tuition
+          </th>
+          <th>
+            Balance
+          </th>
+        </tr>
+        {{#each objToArray data.programParticipants}}
+        <tr>
+          <td>
+            {{name}}
+          </td>
+          <td>
+            {{school}}
+          </td>
+          <td>
+            {{level}}
+          </td>
+          <td>
+            {{tuition}}
+          </td>
+          <td>
+            {{scholarshipFromProgram}}
+          </td>
+          <td>
+            {{tuitionBalance}}
+          </td>
+        </tr>
+        {{/each}}
+      </table>
 
-          <!-- {{> inputPrograms}} -->
-        </div>
-      </div>
+      <!-- {{> inputPrograms}} -->
+    </div>
+  </div>
 
-      <div class="form-group">
-          {{> displayElement field='notBeenInformOfAward'}}
-      </div><br/>
+  <div class="form-group">
+    {{> displayElement field='notBeenInformOfAward'}}
+  </div><br/>
 
-      <div class="form-group">
-          {{> displayElement field='comments'}}
-      </div>
-      <div class="form-group">
-          {{> inputTextarea field='adminComments' showLabel=true}}
-      </div>
-      <div class="form-group">
-          {{> inputSelect field='adminStatus' showLabel=true}}
-      </div>
+  <div class="form-group">
+    {{> displayElement field='comments'}}
+  </div>
+  <div class="form-group">
+    {{> inputTextarea field='adminComments' showLabel=true}}
+  </div>
+  <div class="form-group">
+    {{> inputSelect field='adminStatus' showLabel=true}}
+  </div>
 
-    {{/formJCC}}
-    {{/if}}
+  {{/formJCC}}
+  {{/if}}
 </template>
