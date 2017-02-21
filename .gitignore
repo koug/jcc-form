@@ -1,3 +1,4 @@
 .ftpconfig
 .tern-project
 *.swp
+node_modules/
