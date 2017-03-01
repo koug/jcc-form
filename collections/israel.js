@@ -17,10 +17,6 @@ israelSchema = new SimpleSchema({
         allowedValues: ["Summer Trip", "Gap Program"],
         label: "Program"
     },
-    "recProgram": {
-        type: String,
-        label: "Name of recognized Program"
-    },
     "country": {
         type: String,
         label: "Country",
@@ -117,6 +113,14 @@ israelSchema = new SimpleSchema({
         type: String,
         label: "Source",
         optional: true
+    },
+    "costProgram": {
+        type: Number,
+        label: "Cost of Program"
+    },
+    "recProgram": {
+        type: String,
+        label: "Name of recognized Program"
     },
     "essayId": {
         type: String,
