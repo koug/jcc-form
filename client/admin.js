@@ -1,10 +1,16 @@
 Template.admin.helpers({
   applications: function() {
     if (Session.equals("app", undefined)) {
-       return Applications.find({}); 
+       return Applications.find(
+         {},
+         { sort: { _id: -1 } }
+       ); 
     }
     else { 
-        return Applications.find({ applicationType: Session.get("app").applicationType });
+        return Applications.find(
+          { applicationType: Session.get("app").applicationType }, 
+          { sort: { _id: -1 } }
+        );
     }
   },
   selectedAppTitle: function() { 
