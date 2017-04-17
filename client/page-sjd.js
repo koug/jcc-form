@@ -58,3 +58,22 @@ Template.stuartjdrell.onRendered(function () {
       this.$('#the-form').show();
   }
 });
+
+Template.stuartjdrellEdit.helpers({
+  appType: function() {
+    var data = Template.currentData();
+    console.log(data);
+    return data;
+  },
+  taxReturnId: function() {
+    return Template.currentData().data.taxReturnId;
+  },
+  essayId: function() {
+    return Template.currentData().data.essayId;
+  },
+  schema: function() {
+    var mySchema = stuartjdrellSchema;
+
+    return mySchema;
+  }
+});

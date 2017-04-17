@@ -91,6 +91,25 @@ Router.route('/admin/:_id', {
 		return Meteor.subscribe("application", this.params._id);
 	}
 });
+Router.route('/admin/:type/:_id', {
+  name: 'adminWrapper',
+  layoutTemplate: 'layout',
+  data: function () {
+    var apps = Applications.findOne({_id: this.params._id});
+    return apps;
+  },
+  waitOn: function() {
+    return Meteor.subscribe("application", this.params._id);
+  },
+  action: function() {
+    var templ;
+    if (['israel', 'highschool', 'stuartjdrell'].indexOf(this.params.type) != -1) {
+      templ = this.params.type + "Edit";
+    }
+    else templ = 'AdminEdit';
+    this.render(templ);
+  }
+});
 Router.route('/reports', {
 	name: 'report',
 	template: 'report',
