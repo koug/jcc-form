@@ -68,3 +68,37 @@ Template.highschool.onRendered(function () {
       this.$('#the-form').show();
   }
 });
+
+Template.highschoolEdit.helpers({
+    appType: function() {
+        var data = Template.currentData();
+        return data;
+    },
+    schema: function() {
+        var mySchema = highschoolSchema;
+
+        return mySchema;
+    },
+  taxReturnId: function() {
+    return Template.currentData().data.taxReturnId;
+  },
+  essayId: function() {
+    return Template.currentData().data.essayId;
+  },
+  cr1Id: function() {
+    return Template.currentData().data.cr1Id;
+  },
+  cr2Id: function() {
+    return Template.currentData().data.cr2Id;
+  },
+  cr3Id: function() {
+    return Template.currentData().data.cr3Id;
+  },
+  hsTransId: function() {
+    return Template.currentData().data.hsTransId;
+  },
+  colAcceptId: function() {
+    return Template.currentData().data.colAcceptId;
+  },
+});
+

@@ -106,7 +106,7 @@ Router.route('/admin/:type/:_id', {
     if (['israel', 'highschool', 'stuartjdrell'].indexOf(this.params.type) != -1) {
       templ = this.params.type + "Edit";
     }
-    else templ = 'AdminEdit';
+    else templ = 'adminEdit';
     this.render(templ);
   }
 });

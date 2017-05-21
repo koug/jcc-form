@@ -57,27 +57,55 @@ Template.israel.helpers({
 });
 
 Template.israel.events({
-    "change #program": function(event, template){
-         var selectedOption = $("option:selected", "#" + this.id).text(),
-            dateSummer = Template.currentData().dateSummer,
-            dateGap = Template.currentData().dateGap,
-            now = new Date();
+  "change #program": function(event, template){
+    var selectedOption = $("option:selected", "#" + this.id).text(),
+      dateSummer = Template.currentData().dateSummer,
+      dateGap = Template.currentData().dateGap,
+      now = new Date();
 
-         if ((selectedOption === "Summer Trip" && now > dateSummer) ||
-            (selectedOption === "Gap Program" && now > dateGap)) {
-             $("#message").show();
-             $("#the-form").hide()
-             $("button[type='submit']").hide();
-         }
-         else {
-             $("#message").hide();
-             $("#the-form").show()
-             $("button[type='submit']").show();
-
-         }
-    },
-    "change #more-funds": function() {
-        if ($("#" + this.id).is(":checked")) $("#div-more-funds").show();
-        else $("#div-more-funds").hide();
+    if ((selectedOption === "Summer Trip" && now > dateSummer) ||
+      (selectedOption === "Gap Program" && now > dateGap)) {
+      $("#message").show();
+      $("#the-form").hide()
+      $("button[type='submit']").hide();
     }
+    else {
+      $("#message").hide();
+      $("#the-form").show()
+      $("button[type='submit']").show();
+
+    }
+  },
+  "change #more-funds": function() {
+    if ($("#" + this.id).is(":checked")) $("#div-more-funds").show();
+    else $("#div-more-funds").hide();
+  }
+});
+
+Template.israelEdit.helpers({
+    appType: function() {
+        var data = Template.currentData();
+        if (data === null) {
+            data = {};
+            data.country = 'US';
+        }
+        return data;
+    },
+    typeDesc: function() {
+        return Template.currentData().desc;
+    },
+    schema: function() {
+        var mySchema = israelSchema;
+
+        return mySchema;
+    },
+  taxReturnId: function() {
+    return Template.currentData().data.taxReturnId;
+  },
+  essayId: function() {
+    return Template.currentData().data.essayId;
+  },
+  recomId: function() {
+    return Template.currentData().data.recomId;
+  },
 });

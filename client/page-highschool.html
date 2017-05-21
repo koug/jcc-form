@@ -110,3 +110,83 @@
   </div>
 
 </template>
+
+<template name="highschoolEdit">
+  <div class="first">
+    {{#formJCC data=appType schema=schema typeDesc=typeDesc action=action
+    button1='Next' id='highschool'}}
+    {{> inputHidden field='applicationType' value='hs'}}
+    <div class="panel panel-default">
+      <div class="panel-heading">Contact Information</div>
+      <div class="panel-body">
+        <div class="form-group">
+          {{> displayElement field='mainContact' showLabel=true}}
+        </div>
+        <div class="form-group">
+          {{> displayElement field='parentsGuardians' showLabel=true}}
+        </div>
+        <div class="form-group">
+          {{> displayElement field='address' showLabel=true}}
+        </div>
+        <div class="form-group">
+          {{> displayElement field='city' showLabel=true class='col-sm-4'}}
+          {{> displayElement field='state' showLabel=true class='col-sm-4' checkStates=true}}
+          <!-- {{> displayElement field='state' showLabel=true class='col-sm-4'}} -->
+          {{> displayElement field='zip' showLabel=true class='col-sm-4'}}
+        </div>
+        <div class="form-group">
+          {{> displayElement field='cellPhone' showLabel=true class='col-sm-4'}}
+          {{> displayElement field='homePhone' showLabel=true class='col-sm-4'}}
+          {{> displayElement field='email' showLabel=true class='col-sm-4'}}
+        </div>
+        <div class="form-group">
+          {{ > inputFile}}
+        </div>
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading">Files</div>
+      <div class="panel-body">
+        <div class="form-group">
+          <div class="col-sm-12">
+            {{#if taxReturnId}}
+            <a href="/files/{{taxReturnId}}" target="_blank">Tax Return</a>
+            {{/if}}
+          </div>
+          <div class="col-sm-12">
+            {{#if essayId}}
+            <a href="/files/{{essayId}}" target="_blank">Essay</a>
+            {{/if}}
+          </div>
+          <div class="col-sm-12">
+            {{#if cr1Id}}
+            <a href="/files/{{cr1Id}}" target="_blank">Educator Character Reference</a>
+            {{/if}}
+          </div>
+          <div class="col-sm-12">
+            {{#if cr2Id}}
+            <a href="/files/{{cr2Id}}" target="_blank">Second Character Reference</a>
+            {{/if}}
+          </div>
+          <div class="col-sm-12">
+            {{#if cr3Id}}
+            <a href="/files/{{cr3Id}}" target="_blank">Third Character Reference</a>
+            {{/if}}
+          </div>
+          <div class="col-sm-12">
+            {{#if hsTransId}}
+            <a href="/files/{{hsTransId}}" target="_blank">High School Transcript</a>
+            {{/if}}
+          </div>
+          <div class="col-sm-12">
+            {{#if colAcceptId}}
+            <a href="/files/{{colAcceptId}}" target="_blank">College Accceptance Letter</a>
+            {{/if}}
+          </div>
+        </div>
+      </div>
+    </div>
+    {{/formJCC}}
+  </div>
+
+</template>

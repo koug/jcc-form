@@ -189,3 +189,121 @@
     </div>
     </div> -->
 </template>
+
+<template name="israelEdit">
+  <div class="first">
+    {{#formJCC data=appType schema=schema typeDesc=typeDesc action=action
+    button1='Next' id='israel'}}
+    <div class="form-group">
+      {{> displayElement field='program' showLabel=true id='program'}}
+    </div>
+    <div>
+      <div class="panel panel-default">
+        <div class="panel-heading">Contact Information</div>
+        <div class="panel-body">
+          <div class="form-group">
+            {{> displayElement field='country' showLabel=true class='col-sm-4' checkCountries=true}}
+          </div>
+          <div class="form-group">
+            {{> displayElement field='email' showLabel=true}}
+          </div>
+          <div class="form-group">
+            {{> displayElement field='firstName' showLabel=true}}
+          </div>
+          <div class="form-group">
+            {{> displayElement field='lastName' showLabel=true}}
+          </div>
+          <div class="form-group">
+            {{> displayElement field='address' showLabel=true}}
+          </div>
+          <div class="form-group">
+            {{> displayElement field='city' showLabel=true class='col-sm-4'}}
+            {{> displayElement field='state' showLabel=true class='col-sm-4' checkStates=true}}
+            {{> displayElement field='zip' showLabel=true class='col-sm-4'}}
+          </div>
+          <div class="form-group">
+            {{> displayElement field='phone' showLabel=true}}
+          </div>
+          <div class="form-group">
+            {{> displayElement field='dob' showLabel=true}}
+          </div>
+        </div>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-heading">Parent Contact Information</div>
+        <div class="panel-body">
+          <div class="form-group">
+            {{> displayElement field='pFirst' showLabel=true}}
+          </div>
+          <div class="form-group">
+            {{> displayElement field='pLast' showLabel=true}}
+          </div>
+          <div class="form-group">
+            {{> displayElement field='pAddr' showLabel=true}}
+          </div>
+          <div class="form-group">
+            {{> displayElement field='pCity' showLabel=true class='col-sm-4'}}
+            {{> displayElement field='pState' showLabel=true class='col-sm-4' checkStates=true}}
+            {{> displayElement field='pZip' showLabel=true class='col-sm-4'}}
+          </div>
+          <div class="form-group">
+            {{> displayElement field='pPhone' showLabel=true}}
+          </div>
+          <div class="form-group">
+            {{> displayElement field='pEmail' showLabel=true}}
+          </div>
+        </div>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-heading">Program</div>
+        <div class="panel-body">
+          <div class="form-group">
+            {{> displayElement field='recProgram' showLabel=true}}
+          </div>
+          <div class="form-group">
+            {{> displayElement field='costProgram' showLabel=true}}
+          </div>
+        </div>
+      </div><div class="panel panel-default">
+        <div class="panel-heading">Files</div>
+        <div class="panel-body">
+          <div class="form-group">
+            <div class="col-sm-12">
+              {{#if taxReturnId}}
+              <a href="/files/{{taxReturnId}}" target="_blank">Tax Return</a>
+              {{/if}}
+            </div>
+            <div class="col-sm-12">
+              {{#if essayId}}
+              <a href="/files/{{essayId}}" target="_blank">Essay</a>
+              {{/if}}
+            </div>
+            <div class="col-sm-12">
+              {{#if recomId}}
+              <a href="/files/{{recomId}}" target="_blank">Recommendations</a>
+              {{/if}}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-heading">Other Scholarships</div>
+        <div class="panel-body">
+          <div class="form-group">
+          <div>
+            {{> displayElement field='moreFunds' id='more-funds'}}
+          </div>
+          <div>
+              {{> displayElement field='fAmount' showLabel=true}}
+          </div>
+          <div>
+              {{> displayElement field='fSource' showLabel=true}}
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    {{/formJCC}}
+  </div>
+
+</template>
