@@ -14,6 +14,7 @@ if (Meteor.isClient) {
 			'israel',
 			'highschool',
 			'stuartjdrell',
+			'friedler',
 			'root'
 		]
 	});
@@ -50,6 +51,15 @@ Router.route('/stuartjdrell', {
 	},
 	waitOn: function() {
 		return Meteor.subscribe("applicationType", "stuartjdrell");
+	}
+});
+Router.route('/friedler', {
+	layoutTemplate: 'layout',
+	data: function() {
+		return ApplicationType.findOne({applicationType: "friedler"});
+	},
+	waitOn: function() {
+		return Meteor.subscribe("applicationType", "friedler");
 	}
 });
 Router.route('/form/:type',  {
@@ -103,7 +113,7 @@ Router.route('/admin/:type/:_id', {
   },
   action: function() {
     var templ;
-    if (['israel', 'highschool', 'stuartjdrell'].indexOf(this.params.type) != -1) {
+    if (['israel', 'highschool', 'stuartjdrell', 'friedler'].indexOf(this.params.type) != -1) {
       templ = this.params.type + "Edit";
     }
     else templ = 'adminEdit';

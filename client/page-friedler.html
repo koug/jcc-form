@@ -1,0 +1,156 @@
+<template name="friedler">
+
+  <h2>{{appType.title}}</h2>
+  <h3>
+    Instructions and general requirements
+  </h3>
+
+  <h3>
+    <b>Deadline: {{formatDateNice appType.dateSub}}</b>
+  </h3>
+  <p>
+  <b>To be considered, applicants must:</b> 
+  </p>
+  <ol>
+    <li>Reside in New Haven County catchment area for at least one year, be a Jewish High School senior with a "B" average or better.</li>
+    <li>Submit, in its entirety, ALL of the information required below, <b>{{formatDateNiceNoDay appType.dateSub}}</b>. (This means that you have already been accepted to the school of your choice).  </li>
+  </ol>
+  <p>
+  <b>Applicants must include:</b>
+  </p>
+  <ol>
+    <li>The completed online application.</li>
+    <li>An essay concerning what peace, justice and righteousness mean to you and your judaism.</li>
+    <li>An official copy of high school transcript, including the first marking period of the senior year.  </li>
+    <li>A copy of the college acceptance letter. </li>
+  </ol>
+
+
+  <div class="first">
+    <div class="alert alert-warning" role="alert" id="message">
+      The submission period is over for the selected program
+    </div>
+    <div id="the-form">
+      <p><b>IF YOU ARE UNABLE TO EMAIL ALL THE COMPLETE DOCUMENTS YOU MAY MAIL THE COMPLETED APPLCATION AND REQUIRED DOCUMENTS TO:</b></p>
+      <ul class="nb">
+        <li>Jewish Foundation of Greater New Haven</li>
+        <li>Attn: Scholarship Commitee</li>
+        <li>360 Amity Road</li>
+        <li>Woodbridge, CT 06525</li>
+        <li>jsi@jewishnewhaven.org</li>
+      </ul>
+    </div>
+    {{#formJCC data=appType schema=schema typeDesc=typeDesc action=action
+    button1='Next' id='friedler'}}
+    {{> inputHidden field='applicationType' value='hs'}}
+    <div class="panel panel-default">
+      <div class="panel-heading">Contact Information</div>
+      <div class="panel-body">
+        <div class="form-group">
+          {{> inputText field='mainContact' showLabel=true}}
+        </div>
+        <div class="form-group">
+          {{> inputText field='parentsGuardians' showLabel=true}}
+        </div>
+        <div class="form-group">
+          {{> inputText field='address' showLabel=true}}
+        </div>
+        <div class="form-group">
+          {{> inputText field='city' showLabel=true class='col-sm-4'}}
+          {{> inputSelect field='state' showLabel=true class='col-sm-4' checkStates=true}}
+          <!-- {{> inputText field='state' showLabel=true class='col-sm-4'}} -->
+          {{> inputText field='zip' showLabel=true class='col-sm-4'}}
+        </div>
+        <div class="form-group">
+          {{> inputText field='cellPhone' showLabel=true class='col-sm-4'}}
+          {{> inputText field='homePhone' showLabel=true class='col-sm-4'}}
+          {{> inputText field='email' showLabel=true class='col-sm-4'}}
+        </div>
+        <div class="form-group">
+          {{ > inputFile}}
+        </div>
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading">Submissions</div>
+      <div class="panel-body">
+        <div class="form-group">
+          {{ > inputFileGen tag='essay' label="* Essay" accept="application/pdf, application/msword"}}
+        </div>
+        <div class="form-group">
+          {{ > inputFileGen tag='hsTrans' label="* High School Transcript" accept="application/pdf, application/msword"}}
+        </div>
+        <div class="form-group">
+          {{ > inputFileGen tag='colAccept' label="* College Acceptance Letter" accept="application/pdf, application/msword"}}
+        </div>
+      </div>
+    </div>
+    {{/formJCC}}
+  </div>
+
+</template>
+
+<template name="friedlerEdit">
+  <div class="first">
+    {{#formJCC data=appType schema=schema typeDesc=typeDesc action=action
+    button1='Next' id='friedler'}}
+    {{> inputHidden field='applicationType' value='hs'}}
+    <div class="panel panel-default">
+      <div class="panel-heading">Contact Information</div>
+      <div class="panel-body">
+        <div class="form-group">
+          {{> displayElement field='mainContact' showLabel=true}}
+        </div>
+        <div class="form-group">
+          {{> displayElement field='parentsGuardians' showLabel=true}}
+        </div>
+        <div class="form-group">
+          {{> displayElement field='address' showLabel=true}}
+        </div>
+        <div class="form-group">
+          {{> displayElement field='city' showLabel=true class='col-sm-4'}}
+          {{> displayElement field='state' showLabel=true class='col-sm-4' checkStates=true}}
+          <!-- {{> displayElement field='state' showLabel=true class='col-sm-4'}} -->
+          {{> displayElement field='zip' showLabel=true class='col-sm-4'}}
+        </div>
+        <div class="form-group">
+          {{> displayElement field='cellPhone' showLabel=true class='col-sm-4'}}
+          {{> displayElement field='homePhone' showLabel=true class='col-sm-4'}}
+          {{> displayElement field='email' showLabel=true class='col-sm-4'}}
+        </div>
+        <div class="form-group">
+          {{ > inputFile}}
+        </div>
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading">Files</div>
+      <div class="panel-body">
+        <div class="form-group">
+          <div class="col-sm-12">
+            {{#if taxReturnId}}
+            <a href="/files/{{taxReturnId}}" target="_blank">Tax Return</a>
+            {{/if}}
+          </div>
+          <div class="col-sm-12">
+            {{#if essayId}}
+            <a href="/files/{{essayId}}" target="_blank">Essay</a>
+            {{/if}}
+          </div>
+          <div class="col-sm-12">
+            {{#if hsTransId}}
+            <a href="/files/{{hsTransId}}" target="_blank">High School Transcript</a>
+            {{/if}}
+          </div>
+          <div class="col-sm-12">
+            {{#if colAcceptId}}
+            <a href="/files/{{colAcceptId}}" target="_blank">College Accceptance Letter</a>
+            {{/if}}
+          </div>
+        </div>
+      </div>
+    </div>
+    {{/formJCC}}
+  </div>
+
+</template>
