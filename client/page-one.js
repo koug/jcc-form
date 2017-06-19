@@ -10,6 +10,9 @@ Template.familyForm.helpers({
 
         return mySchema;
     },
+  hasDisclaimer: function() {
+      return Template.currentData().applicationType === "camp";
+    },
     action: function() {
         return function(els, callbacks, changed) {
 
