@@ -85,9 +85,9 @@ if (Meteor.isServer) {
                 ret += "\"" + app._id + "\"" + ",";
                 ret += "\"" + Object.keys(app.householdMembers).length + "\"" + ",";
                 ret += "\"" + Object.keys(app.programParticipants).length + "\"" + ",";
-                ret += "\"" + (app.grossIncome.Father || 0) +
-                    (app.grossIncome.Mother || 0) +
-                    (app.grossIncome.Other || 0) + "\"" + ",";
+                ret += "\"" + (parseInt(app.grossIncome.Father || 0) +
+                    parseInt(app.grossIncome.Mother || 0) +
+                    parseInt(app.grossIncome.Other || 0)) + "\"" + ",";
                 var tTotal = 0, scholTotal = 0, balanceTotal = 0;
                 for (var i = 0; i < Object.keys(app.programParticipants).length; i++) {
                     tTotal += app.programParticipants[i].tuition || 0;
