@@ -28,7 +28,7 @@ Template.friedler.helpers({
             this.colAcceptId = $("#colAcceptId").val();
 
             var missingFiles = [];
-            if (this.taxReturnId === "") missingFiles.push("tax return");
+            //if (this.taxReturnId === "") missingFiles.push("tax return");
             if (this.essayId === "") missingFiles.push("essay");
             if (this.cr1Id === "") missingFiles.push("educator character reference");
             if (this.cr2Id === "") missingFiles.push("second character reference");
