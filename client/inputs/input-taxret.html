@@ -18,10 +18,17 @@
 <template name="inputFile">
     <div class="col-sm-12">
         <p>
+          {{#if fullTaxReturn}}
+              Please scan and upload your most recent full tax
+              return. Please redact any SS numbers. Only PDF,
+               JPEG and PNG files are accepted. If you are unable to scan
+               and upload, you can mail to:
+          {{else}}
               Please scan and upload the top page of your most recent tax
               return. Please redact any SS numbers. Only PDF,
                JPEG and PNG files are accepted. If you are unable to scan
                and upload, you can mail to:
+          {{/if}}
            </p>
            <p> JSI, 360 Amity Road, Woodbridge,
                 CT 06525</p>

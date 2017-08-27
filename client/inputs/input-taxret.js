@@ -32,3 +32,11 @@ Template.inputFile.events({
          })
     }
 });
+
+Template.inputFile.helpers({
+  fullTaxReturn: function(){
+    if (Template.currentData().appType == "highschool")
+      return true;
+    return false;
+  }
+});
