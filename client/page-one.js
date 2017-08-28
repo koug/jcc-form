@@ -2,6 +2,11 @@ Template.familyForm.helpers({
     appType: function() {
         return Template.currentData();
     },
+    hasTaxReturn: function() {
+      if (Template.currentData().data.applicationType == "religious")
+        return false;
+      return true;
+    },
     typeDesc: function() {
         return Template.currentData().desc;
     },

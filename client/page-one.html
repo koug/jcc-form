@@ -73,7 +73,10 @@
         </div>
         <div class="form-group">
           <!-- {{ > inputFile field='taxReturn' showLabel=true}} -->
+          {{#if hasTaxReturn}}
           {{ > inputFile}}
+          {{/if}}
+
         </div>
         <!-- <div class="form-group">
           <div class="col-sm-12">
