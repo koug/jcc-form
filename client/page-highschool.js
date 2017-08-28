@@ -35,6 +35,7 @@ Template.highschool.helpers({
             if (this.cr3Id === "") missingFiles.push("third character reference");
             if (this.hsTransId === "") missingFiles.push("high scool transcript");
             if (this.colAcceptId === "") missingFiles.push("college acceptance letter");
+            if (this.noteAknowledgementId === "") missingFiles.push("note of aknowledgement");
 
             if (missingFiles.length > 0) {
                 var strFiles = missingFiles[0];

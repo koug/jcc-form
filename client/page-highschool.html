@@ -29,6 +29,7 @@
     <li>Three (3) character references: one by an educator, plus two more i.e. Rabbi, employer, coach.  </li>
     <li>An official copy of high school transcript, including the first marking period of the senior year.  </li>
     <li>A copy of the college acceptance letter describing the college's financial aid package plus other grants, scholarships and awards received.  </li>
+    <li>A written note of acknowledgement by those who receive scholarships.</li>
   </ol>
 
   <p>
@@ -106,6 +107,9 @@
         </div>
         <div class="form-group">
           {{ > inputFileGen tag='colAccept' label="* College Acceptance Letter" accept="application/pdf, application/msword"}}
+        </div>
+        <div class="form-group">
+          {{ > inputFileGen tag='noteAknowledgement' label="* Written note of acknowledgement by those who receive scholarships" accept="application/pdf, application/msword"}}
         </div>
       </div>
     </div>

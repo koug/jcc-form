@@ -51,8 +51,7 @@ highschoolSchema = new SimpleSchema({
     },
     "studentTaxReturnId": {
         type: String,
-        optional: false,
-        label: "Tax Return"
+        label: "Student Tax Return"
     },
     "essayId": {
         type: String,
@@ -77,6 +76,10 @@ highschoolSchema = new SimpleSchema({
     "colAcceptId": {
         type: String,
         label: "College Acceptance Letter"
+    },
+    "noteAknowledgementId": {
+        type: String,
+        label: "Note of Aknowledgement"
     },
     // "adminStatus": {
     //     type: String,
