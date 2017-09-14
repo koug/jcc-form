@@ -49,6 +49,10 @@ highschoolSchema = new SimpleSchema({
         optional: false,
         label: "Tax Return"
     },
+    "studentQuestionnaireId": {
+        type: String,
+        label: "Applicant Financial Questionnaire"
+    },
     "studentTaxReturnId": {
         type: String,
         label: "Student Tax Return"

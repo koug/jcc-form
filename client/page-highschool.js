@@ -20,15 +20,18 @@ Template.highschool.helpers({
 
             // Make sure to check files as hidden validations don't work
             this.taxReturnId = $("#taxReturnId").val();
+            this.studentQuestionnaireId = $("#studentQuestionnaireId").val();
             this.essayId = $("#essayId").val();
             this.cr1Id = $("#cr1Id").val();
             this.cr2Id = $("#cr2Id").val();
             this.cr3Id = $("#cr3Id").val();
             this.hsTransId = $("#hsTransId").val();
             this.colAcceptId = $("#colAcceptId").val();
+            this.noteAknowledgementId = $("#noteAknowledgementId").val();
 
             var missingFiles = [];
             if (this.taxReturnId === "") missingFiles.push("tax return");
+            if (this.studentQuestionnaireId === "") missingFiles.push("applicant financial questionnaire");
             if (this.essayId === "") missingFiles.push("essay");
             if (this.cr1Id === "") missingFiles.push("educator character reference");
             if (this.cr2Id === "") missingFiles.push("second character reference");
@@ -83,6 +86,12 @@ Template.highschoolEdit.helpers({
   taxReturnId: function() {
     return Template.currentData().data.taxReturnId;
   },
+  studentQuestionnaireId: function() {
+    return Template.currentData().data.studentQuestionnaireId;
+  },
+  studentTaxReturnId: function() {
+    return Template.currentData().data.studentTaxReturnId;
+  },
   essayId: function() {
     return Template.currentData().data.essayId;
   },
@@ -100,6 +109,9 @@ Template.highschoolEdit.helpers({
   },
   colAcceptId: function() {
     return Template.currentData().data.colAcceptId;
+  },
+  noteAknowledgementId: function() {
+    return Template.currentData().data.noteAknowledgementId;
   },
 });
 

@@ -17,7 +17,7 @@
 
 <template name="inputFileGen">
     <div class="col-sm-12">
-        <label>{{label}}</label>
+      <label>{{{label}}}</label>
         <input type="file" id="{{tag}}" accept="{{accept}}">
         {{> inputHidden field=theId showLabel=false}}
         <div id="{{tag}}Status"></div>

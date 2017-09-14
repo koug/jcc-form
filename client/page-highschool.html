@@ -24,7 +24,7 @@
   <b>Applicants must include:</b>
   </p>
   <ol>
-    <li>The completed financial questionnaires with tax returns.  </li>
+    <li>The completed financial questionnaires with tax returns (<a href="/podoloff_questionnaire.docx">download questionaire here</a>).  </li>
     <li>An essay which includes an autobiographical sketch, personal history, special interests, ambitions, educational goals, involvement in the Jewish community and work history.  </li>
     <li>Three (3) character references: one by an educator, plus two more i.e. Rabbi, employer, coach.  </li>
     <li>An official copy of high school transcript, including the first marking period of the senior year.  </li>
@@ -52,68 +52,71 @@
         <li>360 Amity Road</li>
         <li>Woodbridge, CT 06525</li>
       </ul>
-    </div>
-    {{#formJCC data=appType schema=schema typeDesc=typeDesc action=action
-    button1='Next' id='highschool'}}
-    {{> inputHidden field='applicationType' value='hs'}}
-    <div class="panel panel-default">
-      <div class="panel-heading">Contact Information</div>
-      <div class="panel-body">
-        <div class="form-group">
-          {{> inputText field='mainContact' showLabel=true}}
-        </div>
-        <div class="form-group">
-          {{> inputText field='parentsGuardians' showLabel=true}}
-        </div>
-        <div class="form-group">
-          {{> inputText field='address' showLabel=true}}
-        </div>
-        <div class="form-group">
-          {{> inputText field='city' showLabel=true class='col-sm-4'}}
-          {{> inputSelect field='state' showLabel=true class='col-sm-4' checkStates=true}}
-          <!-- {{> inputText field='state' showLabel=true class='col-sm-4'}} -->
-          {{> inputText field='zip' showLabel=true class='col-sm-4'}}
-        </div>
-        <div class="form-group">
-          {{> inputText field='cellPhone' showLabel=true class='col-sm-4'}}
-          {{> inputText field='homePhone' showLabel=true class='col-sm-4'}}
-          {{> inputText field='email' showLabel=true class='col-sm-4'}}
-        </div>
-        <div class="form-group">
-          {{ > inputFile appType='highschool'}}
-        </div>
-        <div class="form-group">
-          {{ > inputFileGen tag='studentTaxReturn' label="Student Tax Return (if applicable)" accept="application/pdf, application/msword"}}
-        </div>
-      </div>
-    </div>
-    <div class="panel panel-default">
-      <div class="panel-heading">Submissions</div>
-      <div class="panel-body">
-        <div class="form-group">
-          {{ > inputFileGen tag='essay' label="* Essay" accept="application/pdf, application/msword"}}
-        </div>
-        <div class="form-group">
-          {{ > inputFileGen tag='cr1' label="* Educator Character Reference" accept="application/pdf, application/msword"}}
-        </div>
-        <div class="form-group">
-          {{ > inputFileGen tag='cr2' label="* Second Character Reference" accept="application/pdf, application/msword"}}
-        </div>
-        <div class="form-group">
-          {{ > inputFileGen tag='cr3' label="* Third Character Reference" accept="application/pdf, application/msword"}}
-        </div>
-        <div class="form-group">
-          {{ > inputFileGen tag='hsTrans' label="* High School Transcript" accept="application/pdf, application/msword"}}
-        </div>
-        <div class="form-group">
-          {{ > inputFileGen tag='colAccept' label="* College Acceptance Letter" accept="application/pdf, application/msword"}}
-        </div>
-        <div class="form-group">
-          {{ > inputFileGen tag='noteAknowledgement' label="* Written note of acknowledgement by those who receive scholarships" accept="application/pdf, application/msword"}}
+      {{#formJCC data=appType schema=schema typeDesc=typeDesc action=action
+      button1='Next' id='highschool'}}
+      {{> inputHidden field='applicationType' value='hs'}}
+      <div class="panel panel-default">
+        <div class="panel-heading">Contact Information</div>
+        <div class="panel-body">
+          <div class="form-group">
+            {{> inputText field='mainContact' showLabel=true}}
+          </div>
+          <div class="form-group">
+            {{> inputText field='parentsGuardians' showLabel=true}}
+          </div>
+          <div class="form-group">
+            {{> inputText field='address' showLabel=true}}
+          </div>
+          <div class="form-group">
+            {{> inputText field='city' showLabel=true class='col-sm-4'}}
+            {{> inputSelect field='state' showLabel=true class='col-sm-4' checkStates=true}}
+            <!-- {{> inputText field='state' showLabel=true class='col-sm-4'}} -->
+            {{> inputText field='zip' showLabel=true class='col-sm-4'}}
+          </div>
+          <div class="form-group">
+            {{> inputText field='cellPhone' showLabel=true class='col-sm-4'}}
+            {{> inputText field='homePhone' showLabel=true class='col-sm-4'}}
+            {{> inputText field='email' showLabel=true class='col-sm-4'}}
+          </div>
+          <div class="form-group">
+            {{ > inputFile appType='highschool'}}
+          </div>
+          <div class="form-group">
+            {{ > inputFileGen tag='studentQuestionnaire' label="* Applicant Financial Questionnaire (<a href=/podoloff_questionnaire.docx>download here</a>)" accept="application/pdf, application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"}}
+          </div>
+          <div class="form-group">
+            {{ > inputFileGen tag='studentTaxReturn' label="Student Tax Return (if applicable)" accept="application/pdf, application/msword"}}
+          </div>
         </div>
       </div>
+      <div class="panel panel-default">
+        <div class="panel-heading">Submissions</div>
+        <div class="panel-body">
+          <div class="form-group">
+            {{ > inputFileGen tag='essay' label="* Essay" accept="application/pdf, application/msword"}}
+          </div>
+          <div class="form-group">
+            {{ > inputFileGen tag='cr1' label="* Educator Character Reference" accept="application/pdf, application/msword"}}
+          </div>
+          <div class="form-group">
+            {{ > inputFileGen tag='cr2' label="* Second Character Reference" accept="application/pdf, application/msword"}}
+          </div>
+          <div class="form-group">
+            {{ > inputFileGen tag='cr3' label="* Third Character Reference" accept="application/pdf, application/msword"}}
+          </div>
+          <div class="form-group">
+            {{ > inputFileGen tag='hsTrans' label="* High School Transcript" accept="application/pdf, application/msword"}}
+          </div>
+          <div class="form-group">
+            {{ > inputFileGen tag='colAccept' label="* College Acceptance Letter" accept="application/pdf, application/msword"}}
+          </div>
+          <div class="form-group">
+            {{ > inputFileGen tag='noteAknowledgement' label="* Written note of acknowledgement by those who receive scholarships" accept="application/pdf, application/msword"}}
+          </div>
+        </div>
+      </div>
+      {{/formJCC}}
     </div>
-    {{/formJCC}}
   </div>
 
 </template>
@@ -146,9 +149,6 @@
           {{> displayElement field='homePhone' showLabel=true class='col-sm-4'}}
           {{> displayElement field='email' showLabel=true class='col-sm-4'}}
         </div>
-        <div class="form-group">
-          {{ > inputFile}}
-        </div>
       </div>
     </div>
     <div class="panel panel-default">
@@ -158,6 +158,16 @@
           <div class="col-sm-12">
             {{#if taxReturnId}}
             <a href="/files/{{taxReturnId}}" target="_blank">Tax Return</a>
+            {{/if}}
+          </div>
+          <div class="col-sm-12">
+            {{#if studentQuestionnaireId}}
+            <a href="/files/{{studentQuestionnaireId}}" target="_blank">Applicant Financial Questionnaire</a>
+            {{/if}}
+          </div>
+          <div class="col-sm-12">
+            {{#if studentTaxReturnId}}
+            <a href="/files/{{studentTaxReturn}}" target="_blank">Student Tax Return</a>
             {{/if}}
           </div>
           <div class="col-sm-12">
@@ -188,6 +198,11 @@
           <div class="col-sm-12">
             {{#if colAcceptId}}
             <a href="/files/{{colAcceptId}}" target="_blank">College Accceptance Letter</a>
+            {{/if}}
+          </div>
+          <div class="col-sm-12">
+            {{#if noteAknowledgementId}}
+            <a href="/files/{{noteAknowledgementId}}" target="_blank">Note of acknowledgement</a>
             {{/if}}
           </div>
         </div>
