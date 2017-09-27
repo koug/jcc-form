@@ -1,0 +1,144 @@
+<template name='profdevgroup'>
+  <h2> 
+    <p><span>Grant application for {{appType.title}} Grant</span></p>
+  </h2>
+  <p><u><b>Jewish Foundation of Greater New Haven Professional Development Grant</b></u></p>
+  <p><u><b>These grants are made possible thanks to <i>the Judith A. Kaye Fund for improving Jewish Education through Teacher Training as well as Community education funds.</i></b></u></p>
+  {{#formJCC data=appType schema=schema typeDesc=typeDesc action=action button1='Next' id='profdevind'}}
+    {{> inputHidden field='applicationType'}}
+  <div class="form-group">
+    {{> inputText field='mainContact' showLabel=true}}
+  </div>
+  <div class="form-group">
+    {{> inputText field='program' showLabel=true}}
+  </div>
+  <div class="form-group">
+    {{> inputText field='dates' showLabel=true}}
+  </div>
+  <div class="form-group">
+    {{> inputText field='cost' showLabel=true}}
+  </div>
+  <div class="form-group">
+    {{> inputTextarea field='contact' showLabel=true}}
+  </div>
+  <div class="form-group">
+    {{> inputTextarea field='educators' showLabel=true}}
+  </div>
+  <div class="form-group">
+    {{> inputTextarea field='impact' showLabel=true}}
+  </div>
+  <div class="form-group">
+    {{> inputTextarea field='fundingOrganization' showLabel=true}}
+  </div>
+  <div class="form-group">
+    {{ > inputFileGen tag='costdoc' label="* Documentation showing the cost of the program" accept="application/pdf, application/msword"}}
+  </div>
+  <div class="form-group">
+    {{ > inputFileGen tag='costtravel' label="A copy of the documentation stating the cost of Travel (if applicable)" accept="application/pdf, application/msword"}}
+  </div>
+  <div class="form-group">
+    {{ > inputFileGen tag='costlodging' label="A copy of the documentation stating the cost of Lodging (if applicable)" accept="application/pdf, application/msword"}}
+  </div>
+  <div class="form-group">
+    {{ > inputFileGen tag='boardBudget' label="* Please include your organization’s most recent board approved budget" accept="application/pdf, application/msword"}}
+  </div>
+  <p><span><b>Group Applicants please note:</b></span></p>
+  <p><span>Applicant must be one of the organizations listed below. Eligible programs must be hosted by a recognized Jewish institution or reputable educational institution. An evaluation of the program is required 60 days after completion of the program. In your evaluation, please include detailed information on what the participants gained from participating in the program and how it will affect their work. In addition, you will be required to provide an article within 60 days for Shalom New Haven outlining what you did. There are two opportunities for applications, April 15 and December 1.</span></p>
+  <p><span>Grants must be approved prior to conference/program.</span></p>
+  <p><span>Application must be endorsed by the school directors/supervisors/or CEO warranting the </span><span>Conference.</span></p>
+  <p><span><b>Guidelines for Professional Development Grant. As of</b></span></p>
+  <p><span>Which organizations qualify?</span></p>
+  <p><span>Currently, the following programs are eligible-:</span></p>
+  <ul>
+    <li><span><b>Day Schools</b><br>Teachers including principals at So. Conn. Hebrew Academy (formerly NHHDS), Ezra Academy, Beth Chana Academy, Jewish High School of CT, Hebrew High School of New England, Yeshivas Beis Dovid Shlomo</span></li>
+    <li><span><b>Pre-schools</b><br>Teachers and directors at Yeladim and synagogue pre-schools (located in GNH)</span></li>
+    <li><span><b>Synagogue Schools</b><br>Teachers and principals at Synagogue schools (located in GNH)</span></li>
+    <li><span><b>JTE</b> (&quot;Jewish Teen Education program&quot;). </span></li>
+    <li><span><b>Jewish Federation of Greater New Haven</b><br>For community programs providing professional development for Jewish educators.</span>
+      <ul>
+        <li><span>For example, the funds may be used to hold a community-wide program for Synagogue school principals where an educator and/or program is brought to New Haven and all of the Synagogues participate (similar possibilities exist for day Schools and for Jewish preSchools).</span></li>
+      </ul>
+    </li>
+  </ul>
+  <p><span><b>Who qualifies?</b></span></p>
+  <ul>
+    <li><span>Classroom educators of qualified Jewish organizations. </span></li>
+    <li><span>Educators looking to attend a program on annual basis will only be funded biennially if all other eligibility criterion is met.</span></li>
+  </ul>
+  <p><span><b>What program qualifies?</b></span></p>
+  <ul>
+    <li><span>Eligible programs must be hosted by a recognized Jewish institution or reputable educational institution as well as:</span>
+      <ul>
+        <li><span>Must be targeted directly to educators. </span></li>
+        <li><span>Must take place outside the normal workplace. </span></li>
+        <li><span>Must be related to Jewish education.</span></li>
+      </ul>
+    </li>
+  </ul>
+  <p><span><b>Funding Available:</b></span></p>
+  <p><span>The Jewish Foundation will fund a maximum of 70% of the total cost. Funding is on first come, first served basis and maxed at $2,500 per legal organization.</span></p>
+  <p><span>Eligible Costs include:</span></p>
+  <ul>
+    <li><span>Registration</span></li>
+    <li><span>Standard Accommodations</span></li>
+    <li><span>Travel Costs</span></li>
+  </ul>
+  <p><span>Non Eligible cost include:</span></p>
+  <ul>
+    <li><span>Luxury Accommodations</span></li>
+    <li><span>Food and concessions</span></li>
+    <li><span>Gratuities and Donations</span></li>
+    <li><span>Souvenirs</span></li>
+  </ul>
+  {{/formJCC}}
+</template>
+
+<template name="profdevgroupEdit">
+  {{#formJCC data=appType schema=schema typeDesc=typeDesc action=action button1='Next' id='profdevind'}}
+    {{> inputHidden field='applicationType'}}
+  <div class="form-group">
+    {{> displayElement field='mainContact' showLabel=true}}
+  </div>
+  <div class="form-group">
+    {{> displayElement field='program' showLabel=true}}
+  </div>
+  <div class="form-group">
+    {{> displayElement field='dates' showLabel=true}}
+  </div>
+  <div class="form-group">
+    {{> displayElement field='cost' showLabel=true}}
+  </div>
+  <div class="form-group">
+    {{> displayElement field='contact' showLabel=true}}
+  </div>
+  <div class="form-group">
+    {{> displayElement field='educators' showLabel=true}}
+  </div>
+  <div class="form-group">
+    {{> displayElement field='impact' showLabel=true}}
+  </div>
+  <div class="form-group">
+    {{> displayElement field='fundingOrganization' showLabel=true}}
+  </div>
+            <div class="col-sm-12">
+              {{#if costdocId}}
+              <a href="/files/{{costdocId}}" target="_blank">Cost of Program</a>
+              {{/if}}
+            </div>
+            <div class="col-sm-12">
+              {{#if costtravelId}}
+              <a href="/files/{{costtravelId}}" target="_blank">Cost of Travel</a>
+              {{/if}}
+            </div>
+            <div class="col-sm-12">
+              {{#if costlodgingId}}
+              <a href="/files/{{costlodgingId}}" target="_blank">Cost of Lodging</a>
+              {{/if}}
+            </div>
+            <div class="col-sm-12">
+              {{#if boardBudgetId}}
+              <a href="/files/{{boardBudgetId}}" target="_blank">Approved Board Budget</a>
+              {{/if}}
+            </div>
+  {{/formJCC}}
+</template>

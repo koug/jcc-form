@@ -15,6 +15,8 @@ if (Meteor.isClient) {
 			'highschool',
 			'stuartjdrell',
 			'friedler',
+			'profdevgroup',
+			'profdevind',
 			'root'
 		]
 	});
@@ -60,6 +62,24 @@ Router.route('/friedler', {
 	},
 	waitOn: function() {
 		return Meteor.subscribe("applicationType", "friedler");
+	}
+});
+Router.route('/profdevgroup', {
+	layoutTemplate: 'layout',
+	data: function() {
+		return ApplicationType.findOne({applicationType: "profdevgroup"});
+	},
+	waitOn: function() {
+		return Meteor.subscribe("applicationType", "profdevgroup");
+	}
+});
+Router.route('/profdevind', {
+	layoutTemplate: 'layout',
+	data: function() {
+		return ApplicationType.findOne({applicationType: "profdevind"});
+	},
+	waitOn: function() {
+		return Meteor.subscribe("applicationType", "profdevind");
 	}
 });
 Router.route('/form/:type',  {
@@ -113,7 +133,7 @@ Router.route('/admin/:type/:_id', {
   },
   action: function() {
     var templ;
-    if (['israel', 'highschool', 'stuartjdrell', 'friedler'].indexOf(this.params.type) != -1) {
+    if (['israel', 'highschool', 'stuartjdrell', 'friedler', 'profdevgroup', 'profdevind'].indexOf(this.params.type) != -1) {
       templ = this.params.type + "Edit";
     }
     else templ = 'adminEdit';

@@ -28,8 +28,10 @@ Template.admin.helpers({
 
     switch (this.applicationType) {
       case "israel": return this.firstName + this.lastName; break;
-      case "highschool": return this.mainContact;
-      case "stuartjdrell": return this.mainContact;
+      case "highschool": return this.mainContact; break;
+      case "stuartjdrell": return this.mainContact; break;
+      case "profdevind": return this.mainContact; break;
+      case "profdevgroup": return this.mainContact; break;
       default: return this.parentsGuardians;
     }
   }
