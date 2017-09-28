@@ -28,13 +28,16 @@
     {{> inputTextarea field='impact' showLabel=true}}
   </div>
   <div class="form-group">
+    {{> inputTextarea field='funding' showLabel=true}}
+  </div>
+  <div class="form-group">
     {{ > inputFileGen tag='brochure' label="* Copy of the Professional Development Event Description or Brochure" accept="application/pdf, application/msword"}}
   </div>
   <div class="form-group">
     {{ > inputFileGen tag='costdoc' label="* Copy of the documentation stating the cost of program" accept="application/pdf, application/msword"}}
   </div>
   <div class="form-group">
-    {{ > inputFileGen tag='costtravel' label="* Copy of the documentation stating the cost of travel" accept="application/pdf, application/msword"}}
+    {{ > inputFileGen tag='costtravel' label="* Copy of the documentation stating the cost of travel (if applicable)" accept="application/pdf, application/msword"}}
   </div>
   <div class="form-group">
     {{ > inputFileGen tag='costlodging' label="Copy of the documentation stating the cost of lodging (if applicable)" accept="application/pdf, application/msword"}}
@@ -46,17 +49,17 @@
     <li><span>Grants must be approved prior to attending a conference. </span></li>
     <li><span>Application must be endorsed by the school directors/supervisors warranting the conference.</span></li>
   </ul>
-  <p><span>Guidelines for Professional Development Grant As of</span></p>
+  <p><span>Guidelines for Professional Development Grant</span></p>
   <p><span>Which organizations qualify?</span></p>
   <p><span>Currently, the following programs are eligible:</span></p>
   <ul>
     <li><span><b>Day Schools</b><br>Teachers including principals at So. Conn. Hebrew Academy (formerly NHHDS), Ezra Academy, Beth Chana Academy, Jewish High School of CT, Hebrew High School of New England, Yeshivas Beis Dowid Shlomo.</span></li>
     <li><span><b>Pre-schools</b><br>Teachers and directors at Yeladim and synagogue pre-schools (located in GNH)</span></li>
-    <li><span><b>Synagogue Schools</b><br>Teachers and principals at Synagogue Schools (located in GNH)</span></li>
+    <li><span><b>Synagogue Schools</b><br>Teachers and principals at synagogue schools (located in GNH)</span></li>
     <li><span><b>JTE</b> &quot;(Jewish Teen Education&quot;). </span></li>
     <li><span><b>Jewish Federation of Greater New Haven</b><br>For community programs providing professional development for Jewish educators.</span>
       <ul>
-        <li><span>For example, the funds may be used to hold a Community-wide program for Synagogue school principals where an educator and/or program is brought to New Haven and all of the Synagogues participate (similar possibilities exist for day Schools and for Jewish preSchools).</span></li>
+        <li><span>For example, the funds may be used to hold a Community-wide program for synagogue school principals where an educator and/or program is brought to New Haven and all of the synagogues participate (similar possibilities exist for day schools and for Jewish pre-schools).</span></li>
       </ul>
     </li>
   </ul>
@@ -121,6 +124,9 @@
   </div>
   <div class="form-group">
     {{> displayElement field='impact' showLabel=true}}
+  </div>
+  <div class="form-group">
+    {{> displayElement field='funding' showLabel=true}}
   </div>
             <div class="col-sm-12">
               {{#if brochureId}}

@@ -28,7 +28,6 @@ Template.profdevind.helpers({
             var missingFiles = [];
             if (this.brochureId === "") missingFiles.push("event description or brochure");
             if (this.costdocId === "") missingFiles.push("documentation stating cost of program");
-            if (this.costtravelId === "") missingFiles.push("documentation stating cost of travel");
 
             if (missingFiles.length > 0) {
                 var strFiles = missingFiles[0];

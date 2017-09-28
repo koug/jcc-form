@@ -32,6 +32,10 @@ profdevindSchema = new SimpleSchema({
         type: String,
         label: "Describe the impact this program will have on your professional growth as an educator and on your students' learning experiences"
     },
+    "funding": {
+        type: String,
+        label: "Currently the Jewish Foundation will only provide funding for up to 70% of the cost of the program. How will you fund the remaining 30%?"
+    },
     "brochureId": {
         type: String,
         label: "Copy of the Professional Development Event Description or Brochure"
