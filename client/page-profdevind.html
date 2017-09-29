@@ -31,13 +31,16 @@
     {{> inputTextarea field='funding' showLabel=true}}
   </div>
   <div class="form-group">
+    {{ > inputFileGen tag='endorsement' label="* Endorsement of your supervisor/director" accept="application/pdf, application/msword"}}
+  </div>
+  <div class="form-group">
     {{ > inputFileGen tag='brochure' label="* Copy of the Professional Development Event Description or Brochure" accept="application/pdf, application/msword"}}
   </div>
   <div class="form-group">
     {{ > inputFileGen tag='costdoc' label="* Copy of the documentation stating the cost of program" accept="application/pdf, application/msword"}}
   </div>
   <div class="form-group">
-    {{ > inputFileGen tag='costtravel' label="* Copy of the documentation stating the cost of travel (if applicable)" accept="application/pdf, application/msword"}}
+    {{ > inputFileGen tag='costtravel' label="Copy of the documentation stating the cost of travel (if applicable)" accept="application/pdf, application/msword"}}
   </div>
   <div class="form-group">
     {{ > inputFileGen tag='costlodging' label="Copy of the documentation stating the cost of lodging (if applicable)" accept="application/pdf, application/msword"}}
@@ -49,11 +52,11 @@
     <li><span>Grants must be approved prior to attending a conference. </span></li>
     <li><span>Application must be endorsed by the school directors/supervisors warranting the conference.</span></li>
   </ul>
-  <p><span>Guidelines for Professional Development Grant</span></p>
-  <p><span>Which organizations qualify?</span></p>
+  <p><span><u><b>Guidelines for Professional Development Grant</b></u></span></p>
+  <p><span><b>Which organizations qualify?</b></span></p>
   <p><span>Currently, the following programs are eligible:</span></p>
   <ul>
-    <li><span><b>Day Schools</b><br>Teachers including principals at So. Conn. Hebrew Academy (formerly NHHDS), Ezra Academy, Beth Chana Academy, Jewish High School of CT, Hebrew High School of New England, Yeshivas Beis Dowid Shlomo.</span></li>
+    <li><span><b>Day Schools</b><br>Teachers including principals at So. Conn. Hebrew Academy (formerly NHHDS), Ezra Academy, Beth Chana Academy, Jewish High School of CT, Hebrew High School of New England, Yeshivas Beis Dovid Shlomo.</span></li>
     <li><span><b>Pre-schools</b><br>Teachers and directors at Yeladim and synagogue pre-schools (located in GNH)</span></li>
     <li><span><b>Synagogue Schools</b><br>Teachers and principals at synagogue schools (located in GNH)</span></li>
     <li><span><b>JTE</b> &quot;(Jewish Teen Education&quot;). </span></li>
@@ -72,20 +75,20 @@
     </li>
   </ul>
   <ul>
-    <li><span>Educators looking to attend a program on annual basis will only be funded biennially if all other eligibility criterion is met.</span></li>
+    <li><span>Educators looking to attend a program on annual basis will only be funded biennially if all other eligibility criteria is met.</span></li>
   </ul>
   <p><span><b>What program qualifies?</b></span></p>
   <ul>
     <li><span>Eligible programs must be hosted by a recognized Jewish institution or reputable educational </span><span>institution as well as:</span>
       <ul>
-        <li><span>Must be targeted directly to educators. </span></li>
-        <li><span>Must take place outside the normal workplace. </span></li>
-        <li><span>Must be related to Jewish education.</span></li>
+        <li><span><b>Must be targeted directly to educators. </b></span></li>
+        <li><span><b>Must take place outside the normal workplace. </b></span></li>
+        <li><span><b>Must be related to Jewish education.</b></span></li>
       </ul>
     </li>
   </ul>
   <p><span>Funding Available:</span></p>
-  <p><span>The Jewish Foundation will fund a maximum of 70% of the total cost up to $750 per teacher experience. Funding is on first come, first served basis and maxed at $2,500 per legal organization.</span></p>
+  <p><span>The Jewish Foundation will fund a maximum of 70% of the total cost up to $750 per teacher experience. Funding is maxed at $2,500 per legal organization.</span></p>
   <p><span>Eligible Costs include:</span></p>
   <ul>
     <li><span>Registration </span></li>
@@ -128,6 +131,11 @@
   <div class="form-group">
     {{> displayElement field='funding' showLabel=true}}
   </div>
+            <div class="col-sm-12">
+              {{#if endorsementId}}
+              <a href="/files/{{endorsementId}}" target="_blank">Endorsement of supervisor/director</a>
+              {{/if}}
+            </div>
             <div class="col-sm-12">
               {{#if brochureId}}
               <a href="/files/{{brochureId}}" target="_blank">Event Description or Brochure</a>

@@ -36,6 +36,10 @@ profdevindSchema = new SimpleSchema({
         type: String,
         label: "Currently the Jewish Foundation will only provide funding for up to 70% of the cost of the program. How will you fund the remaining 30%?"
     },
+    "endorsementId": {
+        type: String,
+        label: "Signed support of supervisor/director"
+    },
     "brochureId": {
         type: String,
         label: "Copy of the Professional Development Event Description or Brochure"

@@ -20,12 +20,14 @@ Template.profdevind.helpers({
             console.log("[forms] Changed fields!", changed);
 
             // Make sure to check files as hidden validations don't work
+            this.endorsementId = $("#endorsementId").val();
             this.brochureId = $("#brochureId").val();
             this.costdocId = $("#costdocId").val();
             this.costtravelId = $("#costtravelId").val();
             this.costlodgingId = $("#costlodgingId").val();
 
             var missingFiles = [];
+            if (this.endorsementId === "") missingFiles.push("endorsement of your supervisor/director");
             if (this.brochureId === "") missingFiles.push("event description or brochure");
             if (this.costdocId === "") missingFiles.push("documentation stating cost of program");
 
@@ -88,6 +90,9 @@ Template.profdevindEdit.helpers({
     var mySchema = profdevindSchema;
 
     return mySchema;
+  },
+  endorsementId: function() {
+    return Template.currentData().data.endorsementId;
   },
   brochureId: function() {
     return Template.currentData().data.brochureId;
