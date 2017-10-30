@@ -1257,7 +1257,7 @@ ReactiveForms = (function () {
       inst = Template.instance();
       component = inst[MODULE_NAMESPACE];
       if ((component.schema != null) && (component.field != null)) {
-        return component.schema._schema[component.field];
+        return component.schema._schema[component.field.replace(/\.[0-9]+\./,".$.")];
       }
     },
 
