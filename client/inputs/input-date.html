@@ -1,12 +1,12 @@
 <template name="inputDate">
-  <div class="{{#if class}}{{class}}{{else}}col-sm-12{{/if}}">
+  <div class="{{#if class}}{{class}}{{else}}col-sm-12{{/if}} datepicker">
     {{#if showLabel}}
     <label>{{#if schema.optional}}{{else}}* {{/if}}{{schema.label}}</label>
     {{/if}}
     <input type="text"
         class="form-control reactive-element
         {{#if errorMessage}}error{{/if}}"
-        value="{{#if valid}}{{#if value}}{{formatDate value}}{{else}}{{value}}{{/if}}{{else}}{{value}}{{/if}}"
+        value="{{value}}"
         placehoder="{{instruction}}">
         {{#if or submitted changed}}
         {{#if errorMessage}}<p class="error-message">{{errorMessage}}</p>{{/if}}

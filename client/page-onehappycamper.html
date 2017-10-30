@@ -1,0 +1,238 @@
+<template name="onehappycamper"> 
+  <h1>
+    <p>Need Based Aid For Overnight Jewish Camp</p>
+  </h1>
+  <ul>
+    <li><span>If applicant is a first time camper, please also go to <a href="http://www.jewishcamp.org/one-happy-camper/">http://www.jewishcamp.org/one-happy-camper/</a> to apply for the Jewish Foundation of Greater New Haven One Happy Camper Incentive Grant for first time campers.</span></li>
+    <li><span>All Applicants must reside in a Jewish household in the greater New Haven catchment
+      area. <a href="/jfgnf_catchment_area.pdf" target="_blank">
+    Click here</a>here for the catchment area. All applicants must be attending an overnight
+  Jewish camp in North America. Please <a href="http://www.jewishcamp.org/one-happy- camper/find-a-camp/<">click here</a> for a list of camps
+      </span></li>
+  </ul>
+  <h3><span><u><b>Application for needs based overnight Summer Camp Scholarship 2018</b></u></span></h3>
+  <p>The Jewish Foundation of Greater New Haven awards scholarships to
+  enable young people to participate in recognized Jewish summer
+  overnight camp. <b>Scholarships are awarded toreater New Haven
+    area residentson the basis of financial need.</b></p>
+  <p>There is one application per family. All information will be treated with
+  the strictest confidentiality. The Camp Scholarship Committee receives
+  applications that are stripped of personal identity information so the
+  applications can be considered anonymously. <b>Only those applicants
+  who fully comply with all of the instructions can be assured that
+  their application will be reviewed by the Committee</b>. Note that
+  applicants will be required to upload a copy of the first two pages from
+  the parents signed 2016 Federal Income Tax Return as well as a
+  financial aid letter from the camp which the applicant(s) will be
+  attending.</p>
+  <p>The scholarship process is administered by the Jewish Foundation of
+  Greater New Haven camp scholarship committee. Please direct
+  questions to Beth Kupcho, Scholarship Administrator at: 203-387- 2424
+  ext 316 or Bkupcho@jewishnewhaven.org.</p>
+  <p><b>Applications must be submitted BY 11:59 P.M. ON Wednesday,
+  April 11th, 2018. The Committee will not review any applications
+  submitted after this date.</b></p>
+  <p><b>To be eligible for the scholarship, you must be able to answer YES
+    to the following questions:</b></p>
+  {{#formJCC data=appType schema=schema typeDesc=typeDesc action=action button1='Next' id='onehappycamper'}}
+  <div class="form-group">
+    {{> inputSelect field='fromNewHaven' showLabel=true}}
+  </div>
+  <div class="form-group">
+    {{> inputSelect field='properOrg' showLabel=true}}
+  </div>
+  <p>The committee will not review the application until this status is
+  verified.</p>
+  <p><i>If the applicant is a <b>first-time camper</b>, check out the One Happy Camper
+  website to see if you may be eligible for an additional grant with either
+  One Happy Camper or BunkConnect: <a href="http://www.jewishcamp.org/one-happy-camper">http://www.jewishcamp.org/one-happy-camper</a></i></p>
+  <h3><span><u><b>Family information</b></u></span></h3>
+  <div class="form-group">
+    {{> inputText field='email' showLabel=true}}
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading">Parent/Guardian 1</div>
+    <div class="panel-body">
+      <div class="form-group">
+        {{> inputText field='guardian.0.name' showLabel=true}}
+      </div>
+      <div class="form-group">
+        {{> inputText field='guardian.0.address' showLabel=true}}
+      </div>
+      <div class="form-group">
+        {{> inputText field='guardian.0.city' showLabel=true class='col-sm-4'}}
+        {{> inputSelect field='guardian.0.state' showLabel=true class='col-sm-4' checkStates=true}}
+        {{> inputText field='guardian.0.zip' showLabel=true class='col-sm-4'}}
+      </div>
+      <div class="form-group">
+        {{> inputText field='guardian.0.phone' showLabel=true}}
+      </div>
+      <div class="form-group">
+        {{> inputText field='guardian.0.businessPhone' showLabel=true}}
+      </div>
+      <div class="form-group">
+        {{> inputText field='guardian.0.occupation' showLabel=true}}
+      </div>
+    </div>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading">Parent/Guardian 2</div>
+    <div class="panel-body">
+      <div class="form-group">
+        {{> inputText field='guardian.1.name' showLabel=true}}
+      </div>
+      <div class="form-group">
+        {{> inputText field='guardian.1.address' showLabel=true}}
+      </div>
+      <div class="form-group">
+        {{> inputText field='guardian.1.city' showLabel=true class='col-sm-4'}}
+        {{> inputSelect field='guardian.1.state' showLabel=true class='col-sm-4' checkStates=true}}
+        {{> inputText field='guardian.1.zip' showLabel=true class='col-sm-4'}}
+      </div>
+      <div class="form-group">
+        {{> inputText field='guardian.1.phone' showLabel=true}}
+      </div>
+      <div class="form-group">
+        {{> inputText field='guardian.1.businessPhone' showLabel=true}}
+      </div>
+      <div class="form-group">
+        {{> inputText field='guardian.1.occupation' showLabel=true}}
+      </div>
+    </div>
+  </div>
+  <h3><span><u><b>Household Family Information</b></u></span></h3>
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <div class="form-group">
+        {{> inputText field='parent1Gross' showLabel=true}}
+      </div>
+      <div class="form-group">
+        {{> inputText field='parent1Adjusted' showLabel=true}}
+      </div>
+      <div class="form-group">
+        {{> inputText field='parent2Gross' showLabel=true}}
+      </div>
+      <div class="form-group">
+        {{> inputText field='parent2Adjusted' showLabel=true}}
+      </div>
+      <div class="form-group">
+        {{> inputText field='parsonage' showLabel=true}}
+      </div>
+      <div class="form-group">
+        {{> inputText field='otherIncome' showLabel=true}}
+      </div>
+      <div class="form-group">
+        {{> inputText field='totalIncome' showLabel=true}}
+      </div>
+      <div class="form-group">
+        {{ > inputFileGen tag='taxReturn' label="First 2 pages of 2016 tax forms" accept="application/pdf, application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"}}
+      </div>
+      <div class="form-group">
+        {{ > inputFileGen tag='aidLetter' label="Financial aid letter received from the camp(s) applicant(s) will be attending?" accept="application/pdf, application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"}}
+      </div>
+    </div>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading">Special Expenses</div>
+    <div class="panel-body">
+      <p>Please list <b>extraordinary</b> expenses of family and applicant, such
+      as significant medical, unemployment, other emergencies.</p>
+      <p><b><i>Do <u>NOT</u> include orthodontics, synagogue membership,
+      private school tuition, family Simchas (like Bar or Bat
+      Mitzvah), etc.</i></b></p>
+      {{> inputExtraordinaryExpenses }}
+    </div>
+  </div>
+  <h3><span><u><b>Campers</b></u></span></h3>
+  <div class="panel panel-default">
+    <div class="panel-body">
+      {{> inputCampers }}
+    </div>
+  </div>
+  <h3><span><u><b>Other Information</b></u></span></h3>
+    <div class="form-group">
+      {{> inputSelect field='otherInfo' showLabel=true}}
+    </div>
+    <p><b> Applications must be submitted BY 11:59 P.M. ON Wednesday,
+    April 11, 2018. The committee will not review any applications
+    submitted after this date.</b></p>
+    <p><i>Note: If the camp/program that your child will attend changes after a
+    scholarship grant has been awarded, or the length of the camp session
+    she/he will attend changes, resulting in a decrease of your camp
+    expenses, the amount of the grant will likely be decreased in proportion
+    to your new camp expenses. Please contact Beth Kupcho at 203-387-
+    2424 ext.316 or Bkupcho@jewishnewhaven.org.</i></p>
+    <p><b>All information in this application is true.</b></p>
+  {{/formJCC}}
+</template>
+
+<template name="inputCampers">
+  <div class="campers">
+    {{#each numberOfFieldsToArray numberOfFields}}
+    <div class="form-group">
+      {{> inputText nestedFieldOptions 'campers.$.name' index=this showLabel=true}}
+    <div class="form-group">
+    </div>
+      {{> inputDate nestedFieldOptions 'campers.$.dob' index=this showLabel=true}}
+    <div class="form-group">
+    </div>
+      {{> inputSelect nestedFieldOptions 'campers.$.livesWith' index=this showLabel=true}}
+    <div class="form-group">
+    </div>
+      {{> inputText nestedFieldOptions 'campers.$.schoolName' index=this showLabel=true}}
+    <div class="form-group">
+    </div>
+      {{> inputText nestedFieldOptions 'campers.$.grade' index=this showLabel=true}}
+    <div class="form-group">
+    </div>
+      {{> inputText nestedFieldOptions 'campers.$.campName' index=this showLabel=true}}
+    <div class="form-group">
+    </div>
+      {{> inputText nestedFieldOptions 'campers.$.campAddress' index=this showLabel=true}}
+    <div class="form-group">
+    </div>
+      {{> inputText nestedFieldOptions 'campers.$.campCity' index=this showLabel=true}}
+    <div class="form-group">
+    </div>
+      {{> inputSelect nestedFieldOptions 'campers.$.campState' index=this showLabel=true}}
+    <div class="form-group">
+    </div>
+      {{> inputText nestedFieldOptions 'campers.$.campZip' index=this showLabel=true}}
+    <div class="form-group">
+    </div>
+      {{> inputDate nestedFieldOptions 'campers.$.campStartDate' index=this showLabel=true}}
+    <div class="form-group">
+    </div>
+      {{> inputDate nestedFieldOptions 'campers.$.campEndDate' index=this showLabel=true}}
+    <div class="form-group">
+    </div>
+      {{> inputTextarea nestedFieldOptions 'campers.$.campDesc' index=this showLabel=true}}
+    <div class="form-group">
+    </div>
+      {{> inputText nestedFieldOptions 'campers.$.campTuition' index=this showLabel=true}}
+    <div class="form-group">
+    </div>
+      {{> inputSelect nestedFieldOptions 'campers.$.campOtherScholarship' index=this showLabel=true}}
+    <div class="form-group">
+    </div>
+      {{> inputText nestedFieldOptions 'campers.$.campHowMuchOutside' index=this showLabel=true}}
+    <div class="form-group">
+    </div>
+      {{> inputSelect nestedFieldOptions 'campers.$.campPreviouslyReceivedFunds' index=this showLabel=true}}
+    </div>
+      <p><b>AMOUNT REQUESTED FROM THE JEWISH FOUNDATION
+        FOR THIS CAMPER.</b></p>
+      <p><b><i> Failure to include a specific sum will disqualify the application.</i></b></p>
+    <div class="form-group">
+      {{> inputText nestedFieldOptions 'campers.$.campAmountRequested' index=this showLabel=true}}
+    </div>
+<!--      <div class="col-sm-12">
+        <a href="#" class="remove">Remove this camper</a>
+</div>-->
+    {{/each}}
+
+    <div class="col-sm-12">
+      <a href="#" class="add">Add Another Camper</a>
+    </div>
+  </div>
+</template>
