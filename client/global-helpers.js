@@ -14,6 +14,10 @@ Template.registerHelper('numberOfFieldsToArray', function(i) {
     return times;
 });
 
+Template.registerHelper('add', function(a, i) {
+    return a+i;
+});
+
 Template.registerHelper("logVar", function(input) {
     console.log(input);
 });

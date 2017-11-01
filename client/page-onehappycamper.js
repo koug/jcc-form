@@ -1,5 +1,7 @@
 Template.onehappycamper.helpers({
   appType: function() {
+    var data = Template.currentData();
+    return data;
   },
   schema: function() {
     var mySchema = onehappycamperSchema;
@@ -49,6 +51,44 @@ Template.inputCampers.events({
 })
 
 Template.inputCampers.helpers({
+  numberOfFields: function() {
+    var num = Template.instance().num.get();
+    return Template.instance().num.get();
+  },
+});
+
+Template.onehappycamperEdit.helpers({
+    appType: function() {
+        var data = Template.currentData();
+        if (data === null) {
+            data = {};
+        }
+        return data;
+    },
+    typeDesc: function() {
+        return Template.currentData().desc;
+    },
+    schema: function() {
+        var mySchema = onehappycamperSchema;
+
+        return mySchema;
+    },
+  taxReturnId: function() {
+    return Template.currentData().data.taxReturnId;
+  },
+  essayId: function() {
+    return Template.currentData().data.essayId;
+  },
+  aidLetterId: function() {
+    return Template.currentData().data.aidLetterId;
+  },
+});
+
+Template.inputCampersEdit.onCreated(function() {
+  this.num = new ReactiveVar(1);
+});
+
+Template.inputCampersEdit.helpers({
   numberOfFields: function() {
     var num = Template.instance().num.get();
     return Template.instance().num.get();

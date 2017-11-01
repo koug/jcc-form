@@ -35,6 +35,7 @@
   <p><b>To be eligible for the scholarship, you must be able to answer YES
     to the following questions:</b></p>
   {{#formJCC data=appType schema=schema typeDesc=typeDesc action=action button1='Next' id='onehappycamper'}}
+    {{> inputHidden field='applicationType'}}
   <div class="form-group">
     {{> inputSelect field='fromNewHaven' showLabel=true}}
   </div>
@@ -234,5 +235,197 @@
     <div class="col-sm-12">
       <a href="#" class="add">Add Another Camper</a>
     </div>
+  </div>
+</template>
+
+<template name="onehappycamperEdit"> 
+  {{#formJCC data=appType schema=schema typeDesc=typeDesc action=action button1='Next' id='onehappycamper'}}
+  <div class="form-group">
+    {{> displayElement field='fromNewHaven' showLabel=true}}
+  </div>
+  <div class="form-group">
+    {{> displayElement field='properOrg' showLabel=true}}
+  </div>
+  <h3><span><u><b>Family information</b></u></span></h3>
+  <div class="form-group">
+    {{> displayElement field='email' showLabel=true}}
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading">Parent/Guardian 1</div>
+    <div class="panel-body">
+      <div class="form-group">
+        {{> displayElement field='guardian.0.name' showLabel=true}}
+      </div>
+      <div class="form-group">
+        {{> displayElement field='guardian.0.address' showLabel=true}}
+      </div>
+      <div class="form-group">
+        {{> displayElement field='guardian.0.city' showLabel=true class='col-sm-4'}}
+        {{> displayElement field='guardian.0.state' showLabel=true class='col-sm-4' checkStates=true}}
+        {{> displayElement field='guardian.0.zip' showLabel=true class='col-sm-4'}}
+      </div>
+      <div class="form-group">
+        {{> displayElement field='guardian.0.phone' showLabel=true}}
+      </div>
+      <div class="form-group">
+        {{> displayElement field='guardian.0.businessPhone' showLabel=true}}
+      </div>
+      <div class="form-group">
+        {{> displayElement field='guardian.0.occupation' showLabel=true}}
+      </div>
+    </div>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading">Parent/Guardian 2</div>
+    <div class="panel-body">
+      <div class="form-group">
+        {{> displayElement field='guardian.1.name' showLabel=true}}
+      </div>
+      <div class="form-group">
+        {{> displayElement field='guardian.1.address' showLabel=true}}
+      </div>
+      <div class="form-group">
+        {{> displayElement field='guardian.1.city' showLabel=true class='col-sm-4'}}
+        {{> displayElement field='guardian.1.state' showLabel=true class='col-sm-4' checkStates=true}}
+        {{> displayElement field='guardian.1.zip' showLabel=true class='col-sm-4'}}
+      </div>
+      <div class="form-group">
+        {{> displayElement field='guardian.1.phone' showLabel=true}}
+      </div>
+      <div class="form-group">
+        {{> displayElement field='guardian.1.businessPhone' showLabel=true}}
+      </div>
+      <div class="form-group">
+        {{> displayElement field='guardian.1.occupation' showLabel=true}}
+      </div>
+    </div>
+  </div>
+  <h3><span><u><b>Household Family Information</b></u></span></h3>
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <div class="form-group">
+        {{> displayElement field='parent1Gross' showLabel=true}}
+      </div>
+      <div class="form-group">
+        {{> displayElement field='parent1Adjusted' showLabel=true}}
+      </div>
+      <div class="form-group">
+        {{> displayElement field='parent2Gross' showLabel=true}}
+      </div>
+      <div class="form-group">
+        {{> displayElement field='parent2Adjusted' showLabel=true}}
+      </div>
+      <div class="form-group">
+        {{> displayElement field='parsonage' showLabel=true}}
+      </div>
+      <div class="form-group">
+        {{> displayElement field='otherIncome' showLabel=true}}
+      </div>
+      <div class="form-group">
+        {{> displayElement field='totalIncome' showLabel=true}}
+      </div>
+      <div class="form-group">
+        {{ > inputFileGen tag='taxReturn' label="First 2 pages of 2016 tax forms" accept="application/pdf, application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"}}
+      </div>
+      <div class="form-group">
+        {{ > inputFileGen tag='aidLetter' label="Financial aid letter received from the camp(s) applicant(s) will be attending?" accept="application/pdf, application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"}}
+      </div>
+    </div>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading">Special Expenses</div>
+    <div class="panel-body">
+      <div class="col-sm-6">
+        <label>Item</label>
+      </div>
+      <div class="col-sm-6">
+        <label>Cost/year</label>
+      </div>
+      {{#each objToArray data.extraordinaryExpenses}}
+      <div class="col-sm-6">
+        {{name}}
+      </div>
+      <div class="col-sm-6">
+        {{amount}}
+      </div>
+      {{/each}}
+      <!-- {{> inputExtraordinaryExpenses}} -->
+    </div>
+  </div>
+  <h3><span><u><b>Campers</b></u></span></h3>
+  <div class="panel panel-default">
+    <div class="panel-body">
+      {{> inputCampersEdit }}
+    </div>
+  </div>
+  <h3><span><u><b>Other Information</b></u></span></h3>
+    <div class="form-group">
+      {{> displayElement field='otherInfo' showLabel=true}}
+    </div>
+  {{/formJCC}}
+</template>
+
+<template name="inputCampersEdit">
+  <div class="campers">
+    {{#each numberOfFieldsToArray numberOfFields}}
+    <p><u><b>Camper {{add @index 1}}</b></u></p>
+    <div class="form-group">
+      {{> displayElement nestedFieldOptions 'campers.$.name' index=this showLabel=true}}
+    <div class="form-group">
+    </div>
+      {{> displayElement nestedFieldOptions 'campers.$.dob' index=this showLabel=true}}
+    <div class="form-group">
+    </div>
+      {{> displayElement nestedFieldOptions 'campers.$.livesWith' index=this showLabel=true}}
+    <div class="form-group">
+    </div>
+      {{> displayElement nestedFieldOptions 'campers.$.schoolName' index=this showLabel=true}}
+    <div class="form-group">
+    </div>
+      {{> displayElement nestedFieldOptions 'campers.$.grade' index=this showLabel=true}}
+    <div class="form-group">
+    </div>
+      {{> displayElement nestedFieldOptions 'campers.$.campName' index=this showLabel=true}}
+    <div class="form-group">
+    </div>
+      {{> displayElement nestedFieldOptions 'campers.$.campAddress' index=this showLabel=true}}
+    <div class="form-group">
+    </div>
+      {{> displayElement nestedFieldOptions 'campers.$.campCity' index=this showLabel=true}}
+    <div class="form-group">
+    </div>
+      {{> displayElement nestedFieldOptions 'campers.$.campState' index=this showLabel=true}}
+    <div class="form-group">
+    </div>
+      {{> displayElement nestedFieldOptions 'campers.$.campZip' index=this showLabel=true}}
+    <div class="form-group">
+    </div>
+      {{> displayElement nestedFieldOptions 'campers.$.campStartDate' index=this showLabel=true}}
+    <div class="form-group">
+    </div>
+      {{> displayElement nestedFieldOptions 'campers.$.campEndDate' index=this showLabel=true}}
+    <div class="form-group">
+    </div>
+      {{> displayElement nestedFieldOptions 'campers.$.campDesc' index=this showLabel=true}}
+    <div class="form-group">
+    </div>
+      {{> displayElement nestedFieldOptions 'campers.$.campTuition' index=this showLabel=true}}
+    <div class="form-group">
+    </div>
+      {{> displayElement nestedFieldOptions 'campers.$.campOtherScholarship' index=this showLabel=true}}
+    <div class="form-group">
+    </div>
+      {{> displayElement nestedFieldOptions 'campers.$.campHowMuchOutside' index=this showLabel=true}}
+    <div class="form-group">
+    </div>
+      {{> displayElement nestedFieldOptions 'campers.$.campPreviouslyReceivedFunds' index=this showLabel=true}}
+    </div>
+    <div class="form-group">
+      {{> displayElement nestedFieldOptions 'campers.$.campAmountRequested' index=this showLabel=true}}
+    </div>
+<!--      <div class="col-sm-12">
+        <a href="#" class="remove">Remove this camper</a>
+</div>-->
+    {{/each}}
   </div>
 </template>
