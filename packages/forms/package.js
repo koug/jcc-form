@@ -23,7 +23,7 @@ Package.onUse(function(api) {
     'check'
   ], 'server');
 
-  api.use('aldeed:simple-schema@1.5.2');
+  api.use('aldeed:simple-schema');
   api.imply('aldeed:simple-schema');
 
   // Templates

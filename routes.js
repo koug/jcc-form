@@ -18,6 +18,7 @@ if (Meteor.isClient) {
 			'profdevgroup',
 			'profdevind',
 			'onehappycamper',
+			'womenofvision',
 			'root'
 		]
 	});
@@ -92,6 +93,15 @@ Router.route('/onehappycamper', {
 		return Meteor.subscribe("applicationType", "onehappycamper");
 	}
 });
+Router.route('/womenofvision', {
+	layoutTemplate: 'layout',
+	data: function() {
+		return ApplicationType.findOne({applicationType: "womenofvision"});
+	},
+	waitOn: function() {
+		return Meteor.subscribe("applicationType", "womenofvision");
+	}
+});
 Router.route('/form/:type',  {
 	name: 'form',
 	layoutTemplate: 'layout',
@@ -143,7 +153,7 @@ Router.route('/admin/:type/:_id', {
   },
   action: function() {
     var templ;
-    if (['israel', 'highschool', 'stuartjdrell', 'friedler', 'profdevgroup', 'profdevind', 'onehappycamper'].indexOf(this.params.type) != -1) {
+    if (['israel', 'highschool', 'stuartjdrell', 'friedler', 'profdevgroup', 'profdevind', 'onehappycamper', 'womenofvision'].indexOf(this.params.type) != -1) {
       templ = this.params.type + "Edit";
     }
     else templ = 'adminEdit';

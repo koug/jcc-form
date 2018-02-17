@@ -62,3 +62,26 @@ Template.registerHelper('formatDateNiceNoDay', function(date) {
 Template.registerHelper('formatDateNice', function(date) {
   return moment(date).format('dddd, MMMM DD, YYYY');
 });
+Template.registerHelper('getTemplate', function(data) {
+  let item = data.item;
+  let schema = data.schema;
+  let obj = schema._schema[item];
+
+  if (item === "applicationType") return "inputHidden";
+  if (obj.type === String && obj.option === "TextArea") return "inputTextarea";
+  if (obj.type === String && obj.allowedValues != undefined) return "inputSelect";
+  if (obj.type === String) return "inputText";
+  return "inputText";
+});
+Template.registerHelper('getTabData', function(data) {
+  let item = data.item;
+  let schema = data.schema;
+  //if (schema._objectKeys[item + "."] != undefined) return {schema: schema };
+
+  let obj = schema._schema[item];
+  let ret = { "field": item, "showLabel": true };
+
+  if (obj.cl != undefined) ret.class = obj.cl;
+
+  return ret;
+});

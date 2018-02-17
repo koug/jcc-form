@@ -1,0 +1,288 @@
+<template name="wrapperObject">
+  {{#each keys}}
+  {{> Template.dynamic
+  template=(getTemplate data)
+  data=(getTabData data)}}
+  {{/each}}
+</template>
+
+<template name="wrapperForm">
+  {{#each schema._firstLevelSchemaKeys}}
+  <div class="form-group">
+    {{#if isObject this}}
+    {{#each keys}}
+    {{> Template.dynamic
+    template=(getTemplate data2)
+    data=(getTabData data2)}}
+    {{/each}}
+    {{else}}
+    {{> Template.dynamic
+    template=(getTemplate data)
+    data=(getTabData data)}}
+    {{/if}}
+  </div>
+  {{/each}}
+</template>
+
+<template name="womenofvision"> 
+  <h1>
+    <p>Women of Vision Society 2018 Grant Application</p>
+  </h1>
+  <p><span>Applications are due to The Jewish Foundation Office by {{formatDateNice dateSub}} at 5:00 p.m.</span></p>
+  {{#formJCC data=appType schema=schema typeDesc=typeDesc action=action button1='Next' id='womenofvision'}}
+  <div class="form-group">
+    {{> inputHidden field='applicationType'}}
+  </div>
+
+  <div class="form-group">
+    {{> inputText field='orgName' showLabel=true}}
+  </div>
+
+  <div class="form-group">
+    {{> inputText field='address' showLabel=true}}
+  </div>
+
+  <div class="form-group">
+    {{> inputText field='cityGroup.city' showLabel=true}}
+    {{> inputSelect field='cityGroup.state' showLabel=true checkStates=true}}
+    {{> inputText field='cityGroup.zip' showLabel=true}}
+  </div>
+
+  <div class="form-group">
+    {{> inputText field='contactEmail' showLabel=true}}
+  </div>
+
+  <div class="form-group">
+    {{> inputText field='contactPhone' showLabel=true}}
+  </div>
+
+  <div class="form-group">
+    {{> inputText field='orgMission' showLabel=true}}
+  </div>
+
+  <div class="form-group">
+    {{> inputText field='projectTitle' showLabel=true}}
+  </div>
+
+  <div class="form-group">
+    {{> inputText field='projectedBudget' showLabel=true}}
+  </div>
+
+  <div class="form-group">
+    {{> inputText field='amountRequested' showLabel=true}}
+  </div>
+
+  <div class="form-group">
+    {{> inputSelect field='newProject' showLabel=true}}
+  </div>
+
+  <div class="form-group">
+    {{> inputSelect field='receivedFunding' showLabel=true}}
+  </div>
+
+  <div class="form-group">
+    {{> inputText field='yearsRunning' showLabel=true}}
+  </div>
+
+  <div class="form-group">
+    {{> inputText field='summary' showLabel=true}}
+  </div>
+
+  <div class="form-group">
+    {{> inputText field='goalsRelations' showLabel=true}}
+  </div>
+
+  <div class="form-group">
+    {{> inputText field='objectives' showLabel=true}}
+  </div>
+
+  <div class="form-group">
+    {{> inputText field='methods' showLabel=true}}
+  </div>
+
+  <div class="form-group">
+    {{> inputText field='measure' showLabel=true}}
+  </div>
+
+  <div class="form-group">
+    {{> inputText field='targetPopulation' showLabel=true}}
+  </div>
+
+  <div class="form-group">
+    {{> inputText field='participants' showLabel=true}}
+  </div>
+
+  <div class="form-group">
+    {{> inputText field='percentParticipants' showLabel=true}}
+  </div>
+
+  <div class="form-group">
+    {{> inputSelect field='hireNew' showLabel=true}}
+  </div>
+
+  <div class="form-group">
+    {{> inputText field='projectLead' showLabel=true}}
+  </div>
+
+  <div class="panel panel-default">
+    <div class="panel-heading">Expenses</div>
+    <div class="panel-body">
+      <div class="form-group">
+        {{> inputText field='budgetExpenses.costs' showLabel=true}}
+        {{> inputText field='budgetExpenses.staffing' showLabel=true}}
+        {{> inputText field='budgetExpenses.marketing' showLabel=true}}
+        {{> inputText field='budgetExpenses.equipment' showLabel=true}}
+        {{> inputText field='budgetExpenses.materials' showLabel=true}}
+        {{> inputText field='budgetExpenses.transport' showLabel=true}}
+        {{> inputText field='budgetExpenses.rentals' showLabel=true}}
+        {{> inputText field='budgetExpenses.other' showLabel=true}}
+      </div>
+    </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">Income</div>
+      <div class="panel-body">
+        <div class="form-group">
+          {{> inputText field='budgetIncome.donations' showLabel=true}}
+          {{> inputText field='budgetIncome.grants' showLabel=true}}
+          {{> inputText field='budgetIncome.fees' showLabel=true}}
+          {{> inputText field='budgetIncome.other' showLabel=true}}
+          {{> inputText field='budgetIncome.otherDesc' showLabel=true}}
+        </div>
+      </div>
+    </div>
+
+      <div class="form-group">
+        {{> inputText field='continuation' showLabel=true}}
+      </div>
+      {{/formJCC}}
+</template>
+
+<template name="womenofvisionEdit"> 
+  {{#formJCC data=appType schema=schema typeDesc=typeDesc action=action button1='Next' id='womenofvision'}}
+  <div class="form-group">
+    {{> displayElement field='orgName' showLabel=true}}
+  </div>
+
+  <div class="form-group">
+    {{> displayElement field='address' showLabel=true}}
+  </div>
+
+  <div class="form-group">
+    {{> displayElement field='cityGroup.city' showLabel=true}}
+    {{> displayElement field='cityGroup.state' showLabel=true checkStates=true}}
+    {{> displayElement field='cityGroup.zip' showLabel=true}}
+  </div>
+
+  <div class="form-group">
+    {{> displayElement field='contactEmail' showLabel=true}}
+  </div>
+
+  <div class="form-group">
+    {{> displayElement field='contactPhone' showLabel=true}}
+  </div>
+
+  <div class="form-group">
+    {{> displayElement field='orgMission' showLabel=true}}
+  </div>
+
+  <div class="form-group">
+    {{> displayElement field='projectTitle' showLabel=true}}
+  </div>
+
+  <div class="form-group">
+    {{> displayElement field='projectedBudget' showLabel=true}}
+  </div>
+
+  <div class="form-group">
+    {{> displayElement field='amountRequested' showLabel=true}}
+  </div>
+
+  <div class="form-group">
+    {{> displayElement field='newProject' showLabel=true}}
+  </div>
+
+  <div class="form-group">
+    {{> displayElement field='receivedFunding' showLabel=true}}
+  </div>
+
+  <div class="form-group">
+    {{> displayElement field='yearsRunning' showLabel=true}}
+  </div>
+
+  <div class="form-group">
+    {{> displayElement field='summary' showLabel=true}}
+  </div>
+
+  <div class="form-group">
+    {{> displayElement field='goalsRelations' showLabel=true}}
+  </div>
+
+  <div class="form-group">
+    {{> displayElement field='objectives' showLabel=true}}
+  </div>
+
+  <div class="form-group">
+    {{> displayElement field='methods' showLabel=true}}
+  </div>
+
+  <div class="form-group">
+    {{> displayElement field='measure' showLabel=true}}
+  </div>
+
+  <div class="form-group">
+    {{> displayElement field='targetPopulation' showLabel=true}}
+  </div>
+
+  <div class="form-group">
+    {{> displayElement field='participants' showLabel=true}}
+  </div>
+
+  <div class="form-group">
+    {{> displayElement field='percentParticipants' showLabel=true}}
+  </div>
+
+  <div class="form-group">
+    {{> displayElement field='hireNew' showLabel=true}}
+  </div>
+
+  <div class="form-group">
+    {{> displayElement field='projectLead' showLabel=true}}
+  </div>
+
+  <div class="panel panel-default">
+    <div class="panel-heading">Expenses</div>
+    <div class="panel-body">
+      <div class="form-group">
+        {{> displayElement field='budgetExpenses.costs' showLabel=true}}
+        {{> displayElement field='budgetExpenses.staffing' showLabel=true}}
+        {{> displayElement field='budgetExpenses.marketing' showLabel=true}}
+        {{> displayElement field='budgetExpenses.equipment' showLabel=true}}
+        {{> displayElement field='budgetExpenses.materials' showLabel=true}}
+        {{> displayElement field='budgetExpenses.transport' showLabel=true}}
+        {{> displayElement field='budgetExpenses.rentals' showLabel=true}}
+        {{> displayElement field='budgetExpenses.other' showLabel=true}}
+      </div>
+    </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">Income</div>
+      <div class="panel-body">
+        <div class="form-group">
+          {{> displayElement field='budgetIncome.donations' showLabel=true}}
+          {{> displayElement field='budgetIncome.grants' showLabel=true}}
+          {{> displayElement field='budgetIncome.fees' showLabel=true}}
+          {{> displayElement field='budgetIncome.other' showLabel=true}}
+          {{> displayElement field='budgetIncome.otherDesc' showLabel=true}}
+        </div>
+      </div>
+    </div>
+
+      <div class="form-group">
+        {{> displayElement field='continuation' showLabel=true}}
+      </div>
+  {{/formJCC}}
+</template>
+
