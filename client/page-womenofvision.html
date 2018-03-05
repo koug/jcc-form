@@ -138,25 +138,36 @@
         {{> inputText field='budgetExpenses.other' showLabel=true}}
       </div>
     </div>
-    </div>
+  </div>
 
-    <div class="panel panel-default">
-      <div class="panel-heading">Income</div>
-      <div class="panel-body">
-        <div class="form-group">
-          {{> inputText field='budgetIncome.donations' showLabel=true}}
-          {{> inputText field='budgetIncome.grants' showLabel=true}}
-          {{> inputText field='budgetIncome.fees' showLabel=true}}
-          {{> inputText field='budgetIncome.other' showLabel=true}}
-          {{> inputText field='budgetIncome.otherDesc' showLabel=true}}
-        </div>
-      </div>
-    </div>
-
+  <div class="panel panel-default">
+    <div class="panel-heading">Income</div>
+    <div class="panel-body">
       <div class="form-group">
-        {{> inputText field='continuation' showLabel=true}}
+        {{> inputText field='budgetIncome.donations' showLabel=true}}
+        {{> inputText field='budgetIncome.grants' showLabel=true}}
+        {{> inputText field='budgetIncome.fees' showLabel=true}}
+        {{> inputText field='budgetIncome.other' showLabel=true}}
+        {{> inputText field='budgetIncome.otherDesc' showLabel=true}}
       </div>
-      {{/formJCC}}
+    </div>
+  </div>
+
+  <div class="form-group">
+    {{> inputText field='continuation' showLabel=true}}
+  </div>
+  <div>
+    <h3 style="text-transform: uppercase">CHECKLIST FOR COMPLETE APPLICATION AND REQUIRED DOCUMENTS DUE {{formatDateNiceNoDay data.dateSub}}, 5 PM</h3>
+    <ul>
+      <li>This project is relevant to at least two goals as stated in the Women of Vision Grant Making Guidelines.</li>
+      <li>I have provided evidence that there is demonstrated need for the project or program within the Jewish Community of Greater New Haven &amp; Israel.</li>
+      <li>I have defined my target population.</li>
+      <li>I have provided a justifiable and appropriate budget in relation to the proposed project.</li>
+      <li>I have completed each question on the application.</li>
+      <li>If a 2017 Women of Vision Grant was awarded to my organization, I have submitted an evaluation for that grant.</li>
+    </ul>
+  </div>
+  {{/formJCC}}
 </template>
 
 <template name="womenofvisionEdit"> 
@@ -265,24 +276,24 @@
         {{> displayElement field='budgetExpenses.other' showLabel=true}}
       </div>
     </div>
-    </div>
+  </div>
 
-    <div class="panel panel-default">
-      <div class="panel-heading">Income</div>
-      <div class="panel-body">
-        <div class="form-group">
-          {{> displayElement field='budgetIncome.donations' showLabel=true}}
-          {{> displayElement field='budgetIncome.grants' showLabel=true}}
-          {{> displayElement field='budgetIncome.fees' showLabel=true}}
-          {{> displayElement field='budgetIncome.other' showLabel=true}}
-          {{> displayElement field='budgetIncome.otherDesc' showLabel=true}}
-        </div>
-      </div>
-    </div>
-
+  <div class="panel panel-default">
+    <div class="panel-heading">Income</div>
+    <div class="panel-body">
       <div class="form-group">
-        {{> displayElement field='continuation' showLabel=true}}
+        {{> displayElement field='budgetIncome.donations' showLabel=true}}
+        {{> displayElement field='budgetIncome.grants' showLabel=true}}
+        {{> displayElement field='budgetIncome.fees' showLabel=true}}
+        {{> displayElement field='budgetIncome.other' showLabel=true}}
+        {{> displayElement field='budgetIncome.otherDesc' showLabel=true}}
       </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    {{> displayElement field='continuation' showLabel=true}}
+  </div>
   {{/formJCC}}
 </template>
 
