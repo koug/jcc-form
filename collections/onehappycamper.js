@@ -86,15 +86,18 @@ onehappycamperSchema = new SimpleSchema({
   },
   "parent2Gross": {
     type: Number,
-    label: "Parent 2's current annual gross income (including child support, maintenance, interest income, rental income and any other):"
+    label: "Parent 2's current annual gross income (including child support, maintenance, interest income, rental income and any other):",
+    optional: true
   },
   "parent2Adjusted": {
     type: Number,
     label: "Parent 2's adjusted income (line 37 on 1040 US Individual Income Tax Return). If you filed jointly, write $0",
+    optional: true
   },
   "parsonage": {
     type: Number,
     label: "parsonage",
+    optional: true
   },
   "otherIncome": {
     type: Number,
