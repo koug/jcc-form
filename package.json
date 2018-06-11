@@ -12,8 +12,14 @@
   },
   "author": "Nico Gangloff",
   "dependencies": {
-    "babel-runtime": "^6.23.0",
-    "bootstrap-datepicker": "^1.7.1",
-    "simpl-schema": "^0.2.2"
-  }
+    "@babel/runtime": "^7.0.0-beta.49",
+    "babel-runtime": "^6.26.0",
+    "bcrypt": "^2.0.1",
+    "bootstrap-datepicker": "^1.8.0",
+    "meteor-node-stubs": "^0.4.1",
+    "simpl-schema": "^0.2.3"
+  },
+  "homepage": "https://bitbucket.org/moutonfr/jcc-form#readme",
+  "keywords": [],
+  "license": "ISC"
 }
