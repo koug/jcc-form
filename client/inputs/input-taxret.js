@@ -38,5 +38,10 @@ Template.inputFile.helpers({
     if (Template.currentData().appType == "highschool")
       return true;
     return false;
+  },
+  attachmentA: function() {
+    if (Template.currentData().appType == "stuartjdrell")
+      return true;
+    return false;
   }
 });

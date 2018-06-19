@@ -24,10 +24,17 @@
                JPEG and PNG files are accepted. If you are unable to scan
                and upload, you can mail to:
           {{else}}
-              Please scan and upload the top page of your most recent tax
-              return. Please redact any SS numbers. Only PDF,
-               JPEG and PNG files are accepted. If you are unable to scan
-               and upload, you can mail to:
+            {{#if attachmentA}}
+                Please scan and upload page 1 and 2 of your most recent tax
+                return and "Attachment A" from tax forms. Please redact any SS numbers. Only PDF,
+                JPEG and PNG files are accepted. If you are unable to scan
+                and upload, you can mail to:
+            {{else}}
+                Please scan and upload the top page of your most recent tax
+                return. Please redact any SS numbers. Only PDF,
+                JPEG and PNG files are accepted. If you are unable to scan
+                and upload, you can mail to:
+            {{/if}}
           {{/if}}
            </p>
            <p> JSI, 360 Amity Road, Woodbridge,
