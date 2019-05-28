@@ -90,7 +90,7 @@ Template.inputCampersEdit.onCreated(function() {
 
 Template.inputCampersEdit.helpers({
   numberOfFields: function() {
-    var num = Template.instance().num.get();
-    return Template.instance().num.get();
+    let obj = Template.instance().data.data.campers;
+    return Object.keys(obj).length;
   },
 });
