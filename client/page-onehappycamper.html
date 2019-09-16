@@ -322,10 +322,14 @@
         {{> displayElement field='totalIncome' showLabel=true}}
       </div>
       <div class="form-group">
-        {{ > inputFileGen tag='taxReturn' label="First 2 pages of 2018 tax forms" accept="application/pdf, application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"}}
+        {{#if taxReturnId}}
+        <a href="/files/{{taxReturnId}}" target="_blank">Tax Return</a>
+        {{/if}}
       </div>
       <div class="form-group">
-        {{ > inputFileGen tag='aidLetter' label="Financial aid letter received from the camp(s) applicant(s) will be attending?" accept="application/pdf, application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"}}
+        {{#if aidLetterId}}
+        <a href="/files/{{aidLetterId}}" target="_blank">Financial aid letter</a>
+        {{/if}}
       </div>
     </div>
   </div>

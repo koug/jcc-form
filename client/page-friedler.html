@@ -121,8 +121,10 @@
           {{> displayElement field='email' showLabel=true class='col-sm-4'}}
         </div>
         <div class="form-group">
-          {{ > inputFile}}
-        </div>
+          {{#if taxReturnId}}
+          <a href="/files/{{taxReturnId}}" target="_blank">Tax Return</a>
+          {{/if}}
+          </div>
       </div>
     </div>
     <div class="panel panel-default">
