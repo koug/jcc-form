@@ -1,43 +1,53 @@
 import React from "react";
+import { useTracker } from "meteor/react-meteor-data";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
 
 import { TextInput } from "./inputs/react";
 
 const CsgComponent = () => {
-  return (
-    <div>
-      <Instructions></Instructions>
-      <h2>Grant Application</h2>
-      <Formik
-        initialValues={{ applicant: "" }}
-        validationSchema={Yup.object({
-          applicant: Yup.string().required("Required")
-        })}
-        onSubmit={(values, { setSubmitting }) => {
+  const { application, ready } = useTracker(() => {
+    const subscription = Meteor.subscribe("applicationType", "csg");
+
+    const application = ApplicationType.findOne({ applicationType: "csg" });
+    return { application, ready: subscription.ready() };
+  }, []); 
+  console.log("ready", ready, application);
+
+  if (ready) {
+    return (
+      <div>
+        <Instructions {...application} />
+        <h2>Grant Application</h2>
+        <Formik
+          initialValues={{ applicant: "" }}
+          validationSchema={Yup.object({
+            applicant: Yup.string().required("Required")
+          })}
+          onSubmit={(values, { setSubmitting }) => {
             setTimeout(() => {
               alert(JSON.stringify(values, null, 2));
               setSubmitting(false);
             }, 400);
           }}
-  
-      >
-        <Form>
-          <TextInput
-            label="Applicant (organization) Name"
-            name="applicant"
-            type="text"
-          ></TextInput>
-        </Form>
-      </Formik>
-    </div>
-  );
+        >
+          <Form>
+            <TextInput
+              label="Applicant (organization) Name"
+              name="applicant"
+              type="text"
+            ></TextInput>
+          </Form>
+        </Formik>
+      </div>
+    )
+  } else return <div>Loading</div>;
 };
 
-const Instructions = () => {
+const Instructions = (props) => {
   return (
     <div>
-      <h1>Community Security Grants</h1>
+      <h1>{props.desc}</h1>
       <h2>Policies and Procedures</h2>
       <p>
         These monies are available thanks to the Arthur Eder Family Fund of the
