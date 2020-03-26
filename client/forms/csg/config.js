@@ -1,50 +1,90 @@
 import React from "react";
-import { useTracker } from "meteor/react-meteor-data";
-import { Formik, Form } from "formik";
 import * as Yup from "yup";
 
-import { TextInput } from "./inputs/react";
+export const fieldsCsg = [
+  {
+    name: "applicant",
+    label: "Applicant (organization) Name",
+    type: "TextInput",
+    location: "applicant",
+    validation: Yup.string().required("Required"),
+    defaultValue: undefined
+  },
+  {
+    name: "applicantAddress",
+    label: "Applicant Address",
+    type: "TextInput",
+    location: "applicant",
+    validation: Yup.string().required("Required"),
+    defaultValue: undefined
+  },
+  {
+    name: "contact",
+    label: "Contact Person Name",
+    type: "TextInput",
+    location: "applicant",
+    validation: Yup.string().required("Required"),
+    defaultValue: undefined
+  },
+  {
+    name: "contactPhone",
+    label: "Contact Person Phone",
+    type: "TextInput",
+    location: "applicant",
+    validation: Yup.string().required("Required"),
+    defaultValue: undefined
+  },
+  {
+    name: "contactEmail",
+    label: "Contact Person Email",
+    type: "TextInput",
+    location: "applicant",
+    validation: Yup.string().email("Invalid Email").required("Required"),
+    defaultValue: undefined
+  },
+  {
+    name: "congrationHouseHolds",
+    label: "For synagogues: How many households are there in your congregation?",
+    type: "NumberInput",
+    location: "applicant",
+    validation: Yup.number().notRequired().nullable(),
+    defaultValue: undefined
+  },
+  {
+    name: "amountRequested",
+    label: "Total amount requested (in USD)",
+    type: "NumberInput",
+    location: "information",
+    validation: Yup.number().required("Required"),
+    defaultValue: undefined
+  },
+  {
+    name: "amountProject",
+    label: "Total amount of project (in USD)",
+    type: "NumberInput",
+    location: "information",
+    validation: Yup.number().required("Required"),
+    defaultValue: undefined
+  },
+  {
+    name: "fundsCommitted",
+    label: "Current funds committed to the project (if any, in USD)",
+    type: "NumberInput",
+    location: "information",
+    validation: Yup.number().notRequired().nullable(),
+    defaultValue: undefined
+  },
+  {
+    name: "fundsCommitted2",
+    label: "Current funds committed to the project (if any, in USD)",
+    type: "NumberInput",
+    location: "upload",
+    validation: Yup.number().notRequired().nullable(),
+    defaultValue: undefined
+  },
+];
 
-const CsgComponent = () => {
-  const { application, ready } = useTracker(() => {
-    const subscription = Meteor.subscribe("applicationType", "csg");
-
-    const application = ApplicationType.findOne({ applicationType: "csg" });
-    return { application, ready: subscription.ready() };
-  }, []); 
-  console.log("ready", ready, application);
-
-  if (ready) {
-    return (
-      <div>
-        <Instructions {...application} />
-        <h2>Grant Application</h2>
-        <Formik
-          initialValues={{ applicant: "" }}
-          validationSchema={Yup.object({
-            applicant: Yup.string().required("Required")
-          })}
-          onSubmit={(values, { setSubmitting }) => {
-            setTimeout(() => {
-              alert(JSON.stringify(values, null, 2));
-              setSubmitting(false);
-            }, 400);
-          }}
-        >
-          <Form>
-            <TextInput
-              label="Applicant (organization) Name"
-              name="applicant"
-              type="text"
-            ></TextInput>
-          </Form>
-        </Formik>
-      </div>
-    )
-  } else return <div>Loading</div>;
-};
-
-const Instructions = (props) => {
+export const Instructions = props => {
   return (
     <div>
       <h1>{props.desc}</h1>
@@ -100,9 +140,3 @@ const Instructions = (props) => {
     </div>
   );
 };
-
-Template.csg.helpers({
-  CsgComponent() {
-    return CsgComponent;
-  }
-});
