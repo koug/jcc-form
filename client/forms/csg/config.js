@@ -39,15 +39,20 @@ export const fieldsCsg = [
     label: "Contact Person Email",
     type: "TextInput",
     location: "applicant",
-    validation: Yup.string().email("Invalid Email").required("Required"),
+    validation: Yup.string()
+      .email("Invalid Email")
+      .required("Required"),
     defaultValue: undefined
   },
   {
     name: "congrationHouseHolds",
-    label: "For synagogues: How many households are there in your congregation?",
+    label:
+      "For synagogues: How many households are there in your congregation?",
     type: "NumberInput",
     location: "applicant",
-    validation: Yup.number().notRequired().nullable(),
+    validation: Yup.number()
+      .notRequired()
+      .nullable(),
     defaultValue: undefined
   },
   {
@@ -71,17 +76,23 @@ export const fieldsCsg = [
     label: "Current funds committed to the project (if any, in USD)",
     type: "NumberInput",
     location: "information",
-    validation: Yup.number().notRequired().nullable(),
+    validation: Yup.number()
+      .notRequired()
+      .nullable(),
     defaultValue: undefined
   },
   {
-    name: "fundsCommitted2",
-    label: "Current funds committed to the project (if any, in USD)",
-    type: "NumberInput",
+    name: "projectDetails",
+    label: "Upload the project details below",
+    type: "FileUpload",
     location: "upload",
-    validation: Yup.number().notRequired().nullable(),
+    validation: Yup.mixed()
+      .test("fileSize", "File is too large (2 MB max)", (file) => {
+        return file ? file.size <= 2 * 1024 * 1024 : true;
+      })
+      .required("Please select a file to upload"),
     defaultValue: undefined
-  },
+  }
 ];
 
 export const Instructions = props => {
@@ -138,5 +149,83 @@ export const Instructions = props => {
         </li>
       </ol>
     </div>
+  );
+};
+
+export const UploadInstructions = props => {
+  return (
+    <ol type="A">
+      <li>
+        <span>
+          <b>Project Description</b>
+        </span>
+        <ol type="1">
+          <li>
+            Describe the security project(s) for which your organization is
+            seeking funding.
+          </li>
+          <li>
+            Please provide a timeline for the project that includes specific
+            milestones, goals, and objectives.
+          </li>
+          <li>
+          <b><u>If applicable</u></b>, describe a plan for the long-term continuation and/or
+            maintenance of the project.
+          </li>
+          <li>
+            <span>
+              What methods and criteria will be used to evaluate the project?
+            </span>
+            <ol type="a">
+              <li>
+                Has your institution undertaken a security risk assessment? If
+                so please discuss and include as an attachment. b. Is the
+                proposed project or purchase aligned{" "}
+              </li>
+              <li>
+                Is the proposed project or purchase aligned with areas
+                identified in the assessment?
+              </li>
+            </ol>
+          </li>
+          <li>
+            Describe any potential problems that may arise during implementation
+            of the project and plans to address them.
+          </li>
+          <li>
+            If the project is a capital improvement project, are there
+            provisions for cost overruns?
+          </li>
+        </ol>
+      </li>
+      <li>
+        <b>Community Impact</b>
+        <br />
+        How will this project make your organization safer? If applicable,
+        reference your security assessment and how this project relates to the
+        assessment and the priorities derived from it.
+      </li>
+      <li>
+        <span>
+          <b>Financial Information</b>
+        </span>
+        <ol type="1">
+          <li>
+            <b><u>If applicable</u></b>, please describe in detail the plan to raise funds for
+            this project (including from individual donors, as well as
+            government and/or private foundation grants).
+          </li>
+          <li>
+            Please describe any funds (amount and source) pending and/or
+            currently committed to the project.
+          </li>
+        </ol>
+      </li>
+      <li>
+        <b>Project Budget</b> <br />
+        Please provide detailed information on sources and uses of funds, and
+        provide any supporting documentation (e.g., estimates from vendors).
+      </li>
+    </ol>
   );
 };

@@ -4,7 +4,7 @@ import { Formik, Form } from "formik";
 import * as Yup from "yup";
 
 import { Wrapper } from "../../inputs/react/Wrapper";
-import { fieldsCsg, Instructions } from "./config";
+import { fieldsCsg, Instructions, UploadInstructions } from "./config";
 import BuildForm from "../../inputs/react/BuildForm";
 
 const CsgComponent = () => {
@@ -29,18 +29,57 @@ const CsgComponent = () => {
           initialValues={initialValues}
           validationSchema={Yup.object().shape(validationSchema)}
           onSubmit={(values, { setSubmitting }) => {
-            setTimeout(() => {
-              console.log(values);
-              setSubmitting(false);
-            }, 400);
+            //Router.go("/confirmation/" + "abc");
+            const saveObj = { applicationType: "csg" };
+            fieldsCsg.forEach(f => {
+              if (f.type === "FileUpload") {
+                Meteor.saveFile(
+                  values.projectDetails,
+                  values.projectDetails.name,
+                  values.projectDetails.type,
+                  function(error, response) {
+                    if (error) {
+                      console.log("CAN'T Upload", error, error.getS);
+                    } else {
+                      saveObj[f.name + "Id"] = response;
+                    }
+                  }
+                );
+              } else {
+                saveObj[f.name] = values[f.name];
+              }
+            });
+
+            console.log(saveObj);
+            Meteor.call("insertApplication", saveObj, function(error, result) {
+              //callbacks.success();
+              Router.go("/confirmation/" + result);
+            });
+
+            setSubmitting(false);
           }}
         >
           {props => (
             <Form className="form-horizontal">
               <h2>Grant Application</h2>
-              <BuildForm fields={fieldsCsg.filter(field => field.location === "applicant")}></BuildForm>
+              <BuildForm
+                fields={fieldsCsg.filter(
+                  field => field.location === "applicant"
+                )}
+              ></BuildForm>
               <h2>Grant Information</h2>
-              <BuildForm fields={fieldsCsg.filter(field => field.location === "information")}></BuildForm>
+              <BuildForm
+                fields={fieldsCsg.filter(
+                  field => field.location === "information"
+                )}
+              ></BuildForm>
+              <h2>
+                Please answer and upload all questions completely and consisely
+              </h2>
+              <UploadInstructions />
+              <BuildForm
+                fields={fieldsCsg.filter(field => field.location === "upload")}
+              ></BuildForm>
               <Wrapper>
                 <button
                   type="submit"

@@ -1,10 +1,11 @@
 import React from "react";
 import { TextInput, NumberInput } from "./BasicInputs";
+import FileUpload from "./FileUpload";
 
 export default BuildForm = ({ fields }) => {
   return (
     <>
-      { fields.map((field, i) => {
+      {fields.map((field, i) => {
         switch (field.type) {
           case "TextInput":
             return (
@@ -24,6 +25,15 @@ export default BuildForm = ({ fields }) => {
                 value={field.defaultValue}
               />
             );
+          case "FileUpload":
+            return (
+              <FileUpload
+                key={i}
+                label={field.label}
+                name={field.name}
+                value={field.defaultValue}
+              />
+            );
           default:
             return <div key={i}></div>;
         }
@@ -31,4 +41,3 @@ export default BuildForm = ({ fields }) => {
     </>
   );
 };
-
