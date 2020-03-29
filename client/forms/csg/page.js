@@ -6,6 +6,7 @@ import * as Yup from "yup";
 import { Wrapper } from "../../inputs/react/Wrapper";
 import { fieldsCsg, Instructions, UploadInstructions } from "./config";
 import BuildForm from "../../inputs/react/BuildForm";
+import { saveFilePromise } from "../../client-save-file-promise";
 
 const CsgComponent = () => {
   const { application, ready } = useTracker(() => {
@@ -29,21 +30,23 @@ const CsgComponent = () => {
           initialValues={initialValues}
           validationSchema={Yup.object().shape(validationSchema)}
           onSubmit={(values, { setSubmitting }) => {
-            //Router.go("/confirmation/" + "abc");
             const saveObj = { applicationType: "csg" };
+            const promisesUpload = [];
             fieldsCsg.forEach(f => {
               if (f.type === "FileUpload") {
-                Meteor.saveFile(
-                  values.projectDetails,
-                  values.projectDetails.name,
-                  values.projectDetails.type,
-                  function(error, response) {
-                    if (error) {
-                      console.log("CAN'T Upload", error, error.getS);
-                    } else {
+                // upload file, push promise
+                promisesUpload.push(
+                  saveFilePromise(
+                    values.projectDetails,
+                    values.projectDetails.name,
+                    values.projectDetails.type
+                  )
+                    .then(response => {
                       saveObj[f.name + "Id"] = response;
-                    }
-                  }
+                    })
+                    .catch(error => {
+                      console.log("CAN'T Upload", error, error.getS);
+                    })
                 );
               } else {
                 saveObj[f.name] = values[f.name];
@@ -51,12 +54,24 @@ const CsgComponent = () => {
             });
 
             console.log(saveObj);
-            Meteor.call("insertApplication", saveObj, function(error, result) {
-              //callbacks.success();
-              Router.go("/confirmation/" + result);
-            });
-
-            setSubmitting(false);
+            // when files are uploaded, insert application
+            Promise.all(promisesUpload)
+              .then(values => {
+                Meteor.call("insertApplication", saveObj, function(
+                  error,
+                  result
+                ) {
+                  if (error) {
+                    console.log(error);
+                    setSubmitting(false);
+                  }
+                  Router.go("/confirmation/" + result);
+                });
+              })
+              .catch(error => {
+                console.log(error);
+                setSubmitting(false);
+              });
           }}
         >
           {props => (
