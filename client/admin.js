@@ -27,11 +27,12 @@ Template.admin.helpers({
   name: function() {
 
     switch (this.applicationType) {
-      case "israel": return this.firstName + this.lastName; break;
-      case "highschool": return this.mainContact; break;
-      case "stuartjdrell": return this.mainContact; break;
-      case "profdevind": return this.mainContact; break;
-      case "profdevgroup": return this.mainContact; break;
+      case "israel": return this.firstName + this.lastName; 
+      case "highschool": return this.mainContact; 
+      case "stuartjdrell": return this.mainContact; 
+      case "profdevind": return this.mainContact; 
+      case "profdevgroup": return this.mainContact; 
+      case "csg": return this.applicant; 
       default: return this.parentsGuardians;
     }
   }
