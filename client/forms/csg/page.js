@@ -4,22 +4,22 @@ import { Formik, Form } from "formik";
 import * as Yup from "yup";
 
 import { Wrapper } from "../../inputs/react/Wrapper";
-import { fieldsCsg, Instructions, UploadInstructions } from "./config";
+import { inputFields, Instructions, UploadInstructions } from "./config";
 import BuildForm from "../../inputs/react/BuildForm";
 import { saveFilePromise } from "../../client-save-file-promise";
 
-const CsgComponent = () => {
+const ReactComponent = ({app}) => {
   const { application, ready } = useTracker(() => {
-    const subscription = Meteor.subscribe("applicationType", "csg");
+    const subscription = Meteor.subscribe("applicationType", app);
 
-    const application = ApplicationType.findOne({ applicationType: "csg" });
+    const application = ApplicationType.findOne({ applicationType: app });
     return { application, ready: subscription.ready() };
   }, []);
 
   if (ready) {
     const initialValues = {};
     const validationSchema = {};
-    fieldsCsg.forEach(f => {
+    inputFields.forEach(f => {
       initialValues[f.name] = f.defaultValue;
       validationSchema[f.name] = f.validation;
     });
@@ -30,9 +30,9 @@ const CsgComponent = () => {
           initialValues={initialValues}
           validationSchema={Yup.object().shape(validationSchema)}
           onSubmit={(values, { setSubmitting }) => {
-            const saveObj = { applicationType: "csg" };
+            const saveObj = { applicationType: app };
             const promisesUpload = [];
-            fieldsCsg.forEach(f => {
+            inputFields.forEach(f => {
               if (f.type === "FileUpload") {
                 // upload file, push promise
                 promisesUpload.push(
@@ -78,13 +78,13 @@ const CsgComponent = () => {
             <Form className="form-horizontal">
               <h2>Grant Application</h2>
               <BuildForm
-                fields={fieldsCsg.filter(
+                fields={inputFields.filter(
                   field => field.location === "applicant"
                 )}
               ></BuildForm>
               <h2>Grant Information</h2>
               <BuildForm
-                fields={fieldsCsg.filter(
+                fields={inputFields.filter(
                   field => field.location === "information"
                 )}
               ></BuildForm>
@@ -93,7 +93,7 @@ const CsgComponent = () => {
               </h2>
               <UploadInstructions />
               <BuildForm
-                fields={fieldsCsg.filter(field => field.location === "upload")}
+                fields={inputFields.filter(field => field.location === "upload")}
               ></BuildForm>
               <Wrapper>
                 <button
@@ -113,7 +113,7 @@ const CsgComponent = () => {
 };
 
 Template.csg.helpers({
-  CsgComponent() {
-    return CsgComponent;
+  ReactComponent() {
+    return ReactComponent;
   }
 });
