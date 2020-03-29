@@ -159,7 +159,10 @@ Router.route('/admin/:type/:_id', {
     var templ;
     if (['israel', 'highschool', 'stuartjdrell', 'friedler', 'profdevgroup', 'profdevind', 'onehappycamper', 'womenofvision'].indexOf(this.params.type) != -1) {
       templ = this.params.type + "Edit";
-    }
+		}
+		else if (['csg'].indexOf(this.params.type) != -1) {
+			templ = 'reactFormAdmin';
+		}
     else templ = 'adminEdit';
     this.render(templ);
   }
