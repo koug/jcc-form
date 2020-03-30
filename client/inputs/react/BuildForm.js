@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { TextInput, NumberInput } from "./BasicInputs";
 import FileUpload from "./FileUpload";
 
@@ -7,7 +7,8 @@ export default BuildForm = ({ fields }) => {
     <>
       {fields.map((field, i) => {
         switch (field.type) {
-          case "TextInput":
+          case "string":
+          case "email":
             return (
               <TextInput
                 key={i}
@@ -16,7 +17,7 @@ export default BuildForm = ({ fields }) => {
                 value={field.defaultValue}
               />
             );
-          case "NumberInput":
+          case "number":
             return (
               <NumberInput
                 key={i}
@@ -25,7 +26,7 @@ export default BuildForm = ({ fields }) => {
                 value={field.defaultValue}
               />
             );
-          case "FileUpload":
+          case "file":
             return (
               <FileUpload
                 key={i}
@@ -34,8 +35,15 @@ export default BuildForm = ({ fields }) => {
                 value={field.defaultValue}
               />
             );
+          case "html":
+            return (
+              <div
+                key={i}
+                dangerouslySetInnerHTML={{ __html: field.value.join(" ") }}
+              ></div>
+            );
           default:
-            return <div key={i}></div>;
+            return <div key={i}>nothing</div>;
         }
       })}
     </>

@@ -8,7 +8,7 @@ export default FileUpload = ({ ...props }) => {
     <Wrapper meta={meta} label={props.label}>
       <input
         type="file"
-        accept="application/pdf, application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+        accept="application/pdf, application/msword"
         {...field}
         {...props}
         onChange={e => {

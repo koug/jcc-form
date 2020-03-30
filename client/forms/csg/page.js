@@ -4,7 +4,6 @@ import { Formik, Form } from "formik";
 import * as Yup from "yup";
 
 import { Wrapper } from "../../inputs/react/Wrapper";
-import { inputFields, Instructions, UploadInstructions } from "./config";
 import BuildForm from "../../inputs/react/BuildForm";
 import { saveFilePromise } from "../../client-save-file-promise";
 
@@ -19,21 +18,52 @@ const ReactComponent = ({app}) => {
   if (ready) {
     const initialValues = {};
     const validationSchema = {};
-    inputFields.forEach(f => {
+    application.definition.forEach(f => {
       initialValues[f.name] = f.defaultValue;
-      validationSchema[f.name] = f.validation;
+      let validation = null;
+      switch (f.type) {
+        case "string":
+          validation = Yup.string();
+          break;
+        case "email":
+          validation = Yup.string().email("Invalid Email");
+          break;
+        case "number":
+          validation = Yup.number();
+          break;
+        case "file":
+          validation = Yup.mixed()
+            .test("fileSize", "File is too large (2 MB max)", file => {
+              return file ? file.size <= 2 * 1024 * 1024 : true;
+            })
+            .test("fileFormat", "File format not accepted", file => {
+              return ["doc", "pdf"].includes(
+                file.name.split(".").pop()
+              );
+            });
+            break;
+        default: break;
+      }
+      
+      if (f.required !== undefined && f.required === true) {
+        validation = validation.required("Required");
+      }
+      if (f.required !== undefined && f.required === false) {
+        validation = validation.notRequired().nullable();
+      }
+      if (validation !== null)
+        validationSchema[f.name] = validation;
     });
     return (
       <div className="row">
-        <Instructions {...application} />
         <Formik
           initialValues={initialValues}
           validationSchema={Yup.object().shape(validationSchema)}
           onSubmit={(values, { setSubmitting }) => {
             const saveObj = { applicationType: app };
             const promisesUpload = [];
-            inputFields.forEach(f => {
-              if (f.type === "FileUpload") {
+            application.definition.forEach(f => {
+              if (f.type === "file") {
                 // upload file, push promise
                 promisesUpload.push(
                   saveFilePromise(
@@ -76,24 +106,8 @@ const ReactComponent = ({app}) => {
         >
           {props => (
             <Form className="form-horizontal">
-              <h2>Grant Application</h2>
               <BuildForm
-                fields={inputFields.filter(
-                  field => field.location === "applicant"
-                )}
-              ></BuildForm>
-              <h2>Grant Information</h2>
-              <BuildForm
-                fields={inputFields.filter(
-                  field => field.location === "information"
-                )}
-              ></BuildForm>
-              <h2>
-                Please answer and upload all questions completely and consisely
-              </h2>
-              <UploadInstructions />
-              <BuildForm
-                fields={inputFields.filter(field => field.location === "upload")}
+                fields={application.definition}
               ></BuildForm>
               <Wrapper>
                 <button
