@@ -19,7 +19,7 @@ if (Meteor.isClient) {
 			'profdevind',
 			'onehappycamper',
 			'womenofvision',
-			'csg',
+			'reactForm',
 			'root'
 		]
 	});
@@ -103,9 +103,13 @@ Router.route('/womenofvision', {
 		return Meteor.subscribe("applicationType", "womenofvision");
 	}
 });
-Router.route('/csg', {
-	layoutTemplate: 'layout'
-})
+Router.route("/r/:type", {
+  name: "reactForm",
+  layoutTemplate: "layout",
+  data: function() {
+    return { type: this.params.type };
+  }
+});
 Router.route('/form/:type',  {
 	name: 'form',
 	layoutTemplate: 'layout',

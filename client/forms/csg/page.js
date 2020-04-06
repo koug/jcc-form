@@ -126,7 +126,7 @@ const ReactComponent = ({app}) => {
   } else return <div>Loading</div>;
 };
 
-Template.csg.helpers({
+Template.reactForm.helpers({
   ReactComponent() {
     return ReactComponent;
   }
