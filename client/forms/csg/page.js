@@ -37,9 +37,9 @@ const ReactComponent = ({app}) => {
               return file ? file.size <= 2 * 1024 * 1024 : true;
             })
             .test("fileFormat", "File format not accepted", file => {
-              return ["doc", "pdf"].includes(
+              return file ? ["doc", "pdf"].includes(
                 file.name.split(".").pop()
-              );
+              ) : true;
             });
             break;
         default: break;
