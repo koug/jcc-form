@@ -1,6 +1,6 @@
 import React from "react";
 import { useTracker } from "meteor/react-meteor-data";
-import { Wrapper } from "../inputs/react/Wrapper";
+import { Wrapper } from "../inputs/Wrapper";
 
 export const ReactFormAdmin = ({ type, id, ...props }) => {
   const { application, ready } = useTracker(() => {

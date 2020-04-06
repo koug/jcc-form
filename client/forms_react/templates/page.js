@@ -3,9 +3,9 @@ import { useTracker } from "meteor/react-meteor-data";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
 
-import { Wrapper } from "../../inputs/react/Wrapper";
-import BuildForm from "../../inputs/react/BuildForm";
-import { saveFilePromise } from "../../client-save-file-promise";
+import { Wrapper } from "../inputs/Wrapper";
+import BuildForm from "../inputs/BuildForm";
+import { saveFilePromise } from "../client-save-file-promise";
 
 const ReactComponent = ({app}) => {
   const { application, ready } = useTracker(() => {
