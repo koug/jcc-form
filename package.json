@@ -4,7 +4,12 @@
   "description": "JCC scholarships forms",
   "main": "routes.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "meteor run",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "setup": "Powershell -Command mup.cmd setup --config .\\.deploy\\mup-prod.js --verbose",
+    "reconfig": "Powershell -Command mup.cmd reconfig --config .\\.deploy\\mup-prod.js --verbose",
+    "setupreconfig": "npm run setup && npm run reconfig",
+    "deploy": "Powershell -Command mup.cmd deploy --config .\\.deploy\\mup-prod.js --verbose"
   },
   "repository": {
     "type": "git",
