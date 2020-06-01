@@ -14,7 +14,7 @@ const NumberInput = ({ ...props }) => {
 const BasicInput = ({ label, type, ...props }) => {
   const [field, meta] = useField(props);
   return (
-    <Wrapper meta={meta} label={label}>
+    <Wrapper meta={meta} label={label} colsize={props.colsize}>
       <input type={type} className="form-control" {...field} {...props} />
     </Wrapper>
   );

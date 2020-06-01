@@ -7,6 +7,49 @@ import { Wrapper } from "../inputs/Wrapper";
 import BuildForm from "../inputs/BuildForm";
 import { saveFilePromise } from "../client-save-file-promise";
 
+const initValid = (field, init, valid) => {
+  let validation = null;
+  init[field.name] = field.type === "groupArray" ? [{}] : field.defaultValue;
+  switch (field.type) {
+    case "string":
+      validation = Yup.string();
+      break;
+    case "email":
+      validation = Yup.string().email("Invalid Email");
+      break;
+    case "number":
+      validation = Yup.number();
+      break;
+    case "file":
+      validation = Yup.mixed()
+        .test("fileSize", "File is too large (2 MB max)", file => {
+          return file ? file.size <= 2 * 1024 * 1024 : true;
+        })
+        .test("fileFormat", "File format not accepted", file => {
+          return file ? ["doc", "pdf"].includes(
+            file.name.split(".").pop()
+          ) : true;
+        });
+      break;
+    case "groupArray":
+      field.definition.forEach(f => {
+        const validationSchema = {};
+        initValid(f, init[field.name][0], validationSchema);
+      })
+    default: break;
+  }
+  
+  if (field.required !== undefined && field.required === true) {
+    validation = validation.required("Required");
+  }
+  if (field.required !== undefined && field.required === false) {
+    validation = validation.notRequired().nullable();
+  }
+  if (validation !== null)
+    valid[field.name] = validation;
+}
+
+
 const ReactComponent = ({app}) => {
   const { application, ready } = useTracker(() => {
     const subscription = Meteor.subscribe("applicationType", app);
@@ -19,41 +62,11 @@ const ReactComponent = ({app}) => {
     const initialValues = {};
     const validationSchema = {};
     application.definition.forEach(f => {
-      initialValues[f.name] = f.defaultValue;
-      let validation = null;
-      switch (f.type) {
-        case "string":
-          validation = Yup.string();
-          break;
-        case "email":
-          validation = Yup.string().email("Invalid Email");
-          break;
-        case "number":
-          validation = Yup.number();
-          break;
-        case "file":
-          validation = Yup.mixed()
-            .test("fileSize", "File is too large (2 MB max)", file => {
-              return file ? file.size <= 2 * 1024 * 1024 : true;
-            })
-            .test("fileFormat", "File format not accepted", file => {
-              return file ? ["doc", "pdf"].includes(
-                file.name.split(".").pop()
-              ) : true;
-            });
-            break;
-        default: break;
-      }
-      
-      if (f.required !== undefined && f.required === true) {
-        validation = validation.required("Required");
-      }
-      if (f.required !== undefined && f.required === false) {
-        validation = validation.notRequired().nullable();
-      }
-      if (validation !== null)
-        validationSchema[f.name] = validation;
+      initValid(f, initialValues, validationSchema);
     });
+
+    console.log(initialValues);
+    
     return (
       <div className="row">
         <Formik
@@ -63,13 +76,13 @@ const ReactComponent = ({app}) => {
             const saveObj = { applicationType: app };
             const promisesUpload = [];
             application.definition.forEach(f => {
-              if (f.type === "file") {
+              if (f.type === "file" && values[f.name] !== undefined) {
                 // upload file, push promise
                 promisesUpload.push(
                   saveFilePromise(
-                    values.projectDetails,
-                    values.projectDetails.name,
-                    values.projectDetails.type
+                    values[f.name],
+                    values[f.name].name,
+                    values[f.name].type
                   )
                     .then(response => {
                       saveObj[f.name + "Id"] = response;
@@ -84,6 +97,7 @@ const ReactComponent = ({app}) => {
             });
 
             console.log(saveObj);
+            return;
             // when files are uploaded, insert application
             Promise.all(promisesUpload)
               .then(values => {
@@ -108,6 +122,7 @@ const ReactComponent = ({app}) => {
             <Form className="form-horizontal">
               <BuildForm
                 fields={application.definition}
+                values={props.values}
               ></BuildForm>
               <Wrapper>
                 <button
