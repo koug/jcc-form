@@ -33,6 +33,7 @@ Template.admin.helpers({
       case "profdevind": return this.mainContact; 
       case "profdevgroup": return this.mainContact; 
       case "csg": return this.applicant; 
+      case "csg": return this.organization; 
       default: return this.parentsGuardians;
     }
   }
