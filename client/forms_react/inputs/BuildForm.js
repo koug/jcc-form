@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import { TextInput, NumberInput } from "./BasicInputs";
+import { TextInput, NumberInput, DropDownInput } from "./BasicInputs";
 import FileUpload from "./FileUpload";
 
 export default BuildForm = ({ fields }) => {
@@ -26,6 +26,14 @@ export default BuildForm = ({ fields }) => {
                 value={field.defaultValue}
               />
             );
+          case "dropdown":
+            return (
+              <DropDownInput
+                key={i}
+                label={field.label}
+                name={field.name}
+                options={field.options} />
+            ); 
           case "file":
             return (
               <FileUpload

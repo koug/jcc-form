@@ -28,6 +28,9 @@ const ReactComponent = ({app}) => {
         case "email":
           validation = Yup.string().email("Invalid Email");
           break;
+        case "dropdown":
+          validation = Yup.string();
+          break;
         case "number":
           validation = Yup.number();
           break;
