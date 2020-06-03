@@ -32,8 +32,10 @@ Template.admin.helpers({
       case "stuartjdrell": return this.mainContact; 
       case "profdevind": return this.mainContact; 
       case "profdevgroup": return this.mainContact; 
-      case "csg": return this.applicant; 
-      case "csg": return this.organization; 
+      case "csg": 
+      case "elderly": 
+        return this.applicant; 
+      case "csg-postaward": return this.organization; 
       default: return this.parentsGuardians;
     }
   }
