@@ -17,6 +17,9 @@ const initValid = (field, init, valid) => {
     case "email":
       validation = Yup.string().email("Invalid Email");
       break;
+    case "date":
+      validation = Yup.date().typeError("Please enter a valid date");
+      break;
     case "number":
       validation = Yup.number();
       break;

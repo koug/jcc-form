@@ -14,6 +14,7 @@ export default BuildForm = ({ fields, values, arrayIndex, arrayField }) => {
         switch (field.type) {
           case "string":
           case "email":
+          case "date":
             return (
               <TextInput
                 key={i}
