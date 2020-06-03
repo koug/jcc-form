@@ -1,6 +1,6 @@
 import React from "react";
 import { useTracker } from "meteor/react-meteor-data";
-import { Wrapper } from "../inputs/Wrapper";
+import { WrapperInline } from "../inputs/Wrapper";
 
 export const ReactFormAdmin = ({ type, id, ...props }) => {
   const { application, ready } = useTracker(() => {
@@ -25,7 +25,7 @@ export const ReactFormAdmin = ({ type, id, ...props }) => {
         {definition
           .filter(d => d.type !== "html")
           .map((key,i) => {
-            return <Wrapper key={i} label={key.label}>
+            return <WrapperInline key={i} label={key.label}>
               {((key) => {
                 switch (key.type) {
                   case "groupArray":
@@ -55,7 +55,7 @@ export const ReactFormAdmin = ({ type, id, ...props }) => {
                     return <div>{data[key.name]}</div>;
                 }
               })(key)}
-            </Wrapper>
+            </WrapperInline>
          })
         }
       </div>
