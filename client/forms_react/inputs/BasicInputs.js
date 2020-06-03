@@ -8,7 +8,22 @@ const TextInput = ({ ...props }) => {
 };
 
 const NumberInput = ({ ...props }) => {
-  return <BasicInput {...props} type="number" />
+  return <BasicInput type="number"{...props} />
+};
+
+const DropDownInput = ({ ...props }) => {
+  const [field, meta] = useField(props.name);
+  console.log(props);
+  return (
+    <Wrapper meta={meta} label={props.label}>
+      <select className="form-control" {...field} {...props} >
+        <option value="">-- Please Select --</option>
+        {props.options.map((o,i) => {
+          return <option key={i} value={o.value}>{o.text}</option>;
+        })}
+      </select>
+    </Wrapper>
+  );
 };
 
 const BasicInput = ({ label, type, ...props }) => {
@@ -20,4 +35,4 @@ const BasicInput = ({ label, type, ...props }) => {
   );
 };
 
-export { TextInput, NumberInput };
+export { TextInput, NumberInput, DropDownInput };

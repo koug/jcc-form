@@ -20,6 +20,9 @@ const initValid = (field, init, valid) => {
     case "number":
       validation = Yup.number();
       break;
+    case "dropdown":
+      validation = Yup.string();
+      break;
     case "file":
       validation = Yup.mixed()
         .test("fileSize", "File is too large (2 MB max)", file => {

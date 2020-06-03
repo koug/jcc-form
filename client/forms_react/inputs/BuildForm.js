@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import { TextInput, NumberInput } from "./BasicInputs";
+import { TextInput, NumberInput, DropDownInput } from "./BasicInputs";
 import FileUpload from "./FileUpload";
 import { FieldArray, setNestedObjectValues } from "formik";
 
@@ -33,6 +33,14 @@ export default BuildForm = ({ fields, values, arrayIndex, arrayField }) => {
                 colsize={field.colSize ?? 12}
               />
             );
+          case "dropdown":
+            return (
+              <DropDownInput
+                key={i}
+                label={field.label}
+                name={field.name}
+                options={field.options} />
+            ); 
           case "file":
             return (
               <FileUpload
