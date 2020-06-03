@@ -42,7 +42,9 @@ const initValid = (field, init, valid) => {
         const validationSchema = {};
         initValid(f, init[field.name][0], validationSchema);
       })
-    default: break;
+    default: 
+      validation= Yup.string(); 
+      break;
   }
   
   if (field.required !== undefined && field.required === true) {
@@ -102,8 +104,6 @@ const ReactComponent = ({app}) => {
               }
             });
 
-            console.log(saveObj);
-            return;
             // when files are uploaded, insert application
             Promise.all(promisesUpload)
               .then(values => {
