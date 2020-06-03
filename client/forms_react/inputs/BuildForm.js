@@ -60,39 +60,48 @@ export default BuildForm = ({ fields, values, arrayIndex, arrayField }) => {
             );
           case "groupArray":
             return (
-              <div key={i}>
-              <h6>{fieldName}</h6>
-              <p>{field.label}</p>
-              <div className="row">
-                <FieldArray 
+              <div key={i} className="panel panel-default">
+                <div className="panel-heading">{field.label}</div>
+                <FieldArray
                   name={fieldName}
-                  render={arrayHelper => {
-                    console.log("values[fieldName]", values[fieldName])
+                  render={(arrayHelper) => {
                     return (
-                      <div>
+                      <ul className="list-group">
                         {values[fieldName].map((f, i) => (
-                          <BuildForm
-                            key={i}
-                            fields={field.definition}
-                            values={f}
-                            arrayField={fieldName}
-                            arrayIndex={i}
-                          />
-                        ))}
-                        <div className="col-sm-12">
-                          <button
+                          <li key={i} className="list-group-item">
+                          <div className="row">
+                            <BuildForm
+                              key={i}
+                              fields={field.definition}
+                              values={f}
+                              arrayField={fieldName}
+                              arrayIndex={i}
+                            /></div>
+                            {i > 0 && <button
                             type="button"
-                            className="btn btn-link"
-                            onClick={() => arrayHelper.push({})}
+                            className="btn btn-danger"
+                            onClick={() => arrayHelper.remove(i)}
                           >
-                            add
-                          </button>
-                        </div>
-                      </div>
+                            Remove
+                          </button>}
+
+                          </li>
+                        ))}
+                        <li className="list-group-item">
+                          <div>
+                            <button
+                              type="button"
+                              className="btn btn-link"
+                              onClick={() => arrayHelper.push({})}
+                            >
+                              {field.addBtnLabel ?? "Add"}
+                            </button>
+                          </div>
+                        </li>
+                      </ul>
                     );
                   }}
                 />
-              </div>
               </div>
             );
           default:
