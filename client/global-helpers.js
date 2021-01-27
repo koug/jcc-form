@@ -62,6 +62,9 @@ Template.registerHelper('formatDateNiceNoDay', function(date) {
 Template.registerHelper('formatDateNice', function(date) {
   return moment(date).format('dddd, MMMM DD, YYYY');
 });
+Template.registerHelper('getYear', function(date, addYear = 0) {
+  return moment(date).add(addYear, 'y').year();
+});
 Template.registerHelper('getTemplate', function(data) {
   let item = data.item;
   let schema = data.schema;
