@@ -91,11 +91,12 @@ familyFormSchema = new SimpleSchema({
   // gross income
   "grossIncome.Father": {
     type: Number,
-    label: "Father",
+    label: "Parent/Guardian 1",
   },
   "grossIncome.Mother": {
     type: Number,
-    label: "Mother"
+    label: "Parent/Guardian 2",
+    optional: true
   },
   "grossIncome.Other": {
     type: Number,
