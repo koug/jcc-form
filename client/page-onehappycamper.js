@@ -33,6 +33,20 @@ Template.onehappycamper.helpers({
   }
 });
 
+Template.onehappycamper.onRendered(function () {
+  // Use the Packery jQuery plugin
+  if (new Date() > Template.currentData().dateSub) {
+      this.$('#message').show();
+      this.$('#the-form').hide();
+  }
+  else {
+      this.$('#message').hide();
+      this.$('#the-form').show();
+  }
+});
+
+
+
 Template.inputCampers.onCreated(function() {
   this.num = new ReactiveVar(1);
 });
