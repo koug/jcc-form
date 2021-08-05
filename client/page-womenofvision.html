@@ -26,7 +26,7 @@
 
 <template name="womenofvision"> 
   <h1>
-    <p>Women of Vision Society 2018 Grant Application</p>
+    <p>Women of Vision Society {{getYear dateSub}} Grant Application</p>
   </h1>
   <p><span>Applications are due to The Jewish Foundation Office by {{formatDateNice dateSub}} at 5:00 p.m.</span></p>
   {{#formJCC data=appType schema=schema typeDesc=typeDesc action=action button1='Next' id='womenofvision'}}
@@ -164,7 +164,7 @@
       <li>I have defined my target population.</li>
       <li>I have provided a justifiable and appropriate budget in relation to the proposed project.</li>
       <li>I have completed each question on the application.</li>
-      <li>If a 2017 Women of Vision Grant was awarded to my organization, I have submitted an evaluation for that grant.</li>
+      <li>If a {{getYear data.dateSub -1}} Women of Vision Grant was awarded to my organization, I have submitted an evaluation for that grant.</li>
     </ul>
   </div>
   {{/formJCC}}
