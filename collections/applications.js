@@ -235,7 +235,7 @@ familyFormSchema = new SimpleSchema({
   },
   "otherPrograms": {
     type: String,
-    label: "Please tell us all the other programs that you plan to apply for through JSI in the 2019/2020 year",
+    label: "Please tell us all the other programs that you plan to apply for through JSI in the 2021/2022 year",
     optional: true
   },
   "comments": {
