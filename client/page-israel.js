@@ -61,7 +61,10 @@ Template.israel.events({
     var selectedOption = $("option:selected", "#" + this.id).text(),
       dateSummer = Template.currentData().dateSummer,
       dateGap = Template.currentData().dateGap,
+      dateGapApplicationOpen = Template.currentData().dateGapApplicationOpen,
       now = new Date();
+
+    $("#messageGapClosed").hide();
 
     if ((selectedOption === "Summer Trip" && now > dateSummer) ||
       (selectedOption === "Gap Program" && now > dateGap)) {
@@ -74,7 +77,19 @@ Template.israel.events({
       $("#the-form").show()
       $("button[type='submit']").show();
 
-    }
+      if (selectedOption === "Gap Program") {
+        if (now > dateGapApplicationOpen) {
+          $("#messageGapClosed").hide();
+          $("#the-form").show()
+          $("button[type='submit']").show();
+        }
+        else {
+          $("#messageGapClosed").show();
+          $("#the-form").hide()
+          $("button[type='submit']").hide();
+        }
+      }
+      }
   },
   "change #more-funds": function() {
     if ($("#" + this.id).is(":checked")) $("#div-more-funds").show();
