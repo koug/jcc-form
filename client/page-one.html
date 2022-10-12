@@ -1,22 +1,18 @@
 <template name="familyForm">
   <h2>{{appType.title}}</h2>
   <h3><b>{{appType.subtitle}}</b></h3>
+  <p>{{appType.firstPar}} {{appType.subtitle}}</p>
   <p>
-  {{appType.firstPar}}
-  {{appType.subtitle}}
+    <b>The deadline for JSI application submission is {{appType.date}}.</b>
   </p>
   <p>
-  <b>The deadline for JSI application submission is {{appType.date}}.</b>
+    Jewish Scholarship Initiative Awards are for programs in the Greater New
+    Haven Catchment Area.
+    <a href="/jfgnf_catchment_area.pdf" target="_blank"> Click here</a> for a
+    map of the towns within the catchment area.
   </p>
   <p>
-  Jewish Scholarship Initiative Awards are for programs in the Greater
-  New Haven Catchment Area.
-  <a href="/jfgnf_catchment_area.pdf" target="_blank">
-    Click here</a> for a map of the towns
-  within the catchment area.
-  </p>
-  <p>
-  <b>If unable to complete online, please mail to: </b>
+    <b>If unable to complete online, please mail to: </b>
   </p>
   <ul class="nb">
     <li>Beth Kupcho</li>
@@ -25,51 +21,60 @@
     <li>360 Amity Road</li>
     <li>Woodbridge, CT 06525</li>
   </ul>
+  {{#if isNowAfter appType.dateClosing}}
+  <div class="alert alert-warning" role="warning">
+    The submission period is over for this program
+  </div>
+  {{else}}
   <div class="first">
     {{#formJCC data=appType schema=schema typeDesc=typeDesc action=action
-    button1='Next'}}
-    {{> inputHidden field='applicationType'}}
+    button1='Next'}} {{#if isNowAfter data.dateClose}} {{/if}} {{> inputHidden
+    field='applicationType'}}
     <div class="form-group">
       {{> inputText field='parentsGuardians' showLabel=true}}
     </div>
     <div class="form-group">
       {{> inputText field='mainContact' showLabel=true}}
     </div>
+    <div class="form-group">{{> inputText field='address' showLabel=true}}</div>
     <div class="form-group">
-      {{> inputText field='address' showLabel=true}}
-    </div>
-    <div class="form-group">
-      {{> inputText field='city' showLabel=true class='col-sm-4'}}
-      {{> inputSelect field='state' showLabel=true class='col-sm-4' checkStates=true}}
+      {{> inputText field='city' showLabel=true class='col-sm-4'}} {{>
+      inputSelect field='state' showLabel=true class='col-sm-4'
+      checkStates=true}}
       <!-- {{> inputText field='state' showLabel=true class='col-sm-4'}} -->
       {{> inputText field='zip' showLabel=true class='col-sm-4'}}
     </div>
     <div class="form-group">
-      {{> inputText field='cellPhone' showLabel=true class='col-sm-4'}}
-      {{> inputText field='homePhone' showLabel=true class='col-sm-4'}}
-      {{> inputText field='email' showLabel=true class='col-sm-4'}}
+      {{> inputText field='cellPhone' showLabel=true class='col-sm-4'}} {{>
+      inputText field='homePhone' showLabel=true class='col-sm-4'}} {{>
+      inputText field='email' showLabel=true class='col-sm-4'}}
     </div>
     <div class="panel panel-default">
       <div class="panel-heading">Household Dependents</div>
       <div class="panel-body">
-        <div><b><span style="text-decoration: underline">Note</span>: list only dependents below and NOT parents/guardian.</b><br/><br/></div>
+        <div>
+          <b
+            ><span style="text-decoration: underline">Note</span>: list only
+            dependents below and NOT parents/guardian.</b
+          ><br /><br />
+        </div>
         {{> inputHousehold}}
       </div>
     </div>
     <div class="panel panel-default">
-      <div class="panel-heading">Gross Income for tax year {{data.taxYear}}</div>
+      <div class="panel-heading">
+        Gross Income for tax year {{data.taxYear}}
+      </div>
       <div class="panel-body">
         <div class="form-group">
-          {{> inputText field='grossIncome.Father' showLabel=true class='col-sm-4'}}
-          {{> inputText field='grossIncome.Mother' showLabel=true class='col-sm-4'}}
-          {{> inputText field='grossIncome.Other' showLabel=true class='col-sm-4'}}
+          {{> inputText field='grossIncome.Father' showLabel=true
+          class='col-sm-4'}} {{> inputText field='grossIncome.Mother'
+          showLabel=true class='col-sm-4'}} {{> inputText
+          field='grossIncome.Other' showLabel=true class='col-sm-4'}}
         </div>
         <div class="form-group">
           <!-- {{ > inputFile field='taxReturn' showLabel=true}} -->
-          {{#if hasTaxReturn}}
-          {{ > inputFile}}
-          {{/if}}
-
+          {{#if hasTaxReturn}} {{ > inputFile}} {{/if}}
         </div>
         <!-- <div class="form-group">
           <div class="col-sm-12">
@@ -87,27 +92,22 @@
       <div class="panel-heading">Annual Expenses</div>
       <div class="panel-body">
         <p>
-        <b>Spending on Jewish Life:</b>
+          <b>Spending on Jewish Life:</b>
         </p>
         <div class="form-group">
           {{> inputText field='spending.daySchool.where' showLabel=true
-          class='col-sm-6'}}
-          {{> inputText field='spending.daySchool.amount' showLabel=true
-          class='col-sm-6' expense=true}}
-          {{> inputText field='spending.synagogue.where' showLabel=true
-          class='col-sm-6'}}
-          {{> inputText field='spending.synagogue.amount' showLabel=true
-          class='col-sm-6' expense=true}}
-          {{> inputText field='spending.jewishCamp.where' showLabel=true
-          class='col-sm-6'}}
+          class='col-sm-6'}} {{> inputText field='spending.daySchool.amount'
+          showLabel=true class='col-sm-6' expense=true}} {{> inputText
+          field='spending.synagogue.where' showLabel=true class='col-sm-6'}} {{>
+          inputText field='spending.synagogue.amount' showLabel=true
+          class='col-sm-6' expense=true}} {{> inputText
+          field='spending.jewishCamp.where' showLabel=true class='col-sm-6'}}
           {{> inputText field='spending.jewishCamp.amount' showLabel=true
-          class='col-sm-6' expense=true}}
-          {{> inputText field='spending.jccDues.amountPerMonth' showLabel=true
-          class='col-sm-6'}}
-          {{> inputText field='spending.jccDues.amount' showLabel=true
-          class='col-sm-6' expense=true}}
-          {{> inputText field='spending.youthPrograms.where' showLabel=true
-          class='col-sm-6'}}
+          class='col-sm-6' expense=true}} {{> inputText
+          field='spending.jccDues.amountPerMonth' showLabel=true
+          class='col-sm-6'}} {{> inputText field='spending.jccDues.amount'
+          showLabel=true class='col-sm-6' expense=true}} {{> inputText
+          field='spending.youthPrograms.where' showLabel=true class='col-sm-6'}}
           {{> inputText field='spending.youthPrograms.amount' showLabel=true
           class='col-sm-6' expense=true}}
         </div>
@@ -115,49 +115,49 @@
         <!-- </div>
           <div class="panel panel-default">
           <div class="panel-heading">Itemize Extraordinary Expenses</div>-->
-          <!-- <div class="panel-body"> -->
-          <p>
+        <!-- <div class="panel-body"> -->
+        <p>
           <b>Extraordinary Expenses:</b>
-          </p>
-          {{> inputExtraordinaryExpenses}}
-          <div class="row" id="total-expenses">
-            <div class="col-sm-6">
-            </div>
-            <div class="col-sm-6">
-              <label><span>Total: $0</span></label>
-            </div>
+        </p>
+        {{> inputExtraordinaryExpenses}}
+        <div class="row" id="total-expenses">
+          <div class="col-sm-6"></div>
+          <div class="col-sm-6">
+            <label><span>Total: $0</span></label>
           </div>
-          </div>
-          </div>
-          <div class="panel panel-default">
-            <div class="panel-heading">
-              Please list the names of {{data.desc}} programs for which you will be
-              requesting assistance.</div>
-            <div class="panel-body">
-              {{> inputPrograms}}
-            </div>
-          </div>
+        </div>
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        Please list the names of {{data.desc}} programs for which you will be
+        requesting assistance.
+      </div>
+      <div class="panel-body">{{> inputPrograms}}</div>
+    </div>
 
-          <div class="checkbox">
-            {{> inputCheckbox field='notBeenInformOfAward'}}
-          </div><br/>
+    <div class="checkbox">{{> inputCheckbox field='notBeenInformOfAward'}}</div>
+    <br />
 
-          <div class="form-group">
-            {{> inputTextarea field='otherPrograms' showLabel=true}}
-          </div>
+    <div class="form-group">
+      {{> inputTextarea field='otherPrograms' showLabel=true}}
+    </div>
 
-          <div class="form-group">
-            {{> inputTextarea field='comments' showLabel=true}}
-          </div>
-          {{/formJCC}}
-          {{#if hasDisclaimer}} 
-          <p>
-          <b>Disclaimer</b>: The scholarship award is based on the number of weeks the applicant is attending camp as well as the cost of camp.  
-          Should the applicant subsequently reduce the number of weeks of camp attendance, the scholarship award will be reduced pro rata.
-          Unfortunately, should the applicant increase the number of weeks of camp attendance, the application cannot be reopened.
-          </p>
-          {{/if}}
+    <div class="form-group">
+      {{> inputTextarea field='comments' showLabel=true}}
+    </div>
+    {{/formJCC}} {{#if hasDisclaimer}}
+    <p>
+      <b>Disclaimer</b>: The scholarship award is based on the number of weeks
+      the applicant is attending camp as well as the cost of camp. Should the
+      applicant subsequently reduce the number of weeks of camp attendance, the
+      scholarship award will be reduced pro rata. Unfortunately, should the
+      applicant increase the number of weeks of camp attendance, the application
+      cannot be reopened.
+    </p>
+    {{/if}}
   </div>
+  {{/if}}
 
   <!-- <div class="second">
     <div class="panel panel-default">
