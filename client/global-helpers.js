@@ -65,6 +65,9 @@ Template.registerHelper("formatDateNiceNoDay", function (date) {
 Template.registerHelper("formatDateNice", function (date) {
   return moment(date).format("dddd, MMMM DD, YYYY");
 });
+Template.registerHelper("isNowAfter", function (date) {
+  return moment().isAfter(date);
+});
 Template.registerHelper("getYear", function (date, addYear = 0) {
   return moment(date).add(addYear, "y").year();
 });

@@ -21,6 +21,11 @@
     <li>360 Amity Road</li>
     <li>Woodbridge, CT 06525</li>
   </ul>
+  {{#if isNowAfter appType.dateClosing}}
+  <div class="alert alert-warning" role="warning">
+    The submission period is over for this program
+  </div>
+  {{else}}
   <div class="first">
     {{#formJCC data=appType schema=schema typeDesc=typeDesc action=action
     button1='Next'}} {{> inputHidden field='applicationType'}}
@@ -151,6 +156,7 @@
     </p>
     {{/if}}
   </div>
+  {{/if}}
 
   <!-- <div class="second">
     <div class="panel panel-default">
