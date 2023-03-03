@@ -9,7 +9,7 @@
     "setup": "Powershell -Command mup setup --config .\\.deploy\\mup-prod.js --verbose",
     "reconfig": "Powershell -Command mup reconfig --config .\\.deploy\\mup-prod.js --verbose",
     "setupreconfig": "npm run setup && npm run reconfig",
-    "deploy": "Powershell -Command mup deploy --config .\\.deploy\\mup-prod.js --verbose"
+    "deploy": "npx mup deploy --config ./.deploy/mup-prod.js --verbose"
   },
   "repository": {
     "type": "git",
