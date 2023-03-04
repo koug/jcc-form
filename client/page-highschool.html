@@ -14,29 +14,46 @@
     <b>Deadline: {{formatDateNice appType.dateSub}}</b>
   </h3>
   <p>
-  <b>To be considered, applicants must:</b> 
+  <b>Eligibility:</b> 
   </p>
   <ol>
     <li>Be a resident of Greater New Haven (<a href="/jfgnf_catchment_area.pdf" target="_blank">click here</a> for a map of the towns within the catchment area), be a Jewish high school senior with at least a "B" average and upload your 1040.  </li>
     <li>Submit, in its entirety, ALL of the information required below, between <b>April 1 and {{formatDateNiceNoDay appType.dateSub}}</b>. (This means that you have already been accepted to the school of your choice).  </li>
   </ol>
   <p>
-  <b>Applicants must include:</b>
+  <b>Submission Requirements (note, these requirements are very similar to the Drell scholarship
+    and you are encouraged to apply to both):</b>
   </p>
   <ol>
-    <li>The completed financial questionnaires with tax returns (<a href="/podoloff_questionnaire.docx">download questionaire here</a>).  </li>
-    <li>An essay which includes an autobiographical sketch, personal history, special interests, ambitions, educational goals, involvement in the Jewish community and work history.  </li>
-    <li>Three (3) character references: one by an educator, plus two more i.e. Rabbi, employer, coach.  </li>
-    <li>An official copy of high school transcript, including the first marking period of the senior year.  </li>
-    <li>A copy of the college acceptance letter describing the college's financial aid package plus other grants, scholarships and awards received.  </li>
+    <li>Parents’ 2022 1040 Tax Return, pages 1 and 2</li>
+    <li>750 word essay responding to the questions detailed below, and</li>
+    <li>Submisson of both by May 16, 2023</li>
+    <li>An official copy of high school transcript, including the first marking period of the senior year.</li>
+    <li>A copy of the college acceptance letter describing the college's financial aid package plus
+    other grants, scholarships and awards received.</li>
     <li>A written note of acknowledgement by those who receive scholarships.</li>
+    <li>The awards notification will be made by Wednesday, May 31, 2023.</li>
   </ol>
-
   <p>
-  <ol>
-  </ol>
+    <b>
+      Please include the following in your 750 word essay (note, these requirements are very
+      similar to the Drell scholarship and you are encouraged to apply to both):
+    </b>
   </p>
-
+  <ol>
+    <li>Tell us about yourself and your family composition.</li>
+    <li>Tell us how you could benefit from receiving a scholarship.</li>
+    <li>What responsibilities have you assumed to assist your family?</li>
+    <li>What challenges other than financial have you faced?</li>
+    <li>What paid job(s) have you had during your high school or college experience? What did you
+    learn from this employment?</li>
+    <li>Tell us about any volunteer experiences you've had in the past four years and what you've
+    learned from the experience(s).</li>
+    <li>What does your Jewish identity mean to you?</li>
+    <li>How have you spent the last three summers? What are your plans for this summer?</li>
+    <li>What are your plans for college?    </li>
+  </ol>
+  
   <div class="first">
     <div class="alert alert-warning" role="alert" id="message">
       The submission period is over for the selected program
@@ -96,15 +113,6 @@
             {{ > inputFileGen tag='essay' label="* Essay" accept="application/pdf, application/msword"}}
           </div>
           <div class="form-group">
-            {{ > inputFileGen tag='cr1' label="* Educator Character Reference" accept="application/pdf, application/msword"}}
-          </div>
-          <div class="form-group">
-            {{ > inputFileGen tag='cr2' label="* Second Character Reference" accept="application/pdf, application/msword"}}
-          </div>
-          <div class="form-group">
-            {{ > inputFileGen tag='cr3' label="* Third Character Reference" accept="application/pdf, application/msword"}}
-          </div>
-          <div class="form-group">
             {{ > inputFileGen tag='hsTrans' label="* High School Transcript" accept="application/pdf, application/msword"}}
           </div>
           <div class="form-group">
@@ -118,10 +126,7 @@
       <div>
         <h3 style="text-transform: uppercase">CHECKLIST FOR COMPLETE APPLICATION AND REQUIRED DOCUMENTS DUE {{formatDateNiceNoDay data.dateSub}}, 5PM</h3>
         <ul>
-          <li> Financial statement of Parents/Guardians</li>
-          <li>Financial statement of student</li>
           <li>Personal essay</li>
-          <li>Three character references: one by an educator plus two more</li>
           <li>Official copy of high school transcript including first marking period of senior year</li>
           <li>Copy of college acceptance letter describing the college financial aid package plus other grants, scholarships and awards received </li>
         </ul>

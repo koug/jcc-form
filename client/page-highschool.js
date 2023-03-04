@@ -22,9 +22,6 @@ Template.highschool.helpers({
             this.taxReturnId = $("#taxReturnId").val();
             this.studentQuestionnaireId = $("#studentQuestionnaireId").val();
             this.essayId = $("#essayId").val();
-            this.cr1Id = $("#cr1Id").val();
-            this.cr2Id = $("#cr2Id").val();
-            this.cr3Id = $("#cr3Id").val();
             this.hsTransId = $("#hsTransId").val();
             this.colAcceptId = $("#colAcceptId").val();
             this.noteAknowledgementId = $("#noteAknowledgementId").val();
@@ -33,9 +30,6 @@ Template.highschool.helpers({
             if (this.taxReturnId === "") missingFiles.push("tax return");
             if (this.studentQuestionnaireId === "") missingFiles.push("applicant financial questionnaire");
             if (this.essayId === "") missingFiles.push("essay");
-            if (this.cr1Id === "") missingFiles.push("educator character reference");
-            if (this.cr2Id === "") missingFiles.push("second character reference");
-            if (this.cr3Id === "") missingFiles.push("third character reference");
             if (this.hsTransId === "") missingFiles.push("high scool transcript");
             if (this.colAcceptId === "") missingFiles.push("college acceptance letter");
             if (this.noteAknowledgementId === "") missingFiles.push("note of aknowledgement");
