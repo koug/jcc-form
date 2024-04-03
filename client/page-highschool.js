@@ -24,7 +24,7 @@ Template.highschool.helpers({
             this.essayId = $("#essayId").val();
             this.hsTransId = $("#hsTransId").val();
             this.colAcceptId = $("#colAcceptId").val();
-            this.noteAknowledgementId = $("#noteAknowledgementId").val();
+            // this.noteAknowledgementId = $("#noteAknowledgementId").val();
 
             var missingFiles = [];
             if (this.taxReturnId === "") missingFiles.push("tax return");
@@ -32,7 +32,7 @@ Template.highschool.helpers({
             if (this.essayId === "") missingFiles.push("essay");
             if (this.hsTransId === "") missingFiles.push("high scool transcript");
             if (this.colAcceptId === "") missingFiles.push("college acceptance letter");
-            if (this.noteAknowledgementId === "") missingFiles.push("note of aknowledgement");
+            // if (this.noteAknowledgementId === "") missingFiles.push("note of aknowledgement");
 
             if (missingFiles.length > 0) {
                 var strFiles = missingFiles[0];

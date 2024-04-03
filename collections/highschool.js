@@ -81,10 +81,10 @@ highschoolSchema = new SimpleSchema({
         type: String,
         label: "College Acceptance Letter"
     },
-    "noteAknowledgementId": {
-        type: String,
-        label: "Note of Aknowledgement"
-    },
+    // "noteAknowledgementId": {
+    //     type: String,
+    //     label: "Note of Aknowledgement"
+    // },
     // "adminStatus": {
     //     type: String,
     //     label: "Review Status",
