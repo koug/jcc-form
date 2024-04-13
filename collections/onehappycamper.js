@@ -110,7 +110,7 @@ onehappycamperSchema = new SimpleSchema({
   "taxReturnId": {
     type: String,
     optional: false,
-    label: "First 2 pages of 2017 tax forms"
+    label: "First 2 pages of latest tax forms"
   },
   "aidLetterId": {
     type: String,
